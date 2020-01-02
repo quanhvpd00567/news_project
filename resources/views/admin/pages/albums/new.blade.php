@@ -10,10 +10,8 @@
                 <input type="text" class="form-control" name="album_name" placeholder="Enter album name">
                 <lable>Price</lable>
                 <input type="text" class="form-control" name="price" placeholder="price">
-                <lable>Is delete</lable>
-                <input type="text" class="form-control" name="is_delete" placeholder="is delete">
-                <lable>Is free</lable>
-                <input type="text" class="form-control" name="is_free" placeholder="is free">
+                <lable>Free</lable>
+                <input type="checkbox" name="is_free" value="1">
             </div>
             <div class="box-footer">
                 <button class="btn btn-primary" type="submit">Submit</button>

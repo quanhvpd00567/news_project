@@ -10,10 +10,8 @@
                 <input type="text" class="form-control" name="album_name" value="{{ $album->album_name }}" placeholder="Enter album name ">
                 <lable>Price</lable>
                 <input type="text" class="form-control" name="price" value="{{ $album->price }}" placeholder="Enter price ">
-                <lable>Is delete</lable>
-                <input type="text" class="form-control" name="is_delete" value="{{ $album->is_delete }}" placeholder="Enter is delete ">
-                <lable>Is free</lable>
-                <input type="text" class="form-control" name="is_free" value="{{ $album->is_free }}" placeholder="Enter is free ">
+                <lable>Free</lable>
+                <input type="checkbox" name="is_free" {{$album->is_free == 1 ? 'checked' : ''}} value="1">
             </div>
             <div class="box-footer">
                 <button class="btn btn-primary">Update</button>

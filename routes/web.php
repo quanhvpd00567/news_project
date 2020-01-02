@@ -24,10 +24,6 @@ Route::prefix('admin')->group(function () {
 
     Route::prefix('role')->group(function (){
         Route::get('/', 'RoleController@index')->name('list_role');
-        Route::get('new', 'RoleController@create_new')->name('get_view_new_role');
-        Route::post('create', 'RoleController@create')->name('post_new_role');
-        Route::get('edit/{id}', 'RoleController@edit')->name('get_view_edit_role');
-        Route::post('update/{id}', 'RoleController@update')->name('post_update_role');
     });
 
     Route::prefix('countries')->group(function (){
@@ -73,8 +69,13 @@ Route::prefix('admin')->group(function () {
         Route::get('new' , 'UserController@create_new')->name('get_new_view_user');
         Route::post('create', 'UserController@create')->name('post_new_user');
     });
-    // test insert role
-    Route::get('test', 'RoleController@test_insert');
+
+    Route::prefix('settings')->group(function (){
+        Route::get('/', 'SettingController@index')->name('get_setting');
+        Route::post('update', 'SettingController@update')->name('post_update_setting');
+    });
+
+
 });
 
 Route::get('admin/login', function (){

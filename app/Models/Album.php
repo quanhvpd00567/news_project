@@ -19,8 +19,8 @@ class Album extends Model
     public function createAlbum($request){
         $this->album_name = $request->post('album_name');
         $this->price = $request->post('price');
-        $this->is_delete = $request->post('is_delete');
-        $this->is_free = $request->post('is_free');
+        $this->is_delete = 0;
+        $this->is_free = $request->has('is_free') ? $request->post('is_free') : 0;
         if($this->save()){
             return true;
         }else {
@@ -33,8 +33,7 @@ class Album extends Model
     public  function updateAlbum($request, $album){
         $album->album_name = $request->post('album_name');
         $album->price = $request->post('price');
-        $album->is_delete = $request->post('is_delete');
-        $album->is_free = $request->post('is_free');
+        $album->is_free = $request->has('is_free') ? $request->post('is_free') : 0;
         $album->updated_at = Carbon::now();
         if($album->save()){
             return true;

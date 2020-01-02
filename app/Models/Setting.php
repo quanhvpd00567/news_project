@@ -7,4 +7,26 @@ use Illuminate\Database\Eloquent\Model;
 class Setting extends Model
 {
     protected $table ="settings";
+
+    public function getSetting(){
+        return $this->all()->first();
+    }
+
+    public function updateSetting($requests){
+        $setting = $this->getSetting();
+        if ($setting == null){
+            $this->p_user = $requests->post('p_user');
+            $this->p_article = $requests->post('p_article');
+            $this->p_category = $requests->post('p_category');
+            $this->background_color = $requests->post('background_color');
+            return $this->save();
+        }{
+            $setting->p_user = $requests->post('p_user');
+            $setting->p_article = $requests->post('p_article');
+            $setting->p_category = $requests->post('p_category');
+            $setting->p_category = $requests->post('p_category');
+            $setting->background_color = $requests->post('background_color');
+            return $setting->save();
+        }
+    }
 }

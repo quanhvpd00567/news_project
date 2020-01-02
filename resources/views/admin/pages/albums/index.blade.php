@@ -4,7 +4,7 @@
 @endsection
 @section('content')
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <div class="box">
                 <div class="box-header with-border">
                     <h3 class="box-title">List Albums</h3>
@@ -13,26 +13,26 @@
                             <tbody>
                             <tr>
                                 <th style="width: 10px">Id</th>
-                                <th style="width: 40%">Album name</th>
+                                <th style="width: 30%">Album name</th>
                                 <th style="width: 20%">Price</th>
-                                <th style="width: 20%">Is delete</th>
-                                <th style="width: 50%">Is free</th>
-                                <th style="width: 40%">Created at</th>
-                                <th style="width: 40%">Updated at</th>
-                                <th>Action</th>
+                                <th style="width: 10%">Free</th>
+                                <th style="width: 20%">Created at</th>
+                                <th style="width: 20%">Action</th>
                             </tr>
                             <?php $count = 1; ?>
                             @foreach($lists as $key => $album)
                                 <tr>
                                     <td>{{ $count }}</td>
                                     <td>{{ $album->album_name }}</td>
-                                    <td>{{ $album->price }}</td>
-                                    <td>{{ $album->is_delete }}</td>
-                                    <td>{{ $album->is_free }}</td>
+                                    <td>${{ $album->price }}</td>
+                                    <td>{{ $album->is_free == 1 ? 'Free' : 'No free' }}</td>
                                     <td><span>{{ $album->created_at }}</span></td>
-                                    <td><span>{{ $album->updated_at }}</span></td>
                                     <td>
-                                        <a href="{{ route('get_view_edit_album', ['id' => $album->id]) }}">Edit</a>
+                                        <a href="{{ route('get_view_edit_album', ['id' => $album->id]) }}" class="btn btn-primary">Edit</a>
+                                        <form style="display: inline-block;" id="key_{{$album->id}}" action="{{route('post_delete_category', ['id' => $album->id])}}" method="post">
+                                            {{csrf_field()}}
+                                            <a href="javascript:void(0)" class="btn btn-danger delete" data-key="key_{{$album->id}}">Delete</a>
+                                        </form>
                                     </td>
                                 </tr>
                                 <?php $count++ ; ?>
