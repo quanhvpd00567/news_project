@@ -27,24 +27,13 @@
             <li><a href="../../index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
           </ul>
         </li>
-        <li class="treeview">
-          <a href="#">
-            <i class="fa fa-files-o"></i>
-            <span>Layout Options</span>
-            <span class="pull-right-container">
-              <span class="label label-primary pull-right">4</span>
-            </span>
-          </a>
-          <ul class="treeview-menu">
-            <li><a href="../layout/top-nav.html"><i class="fa fa-circle-o"></i> Top Navigation</a></li>
-          </ul>
-        </li>
-        
+
         <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
         <li class="header">LABELS</li>
-        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
-        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+        <li><a href="{{route('list_role')}}"><i class="fa fa-circle-o text-red"></i> <span>Roles</span></a></li>
+        <li><a href="{{ route('list_album') }}"><i class="fa fa-circle-o text-yellow"></i> <span>Albums</span></a></li>
+        <li><a href="{{ route('list_image') }}"><i class="fa fa-circle-o text-aqua"></i> <span>Images</span></a></li>
+        <li><a href="{{ route('list_category') }}"><i class="fa fa-circle-o text-aqua"></i> <span>Categories</span></a></li>
       </ul>
     </section>
     <!-- /.sidebar -->

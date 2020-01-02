@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateUsersTable extends Migration
 {
@@ -14,11 +14,16 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->bigIncrements('id');
+            $table->string('full_name');
+            $table->tinyInteger('gender');
+            $table->date('birth_of_day');
+            $table->string('email', 255)->unique();
             $table->string('password');
-            $table->rememberToken();
+            $table->integer('role_id');
+            $table->tinyInteger('is_block')->default(0)->comment('1 la bi block, 0 chua block');
+            $table->tinyInteger('is_delete')->default(0)->comment('1 la da xoa, 0 la chua xoa');
+            $table->integer('count_login');
             $table->timestamps();
         });
     }
