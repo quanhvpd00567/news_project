@@ -21,7 +21,6 @@ class Category extends Model
         return $this->find($id);
     }
     public function updateCategory($request, $category){
-        $category->parent_id = $request->post('parent_id');
         $category->category_name = $request->post('category_name');
         $category->updated_at = Carbon::now();
         if($category->save()){

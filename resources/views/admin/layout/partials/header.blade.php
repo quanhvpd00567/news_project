@@ -47,19 +47,19 @@
               <li class="footer"><a href="#">See All Messages</a></li>
             </ul>
           </li>
-        
-        
+
+
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               <img src="{{ asset('imgs/me.png') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">Trang Tran</span>
+              <span class="hidden-xs">{{\Auth::check() ? \Auth::user()->full_name : ''}}</span>
             </a>
             <ul class="dropdown-menu">
               <!-- User image -->
               <li class="user-header">
                 <img src="{{ asset('imgs/me.png') }}" class="img-circle" alt="User Image">
-                <p>Trang Tran</p>
+                <p>{{\Auth::check() ? \Auth::user()->full_name : ''}}</p>
               </li>
               <!-- Menu Body -->
               <li class="user-body">
@@ -82,7 +82,7 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                  <a href="{{route('admin_logout')}}" class="btn btn-default btn-flat">Sign out</a>
                 </div>
               </li>
             </ul>

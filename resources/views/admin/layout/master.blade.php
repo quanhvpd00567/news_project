@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('css/Ionicons/css/ionicons.min.css') }}">
+    @yield('styles')
   <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/_all-skins.min.css') }}">
 

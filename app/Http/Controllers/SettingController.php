@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Setting;
 
-class SettingController extends Controller
+class SettingController extends BaseController
 {
     private $model_setting;
     function __construct()

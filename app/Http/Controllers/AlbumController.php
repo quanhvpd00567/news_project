@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Album;
 use Illuminate\Http\Request;
 
-class AlbumController extends Controller
+class AlbumController extends BaseController
 {
     private $model_album;
     public function __construct()

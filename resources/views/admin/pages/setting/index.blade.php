@@ -31,7 +31,7 @@
                     <input type="number" value="{{ is_null($setting) ? 10 : $setting->p_user }}" style="float: right; width: 60px" name="p_user" min="1" class="form-control">
                 </div>
                 <div class="form-group form-inline">
-                    <label>User page number</label>
+                    <label>Set background color page:</label>
                     <input type="color" value="{{ is_null($setting) ? '#ea0437' : $setting->background_color }}" style="float: right; width: 60px" name="background_color" min="1" class="form-control">
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>

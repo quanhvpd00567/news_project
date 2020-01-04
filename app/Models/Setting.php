@@ -12,6 +12,15 @@ class Setting extends Model
         return $this->all()->first();
     }
 
+    public function create(){
+        $this->p_user = 10;
+        $this->p_article = 10;
+        $this->p_category = 10;
+        $this->background_color = '#cccccc';
+        $this->save();
+        return $this->getSetting();
+    }
+
     public function updateSetting($requests){
         $setting = $this->getSetting();
         if ($setting == null){

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Image;
-class ImageController extends Controller
+class ImageController extends BaseController
 {
     private $model_image;
     public function __construct()
