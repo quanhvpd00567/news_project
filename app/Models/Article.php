@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
 {
-    protected $table = "article";
+    protected $table = "articles";
     public function user(){
         return $this -> belongsTo('app\Models\user', 'user_id', 'id');
     }

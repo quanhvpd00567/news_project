@@ -29,7 +29,7 @@
                 <input type="email" class="form-control" name="email" placeholder="Enter email">
                 <lable>Password</lable>
                 <input type="password" class="form-control" name="password" placeholder="Enter password">
-                <lable>Password confirm
+                <lable>Password confirm </lable>
                 <input type="password" class="form-control" name="password_confirm" placeholder="Enter password confirm">
                 <lable>Birth Of Day</lable>
                 <input type="text" class="form-control" id="birth_of_day" name="birth_of_day" placeholder="Enter Birth Of Day">
@@ -55,7 +55,8 @@
             radioClass   : 'iradio_flat-green'
         })
         $('#birth_of_day').datepicker({
-            autoclose: true
+            setDate: new Date(),
+            autoclose: true,
         })
     </script>
 @endsection

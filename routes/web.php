@@ -68,6 +68,12 @@ Route::group(
         Route::get('/' , 'UserController@index')->name('list_user');
         Route::get('new' , 'UserController@create_new')->name('get_new_view_user');
         Route::post('create', 'UserController@create')->name('post_new_user');
+        Route::get('edit/{id}', 'UserController@edit')->name('get_edit_view_user');
+        Route::post('update/{id}', 'UserController@update')->name('post_update_user');
+        Route::get('reset_pass/{id}', 'UserController@reset_pass')->name('get_view_reset_password_user');
+        Route::post('update_pass/{id}', 'UserController@update_pass')->name('post_reset_password_user');
+        Route::post('blog_user/{id}', 'UserController@block_user')->name('post_blog_user');
+        Route::get('profile', 'UserController@profile_user')->name('get_view_profile_user');
     });
 
     Route::prefix('settings')->group(function (){

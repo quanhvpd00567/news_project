@@ -18,9 +18,10 @@
         <li><a href="{{route('list_role')}}"><i class="fa fa-circle-o text-red"></i> <span>Roles</span></a></li>
         <li><a href="{{ route('list_album') }}"><i class="fa fa-circle-o text-yellow"></i> <span>Albums</span></a></li>
           @if(Auth::user()->is_admin())
-            <li><a href="{{ route('list_user') }}"><i class="fa fa-circle-o text-yellow"></i> <span>User</span></a></li>
+            <li><a href="{{ route('list_user') }}"><i class="fa fa-circle-o text-white"></i> <span>Users</span></a></li>
           @endif
-        <li><a href="{{ route('list_image') }}"><i class="fa fa-circle-o text-green"></i> <span>Images</span></a></li>
+          <li><a href="{{ route('list_article') }}"><i class="fa fa-circle-o text-fuchsia"></i> <span>Articles</span></a></li>
+          <li><a href="{{ route('list_image') }}"><i class="fa fa-circle-o text-green"></i> <span>Images</span></a></li>
         <li><a href="{{ route('list_category') }}"><i class="fa fa-circle-o text-aqua"></i> <span>Categories</span></a></li>
         <li><a href="{{ route('get_setting') }}"><i class="fa fa-circle-o text-blue"></i> <span>Settings</span></a></li>
       </ul>

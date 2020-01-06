@@ -45,9 +45,14 @@ class User extends Authenticatable
         }
         return false;
     }
+    public function is_blocked(){
+        return $this->is_block == 1 ? true : false;
+    }
 
     public function getListUser(){
-        return self::where('is_delete', 0)->get();
+        $setting = Setting::getSetting();
+//        dd($setting);
+        return self::where('is_delete', 0)->paginate($setting->p_user);
     }
 
     public function createUser($request){
@@ -65,5 +70,28 @@ class User extends Authenticatable
             return true;
         }
         return false;
+    }
+
+    public function getUserById($id){
+        return $this->find($id);
+    }
+
+    public function updateUser($request, $user){
+        $user->full_name = $request->full_name;
+        $user->gender = $request->gender;
+        $user->email = $request->email;
+        $user->birth_of_day = $request->birth_of_day;
+        $user->role_id = $request->role_id;
+        return $user->save();
+    }
+
+    public function UpdatePassword($password, $user){
+        $user->password = Hash::make($password);
+        return $user->save();
+    }
+
+    public function BlockUser($is_block, $user){
+        $user->is_block = $is_block;
+        return $user->save();
     }
 }

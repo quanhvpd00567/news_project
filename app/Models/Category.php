@@ -30,7 +30,8 @@ class Category extends Model
         }
     }
     public function getList($is_delete){
-        return $this->all()->where('is_delete', $is_delete);
+        $setting = Setting::getSetting();
+        return $this->where('is_delete', $is_delete)->paginate($setting->p_category);
     }
 
     public function deleteCategory($id)

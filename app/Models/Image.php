@@ -11,15 +11,11 @@ class Image extends Model
     public function album(){
         return $this->belongsTo('app\Models\album', 'album_id', 'id');
     }
-    public function createImage($request){
-        $this->album_id = $request->post('album_id');
-        $this->url = $request->post('url');
-        $this->is_delete = $request->post('is_delete');
-        if($this->save()){
-            return true;
-        }else{
-            return false;
-        }
+    public function createImage($album_id, $img){
+        $this->album_id = $album_id;
+        $this->url = $img;
+        $this->is_delete = 0;
+        return $this->save();
     }
     public function getImageById($id){
         return $this->find($id);
@@ -36,6 +32,6 @@ class Image extends Model
         }
     }
     public function getList(){
-        return $this->all();
+        return $this->paginate(10);
     }
 }

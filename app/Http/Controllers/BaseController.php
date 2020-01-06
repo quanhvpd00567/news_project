@@ -9,17 +9,17 @@ use App\Models\Setting;
 
 class BaseController extends Controller
 {
-    public $model_setting;
+//    public $model_setting;
     public function __construct()
     {
-        global $setting;
-        $this->model_setting = new Setting();
-        $setting = $this->model_setting->getSetting();
-
-        if(is_null($this->setting)){
-            $this->model_setting->create();
-            $setting = $this->model_setting->getSetting();
-        }
+//        global $setting;
+//        $this->model_setting = new Setting();
+//        $setting = $this->model_setting->getSetting();
+//
+//        if(is_null($this->setting)){
+//            $this->model_setting->create();
+//            $setting = $this->model_setting->getSetting();
+//        }
     }
 
     public function page_403(){

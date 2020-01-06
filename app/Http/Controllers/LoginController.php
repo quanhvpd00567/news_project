@@ -10,6 +10,7 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect()->route('admin_dashboard');
         }
+        session()->flash('error', 'Email or password invalid');
         return redirect()->route('admin_login');
     }
 

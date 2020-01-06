@@ -25,6 +25,9 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">Sign in</p>
+        @if(Session::has('error'))
+            <p style="color: red">{{session('error')}}</p>
+        @endif
         <form action="{{route('admin_post_login')}}" method="post">
             {{ csrf_field() }}
             <div class="form-group has-feedback">

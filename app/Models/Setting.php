@@ -8,8 +8,8 @@ class Setting extends Model
 {
     protected $table ="settings";
 
-    public function getSetting(){
-        return $this->all()->first();
+    public static function getSetting(){
+        return self::all()->first();
     }
 
     public function create(){
