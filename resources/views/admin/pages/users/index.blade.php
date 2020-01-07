@@ -31,10 +31,9 @@
                             <th style="width: 50px">Role</th>
                             <th >Action</th>
                         </tr>
-                        <?php $count = 1; ?>
                         @foreach($users as $key => $user)
                             <tr>
-                                <td>{{ $count }}</td>
+                                <td>{{ $user->id }}</td>
                                 <td>{{ $user->full_name }}</td>
                                 <td>
                                     <span>
@@ -61,7 +60,6 @@
                                     @endif
                                 </td>
                             </tr>
-                            <?php $count++ ; ?>
                         @endforeach
                         @if(count($users) == 0)
                             <tr>

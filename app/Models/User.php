@@ -25,6 +25,8 @@ class User extends Authenticatable
         return $this->belongsTo('app\Models\Role', 'role_id', 'id');
     }
 
+
+
     public function is_admin(){
         if($this->role_id == 1){
             return true;
@@ -51,7 +53,6 @@ class User extends Authenticatable
 
     public function getListUser(){
         $setting = Setting::getSetting();
-//        dd($setting);
         return self::where('is_delete', 0)->paginate($setting->p_user);
     }
 

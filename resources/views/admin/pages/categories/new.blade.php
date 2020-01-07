@@ -10,6 +10,9 @@
                 <div class="form-group">
                     <lable>Category Name</lable>
                     <input type="text" class="form-control" name="category_name" placeholder="Enter category name">
+                    @if ($errors->has('category_name'))
+                        <span class="error-message">{{$errors->first('category_name')}}</span>
+                    @endif
                 </div>
                 <div class="box-footer">
                     <button class="btn btn-primary" type="submit">Submit</button>

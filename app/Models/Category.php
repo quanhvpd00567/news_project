@@ -18,7 +18,7 @@ class Category extends Model
         return false;
     }
     public function getCategoryById($id){
-        return $this->find($id);
+        return $this->where('is_delete', 0)->where('id', $id)->first();
     }
     public function updateCategory($request, $category){
         $category->category_name = $request->post('category_name');

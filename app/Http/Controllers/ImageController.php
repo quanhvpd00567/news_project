@@ -33,13 +33,14 @@ class ImageController extends BaseController
             $filename
         );
         if($this->model_image->createImage($request->album_id, $path)){
+            session()->flash('save_success', 'Create image successfully');
             return redirect()->route('list_image');
         }
     }
     public function edit($id){
         $image = $this->model_image->getImageById($id);
         if($image == null){
-            return abort(404);
+            return $this->page_404();
         }
         else{
             return view('admin.pages.images.edit', compact('image'));
@@ -48,12 +49,24 @@ class ImageController extends BaseController
     public function update($id, Request $request){
         $image = $this->model_image->getImageById($id);
         if($image == null){
-            return abort(404);
+            return $this->page_404();
         }
         $result = $this->model_image->updateImage($image,$request);
         if($result){
+            session()->flash('save_success', 'Update image successfully');
             return redirect()->route('list_image');
         }
         return redirect()->route('get_edit_view_image', ['id', $id]);
+    }
+
+    public function delete($id){
+        $image = $this->model_image->getImageById($id);
+        if($image == null){
+            return $this->page_404();
+        }
+        if($this->model_image->deleteImage($image)){
+            session()->flash('save_success', 'Delete image successfully');
+            return redirect()->route('list_image');
+        }
     }
 }

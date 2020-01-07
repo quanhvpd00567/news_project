@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends BaseController
 {
@@ -21,7 +22,7 @@ class CategoryController extends BaseController
     public function create_new(){
         return view('admin.pages.categories.new');
     }
-    public function create(Request $request){
+    public function create(CategoryRequest $request){
         $category = $this->model_category->createCategory($request);
         if($category){
             return redirect()->route('list_category');

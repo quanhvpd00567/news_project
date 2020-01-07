@@ -1,0 +1,20 @@
+.form-login{
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+}
+body{
+    background-color: #e9faff;
+}
+.title{
+    color: #0d6aad;
+}
+.input-c{
+    height: 50px;
+}
+
+.error {
+    color: red;
+}

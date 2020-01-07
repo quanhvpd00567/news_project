@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->date('birth_of_day');
             $table->string('email', 255)->unique();
             $table->string('password');
+            $table->string('remember_me');
             $table->integer('role_id');
             $table->tinyInteger('is_block')->default(0)->comment('1 la bi block, 0 chua block');
             $table->tinyInteger('is_delete')->default(0)->comment('1 la da xoa, 0 la chua xoa');

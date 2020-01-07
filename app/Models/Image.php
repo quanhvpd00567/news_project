@@ -31,7 +31,16 @@ class Image extends Model
             return false;
         }
     }
-    public function getList(){
-        return $this->paginate(10);
+    public function getList($isPageUser = false){
+        if ($isPageUser){
+            return $this->where('is_delete', 0)->get();
+        }
+        return $this->where('is_delete', 0)->paginate(10);
+    }
+
+    public function deleteImage($image)
+    {
+        $image->is_delete = 1;
+        return $image->save();
     }
 }

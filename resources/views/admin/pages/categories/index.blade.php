@@ -30,10 +30,9 @@
                                     <th style="width: 20%">Updated at</th>
                                     <th >Action</th>
                                 </tr>
-                                <?php $count = 1; ?>
                                 @foreach($lists as $key => $category)
                                     <tr>
-                                        <td>{{ $count }}</td>
+                                        <td>{{ $category->id }}</td>
                                         <td>{{ $category->category_name }}</td>
                                         <td><span>{{ $category->created_at }}</span></td>
                                         <td><span>{{ $category->updated_at }}</span></td>
@@ -45,7 +44,6 @@
                                             </form>
                                         </td>
                                     </tr>
-                                    <?php $count++ ; ?>
                                 @endforeach
                                 @if(count($lists) == 0)
                                     <tr>

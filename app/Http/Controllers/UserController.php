@@ -6,6 +6,7 @@ use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\UserRequest;
 class UserController extends BaseController
 {
     private $model_user;
@@ -24,7 +25,7 @@ class UserController extends BaseController
 
     }
 
-    public function create(Request $request){
+    public function create(UserRequest $request){
         if (Auth::user()->is_admin()){
             $result = $this->model_user->createUser($request);
             if($result){

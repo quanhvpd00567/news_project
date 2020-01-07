@@ -11,9 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
+Route::get('/detail/{id}', 'HomeController@detail')->name('article_detail');
+Route::get('/category/{id}', 'HomeController@category')->name('article_by_category');
+Route::get('/album/{id}', 'HomeController@album')->name('article_by_album');
+Route::get('/login', 'AuthController@login')->name('login');
+Route::get('/logout', 'AuthController@logout')->name('logout');
+Route::post('/authentication', 'AuthController@authentication')->name('login_port');
+Route::get('/confirm-buy', 'HomeController@confirm_buy')->name('confirm_buy');
 
 //admin router
 Route::group(
@@ -45,6 +50,7 @@ Route::group(
         Route::post('create', 'ImageController@create')->name('post_new_image');
         Route::get('edit/{id}', 'ImageController@edit')->name('get_view_edit_image');
         Route::post('update/{id}', 'ImageController@update')->name('post_edit_image');
+        Route::post('delete/{id}', 'ImageController@delete')->name('post_delete_image');
     });
 
     Route::prefix('categories')->group(function (){
@@ -62,6 +68,7 @@ Route::group(
         Route::post('create', 'ArticleController@create')->name('post_new_article');
         Route::get('edit/{id}', 'ArticleController@edit')->name('get_view_edit_article');
         Route::post('update/{id}', 'ArticleController@update')->name('post_edit_article');
+        Route::post('delete/{id}', 'ArticleController@delete')->name('post_delete_article');
     });
 
     Route::prefix('users')->group(function (){
@@ -92,7 +99,3 @@ Route::get('admin/login', function (){
 
 Route::post('admin/login', 'LoginController@login')->name('admin_post_login');
 Route::get('admin/logout', 'LoginController@logout')->name('admin_logout');
-
-
-
-Route::get('/home', 'HomeController@index')->name('home');

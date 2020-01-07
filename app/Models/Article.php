@@ -2,54 +2,72 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Article extends Model
 {
     protected $table = "articles";
     public function user(){
-        return $this -> belongsTo('app\Models\user', 'user_id', 'id');
+        return $this-> belongsTo('app\Models\user', 'user_id', 'id');
     }
     public function album(){
-        return $this->hasMany('app\Models\album', 'album_id', 'id');
+        return $this->belongsTo('app\Models\album', 'album_id', 'id');
     }
     public function category(){
-        return $this->hasMany('app\Models\category', 'category_id', 'id');
+        return $this->belongsTo('app\Models\category', 'category_id', 'id');
     }
-    public function createArticle($request){
+    public function createArticle($request, $path_file){
         $this->title = $request->post('title');
         $this->content = $request->post('content');
-        $this->img_thumb = $request->post('img_thumb');
+        $this->img_thumb = $path_file;
         $this->category_id = $request->post('category_id');
         $this->album_id = $request->post('album_id');
-        $this->user_id = $request->post('user_id');
-        $this->date_public = $request->post('date_public');
-        $this->is_delete = $request->post('is_delete');
-        if($this->save()){
-            return true;
-        }
-        return false;
+        $this->user_id = Auth::user()->id;
+
+        $date = date('Y-m-d', strtotime($request->post('date_public')));
+        $this->date_public = $date;
+        $this->is_delete = 0;
+       return $this->save();
     }
     public function getArticleById($id){
         return $this->find($id);
     }
-    public function updateArticle($request, $article){
+    public function updateArticle($request, $article, $path_img){
         $article->title = $request->post('title');
         $article->content = $request->post('content');
-        $article->img_thumb = $request->post('img_thumb');
+
+        if (!is_null($request->post('img_hidden'))){
+            $article->img_thumb = $path_img ;
+        }
+
         $article->category_id = $request->post('category_id');
         $article->album_id = $request->post('album_id');
-        $article->user_id = $request->post('user_id');
-        $article->date_public = $request->post('date_public');
-        $article->is_delete = $request->post('is_delete');
-        $article->created_at = Carbon::now();
-        if($article->save()){
-            return true;
-        }else{
-            return false;
-        }
+        $date = date('Y-m-d', strtotime($request->post('date_public')));
+        $article->date_public = $date;
+        $article->updated_at = Carbon::now();
+        return $article->save();
     }
-    public function getList(){
-        return $this->all();
+    public function getList($isPageUser = false){
+        $setting = Setting::getSetting();
+        $perpage = $setting->p_article;
+        if ($isPageUser){
+            $perpage = 20;
+        }
+        return self::where('is_delete', 0)->paginate($perpage);
+    }
+
+    public function deleteArticle($article){
+        $article->is_delete = 1;
+        return $article->save();
+    }
+
+    public function getArticleByCategory($id){
+        return self::where('is_delete', 0)->where('category_id', $id)->paginate(20);
+    }
+
+    public function getArticleByAlbum($id){
+        return self::where('is_delete', 0)->where('album_id', $id)->paginate(20);
     }
 }
