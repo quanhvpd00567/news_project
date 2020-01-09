@@ -18,7 +18,27 @@ Route::get('/album/{id}', 'HomeController@album')->name('article_by_album');
 Route::get('/login', 'AuthController@login')->name('login');
 Route::get('/logout', 'AuthController@logout')->name('logout');
 Route::post('/authentication', 'AuthController@authentication')->name('login_port');
-Route::get('/confirm-buy', 'HomeController@confirm_buy')->name('confirm_buy');
+Route::post('/buy', 'HomeController@buy')->name('buy');
+
+Route::get('/register', 'AuthController@register')->name('register');
+Route::post('/create', 'AuthController@create')->name('create_new_member');
+
+//user router
+Route::group(
+    [
+        'prefix' => 'profile',
+        'middleware' => 'user',
+        'as' => 'profile_'
+    ],
+    function (){
+        Route::get('history', 'ProfileController@history')->name('history');
+        Route::get('/', 'ProfileController@index')->name('info');
+        Route::get('edit', 'ProfileController@edit')->name('edit');
+        Route::post('update', 'ProfileController@update')->name('update');
+        Route::get('change_password', 'ProfileController@change_password')->name('change_password');
+        Route::post('update_password', 'ProfileController@update_password')->name('update_password');
+    }
+);
 
 //admin router
 Route::group(

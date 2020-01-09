@@ -25,7 +25,7 @@ class UserRequest extends FormRequest
     {
         return [
             'full_name' => 'required|max:255',
-            'email' => 'required|email|max:255',
+            'email' => 'required|unique:users|email|max:255',
             'password' => 'required|max:30|min:8',
             'password_confirm' => 'required|max:30|min:8|same:password',
             'birth_of_day' => 'required|max:50|date_format:Y/m/d',
@@ -38,6 +38,7 @@ class UserRequest extends FormRequest
             'full_name.max' => 'Full name max length is :max character',
             'email.required' => 'Email is not empty',
             'email.max' => 'Email max length is :max character',
+            'email.unique' => 'Email is exists',
             'password.required' => 'Password is not empty',
             'password.max' => 'Password max length is :max character',
             'password.min' => 'Password min length is :min character',

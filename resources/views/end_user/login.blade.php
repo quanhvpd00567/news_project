@@ -34,7 +34,7 @@
                             <button style="width: 50%; margin-left: 25%" type="submit" class="btn btn-primary">Login</button>
                             <br>
                             <br>
-                            <a href="">Register</a>
+                            <a href="/register">Register</a>
                             <br>
                             <a href="">For got password</a>
                         </div>

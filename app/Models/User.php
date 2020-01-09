@@ -56,14 +56,19 @@ class User extends Authenticatable
         return self::where('is_delete', 0)->paginate($setting->p_user);
     }
 
-    public function createUser($request){
+    public function createUser($request, $isUser = false){
         $this->full_name = $request->post('full_name');
         $this->gender = $request->post('gender');
         // Format date input
         $this->birth_of_day = date('Y-m-d', strtotime($request->post('birth_of_day')));
         $this->email = $request->post('email');
         $this->password = Hash::make($request->post('password'));
-        $this->role_id = $request->post('role_id');
+        if ($isUser){
+            $this->role_id = $request->post('role_id');
+        }else{
+            $this->role_id = 2;
+        }
+
         $this->is_block = 0;
         $this->is_delete = 0;
         $this->count_login = 0;
@@ -77,12 +82,14 @@ class User extends Authenticatable
         return $this->find($id);
     }
 
-    public function updateUser($request, $user){
+    public function updateUser($request, $user, $is_member_update = true){
         $user->full_name = $request->full_name;
         $user->gender = $request->gender;
-        $user->email = $request->email;
         $user->birth_of_day = $request->birth_of_day;
-        $user->role_id = $request->role_id;
+        if ($is_member_update){
+            $user->email = $request->email;
+            $user->role_id = $request->role_id;
+        }
         return $user->save();
     }
 

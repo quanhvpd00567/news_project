@@ -5,6 +5,14 @@
     border: 1px solid #cccccc;
     background-color: #ffffff;
 }
+.form-register{
+    width: 500px;
+    min-height: 650px;
+    margin: 0 auto;
+    border: 1px solid #cccccc;
+    background-color: #ffffff;
+    padding-bottom: 10px;
+}
 body{
     background-color: #e9faff;
 }

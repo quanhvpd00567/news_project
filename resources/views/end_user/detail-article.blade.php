@@ -25,8 +25,6 @@
                 </div>
             </div>
         </div>
-
-        @include('end_user.partials.modal')
     </div>
 @endsection
 @section('scripts')

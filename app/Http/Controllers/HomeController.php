@@ -54,15 +54,25 @@ class HomeController extends Controller
             return abort(404);
         }
 
-        $is_buy = Order::buy_success($article->album_id);
+        $isFree = $article->album->is_free == 1 ? true : false;
+        if (Auth::check() && !$isFree){
+            if(Auth::user()->is_member()) {
+                $isBuy = \App\Models\Order::buy_success($article->album->id);
+                if (!$isBuy){
+                    return redirect()->route('confirm_buy');
+                }
+            }
+        }else{
+            if (!$isFree){
+                return redirect()->route('login');
+            }
+        }
+
         $private_date = [
             'article' => $article,
         ];
         $data = array_merge($this->datas, $private_date);
 
-        if ($article->album->is_free == 0 && !$is_buy){
-            return view('end_user.confirm-buy', $data);
-        }
         return view('end_user.detail-article', $data);
     }
 
@@ -97,5 +107,23 @@ class HomeController extends Controller
     public function confirm_buy(){
         $data = array_merge($this->datas);
         return view('end_user.confirm-buy', $data);
+    }
+
+    public function buy(Request $request){
+        if (Auth::check()){
+            $is_success = false;
+            $order_model = new Order();
+            if ($order_model->addOrder($request)){
+                $is_success = true;
+            }
+            return response()->json([
+                'is_login' => true,
+                'is_success' => $is_success,
+            ]);
+        }else{
+            return response()->json([
+                'is_login' => false,
+            ]);
+        }
     }
 }

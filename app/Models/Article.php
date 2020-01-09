@@ -55,7 +55,7 @@ class Article extends Model
         if ($isPageUser){
             $perpage = 20;
         }
-        return self::where('is_delete', 0)->paginate($perpage);
+        return self::where('is_delete', 0)->orderBy('id', 'desc')->paginate($perpage);
     }
 
     public function deleteArticle($article){
@@ -64,10 +64,10 @@ class Article extends Model
     }
 
     public function getArticleByCategory($id){
-        return self::where('is_delete', 0)->where('category_id', $id)->paginate(20);
+        return self::where('is_delete', 0)->where('category_id', $id)->orderBy('id', 'desc')->paginate(20);
     }
 
     public function getArticleByAlbum($id){
-        return self::where('is_delete', 0)->where('album_id', $id)->paginate(20);
+        return self::where('is_delete', 0)->where('album_id', $id)->orderBy('id', 'desc')->paginate(20);
     }
 }

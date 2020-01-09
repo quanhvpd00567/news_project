@@ -10,8 +10,13 @@
     <link rel="stylesheet" href="{{ asset('css/end_user/font.css') }}">
     <link rel="stylesheet" href="{{ asset('css/end_user/animate.css') }}">
     <link rel="stylesheet" href="{{ asset('css/end_user/structure.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/datepicker/bootstrap-datepicker.min.css') }}">
     <title>Trang News - @yield('title')</title>
-
+    <style>
+        .datepicker{
+            background-color: #ffffff;
+        }
+    </style>
 </head>
 <body>
 <div id="preloader">
@@ -25,7 +30,7 @@
         @include('end_user.partials.nav')
         <form id="searchForm">
             @if(Auth::check())
-                <a id="profile" href="">Welcome: {{Auth::user()->full_name}}</a>
+                <a id="profile" href="{{route('profile_info')}}">Welcome: {{Auth::user()->full_name}}</a>
                 <a href="/logout" class="btn btn-warning">Logout</a>
             @else
                 <a href="/login" class="btn btn-primary">Login</a>

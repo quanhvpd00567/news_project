@@ -23,7 +23,7 @@
                         <hr>
                         <strong><i class="fa fa-venus-mars margin-r-5"></i> Gender</strong>
                         <p class="text-muted">
-                            @if (Auth::user()->gender == 1)
+                            @if (Auth::user()->gender == 0)
                                 Male
                             @else
                                 Female
