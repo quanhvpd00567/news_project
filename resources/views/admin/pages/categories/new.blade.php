@@ -1,23 +1,24 @@
 @extends('admin.layout.master')
-@section('title')
-@endsection
+
 @section('content')
-    <div class="box-body">
-        <div class="col-md-6">
-            <h2>Add new category</h2>
-            <form action="{{ route('post_new_category') }}" method="post">
-                {{ csrf_field() }}
-                <div class="form-group">
-                    <lable>Category Name</lable>
-                    <input type="text" class="form-control" name="category_name" placeholder="Enter category name">
-                    @if ($errors->has('category_name'))
-                        <span class="error-message">{{$errors->first('category_name')}}</span>
-                    @endif
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Tạo mới danh mục</h3>
                 </div>
-                <div class="box-footer">
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                <div class="box-body">
+                    @include('admin.pages.categories._form')
                 </div>
-            </form>
+            </div>
         </div>
     </div>
+@endsection
+@section('scripts')
+    <script>
+        $('input[type="checkbox"].minimal-red').iCheck({
+            checkboxClass: 'icheckbox_minimal-red',
+            radioClass   : 'iradio_minimal-red'
+        })
+    </script>
 @endsection

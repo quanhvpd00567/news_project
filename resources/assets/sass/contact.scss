@@ -1,0 +1,40 @@
+#content-contact{
+    padding-top: 20px;
+    .contact-right{
+        .item{
+            margin-bottom: 0;
+        }
+    }
+    .contact-left{
+        textarea{
+            resize: vertical !important;
+        }
+        button{
+            min-width: 100px;
+        }
+    }
+}
+
+#banner-contact{
+    padding-bottom: 10px;
+}
+
+.no-margin-bottom{
+    margin-bottom: 0;
+}
+
+
+@media screen and (max-width: 767px) {
+    #content-contact{
+        .contact-right{
+            .item{
+                margin-bottom: 0;
+            }
+        }
+    }
+    .main-section{
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+}
+

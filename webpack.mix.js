@@ -11,5 +11,15 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+mix.sass('resources/assets/sass/common.scss', 'public/css')
+    .sass('resources/assets/sass/external.scss', 'public/css')
+    .sass('resources/assets/sass/home.scss', 'public/css')
+    .sass('resources/assets/sass/hover-image.scss', 'public/css')
+    .sass('resources/assets/sass/contact.scss', 'public/css')
+    .sass('resources/assets/sass/gallery.scss', 'public/css')
+    .sass('resources/assets/sass/album-image.scss', 'public/css')
+    .sass('resources/assets/sass/style.scss', 'public/css');
+
+mix.sass('resources/assets/sass/admin/style.scss', 'public/css/admin');
+
+mix.js('resources/assets/js/album-image.js', 'public/js')

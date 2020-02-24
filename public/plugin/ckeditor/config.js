@@ -26,6 +26,13 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about' }
 	];
 
+    // config.toolbar = [
+    //     { name: 'document', items: [ 'Source', '-', 'NewPage', 'Preview', '-', 'Templates' ] },
+    //     { name: 'clipboard', items: [ 'Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo' ] },
+    //     '/',
+    //     { name: 'basicstyles', items: [ 'Bold', 'Italic' ] }
+    // ];
+
 	// Remove some buttons provided by the standard plugins, which are
 	// not needed in the Standard(s) toolbar.
 	config.removeButtons = 'Underline,Subscript,Superscript';
@@ -35,4 +42,6 @@ CKEDITOR.editorConfig = function( config ) {
 
 	// Simplify the dialog windows.
 	config.removeDialogTabs = 'image:advanced;link:advanced';
+
+    config.image_previewText = ' '
 };

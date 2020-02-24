@@ -1,20 +1,17 @@
+$color-rk : #bc2026;
+$color-rk-hover : #960000;
+$color-black : #333333;
+$color-brownish-grey : #666666;
+$color-warm-grey : #999999;
+$color-white : #ebebeb;
+$color-white-two : #f1f1f1;
+$color-red : #f1f1f1;
+$color-bg-footer : #FF4100;
 
-// Body
-$body-bg: #f8fafc;
+$color-blue-link: #3c5a99;
 
-// Typography
-$font-family-sans-serif: "Nunito", sans-serif;
-$font-size-base: 0.9rem;
-$line-height-base: 1.6;
-
-// Colors
-$blue: #3490dc;
-$indigo: #6574cd;
-$purple: #9561e2;
-$pink: #f66D9b;
-$red: #e3342f;
-$orange: #f6993f;
-$yellow: #ffed4a;
-$green: #38c172;
-$teal: #4dc0b5;
-$cyan: #6cb2eb;
+$latestNewsHeight: 165px;
+$topNewsHeight : ($latestNewsHeight - 25)/2;
+$recommentNewsHeight: 200px;
+$shouldReadNewsHeight: 400px;
+$imgShouldReadNewsHeight: 150px;

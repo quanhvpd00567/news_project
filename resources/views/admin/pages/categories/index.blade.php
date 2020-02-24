@@ -1,74 +1,101 @@
 @extends('admin.layout.master')
-@section('title')
-    List Categories
-@endsection
+
 @section('content')
+
     <div class="row">
-        <div class="col-md-8">
-            <div class="box">
+        <div class="col-md-12">
+            <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">List Categories</h3>
-
-                    @if(Session::has('save_success'))
-                        <div class="alert alert-success">
-                            {{session('save_success')}}
-                        </div>
-                    @endif
-                    @if(Session::has('save_error'))
-                        <div class="alert alert-success">
-                            {{session('save_error')}}
+                    <h3 class="box-title">Danh sách danh mục </h3>
+                    @if(Session::has('success'))
+                        <div class="col-md-12 notification">
+                            <div class="bg-green disabled alert-dismissible alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> Thông báo!</h4>
+                                {{Session::get('success')}}
+                            </div>
                         </div>
                     @endif
 
-                        <a href="{{ route('get_new_view_category') }}" class="btn btn-success">Create</a>
-                        <table class="table table-bordered ">
-                            <tbody>
-                                <tr>
-                                    <th style="width: 10px">Id</th>
-                                    <th style="width: 20%">Category Name</th>
-                                    <th style="width: 20%">Created at</th>
-                                    <th style="width: 20%">Updated at</th>
-                                    <th >Action</th>
-                                </tr>
-                                @foreach($lists as $key => $category)
+                    @if(Session::has('error'))
+                        <div class="col-md-12 notification">
+                            <div class="bg-red disabled alert-dismissible alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                                <h4><i class="icon fa fa-check"></i> Thông báo!</h4>
+                                {{Session::get('error')}}
+                            </div>
+                        </div>
+                    @endif
+                    <div class="box-body">
+                        <a href="{{route('admin.category.new')}}" class="btn btn-primary" id="btn-create">
+                            Tạo mới danh mục
+                        </a>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-md-6">
+                            <table class="table table-bordered">
+                                <thead>
+                                <th style="width: 10px">#</th>
+                                <th class="sorting_asc">
+                                    Tên danh mục
+                                </th>
+                                <th>Tên danh mục (Tiếng anh)</th>
+                                <th>Menu</th>
+                                <th>Trạng thái</th>
+                                <th></th>
+                                </thead>
+                                <tbody>
+                                <?php $count = 1 ?>
+                                @foreach($categories as $key => $item)
                                     <tr>
-                                        <td>{{ $category->id }}</td>
-                                        <td>{{ $category->category_name }}</td>
-                                        <td><span>{{ $category->created_at }}</span></td>
-                                        <td><span>{{ $category->updated_at }}</span></td>
+                                        <td>{{$count}}</td>
+                                        <td>{{$item->name}}</td>
+                                        <td>{{$item->name_en}}</td>
+                                        <td>{{$item->parentMenu->name}}</td>
                                         <td>
-                                            <a href="{{ route('get_view_edit_category', ['id' => $category->id]) }}" class="btn btn-primary">Edit</a>
-                                            <form style="display: inline-block;" id="key_{{$category->id}}" action="{{route('post_delete_category', ['id' => $category->id])}}" method="post">
-                                                {{csrf_field()}}
-                                                <a href="javascript:void(0)" class="btn btn-danger delete" data-key="key_{{$category->id}}">Delete</a>
-                                            </form>
+                                            @if($item->status == Config::get('constant.status.isShow'))
+                                                <span class="text-success">Đang hiển thị</span>
+                                            @else
+                                                <span class="text-danger">Không hiển thị</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="{{route('admin.category.edit', $item->id)}}" class="btn btn-primary">
+                                                <i class="fa fa-edit"></i>
+                                                Sửa
+                                            </a>
+{{--                                            @if($item->isDelete != Config::get('constant.delete.isDelete'))--}}
+{{--                                                <a href="{{route('admin.category.delete', $item->id)}}"--}}
+{{--                                                   class="btn btn-danger"--}}
+{{--                                                   onclick="return confirm('Có chắc chắn xóa không?')">--}}
+{{--                                                    <i class="fa fa-trash"></i>--}}
+{{--                                                    Xóa--}}
+{{--                                                </a>--}}
+{{--                                            @else--}}
+{{--                                                <a href="{{route('admin.category.restore', $item->id)}}"--}}
+{{--                                                   class="btn btn-warning"--}}
+{{--                                                   onclick="return confirm('Có chắc cắn khôi phục?')">--}}
+{{--                                                    <i class="fa fa-window-restore"></i>--}}
+{{--                                                    Khôi phục--}}
+{{--                                                </a>--}}
+{{--                                            @endif--}}
                                         </td>
                                     </tr>
+                                    <?php $count++ ?>
                                 @endforeach
-                                @if(count($lists) == 0)
-                                    <tr>
-                                        <td colspan="5">
-                                            <span>Data not found</span>
-                                        </td>
-                                    </tr>
-                                @endif
-                            </tbody>
-                        </table>
-                    {{$lists->links()}}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 @endsection
-@section('script')
+
+@section('scripts')
     <script>
-        $('.delete').on('click', function () {
-            if(confirm('Are you sure?')){
-                var form_key = $(this).attr('data-key');
-                $('#' + form_key).submit();
-            }else{
-                return false;
-            }
-        })
+
     </script>
 @endsection

@@ -1,0 +1,80 @@
+.language-waning{
+    color: #0f4bac;
+}
+.cke_required, .help-block{
+    color: red;
+}
+
+.sorting_asc:after{
+    content: "\e155";
+    cursor: pointer;
+    display: block;
+    float: right;
+    font-family: 'Glyphicons Halflings';
+    opacity: 0.5;
+}
+
+.sorting_desc:after{
+    content: "\e156";
+    cursor: pointer;
+    display: block;
+    float: right;
+    font-family: 'Glyphicons Halflings';
+    opacity: 0.5;
+}
+
+.textarea-resize-vertical{
+    resize: vertical;
+}
+
+
+#my-dropzone .message {
+    font-family: "Segoe UI Light", "Arial", serif;
+    font-weight: 600;
+    color: #0087F7;
+    font-size: 1.5em;
+    letter-spacing: 0.05em;
+}
+
+.dropzone {
+    border: 2px dashed #0087F7;
+    background: white;
+    border-radius: 5px;
+    min-height: 300px;
+    padding: 90px 0;
+    vertical-align: baseline;
+}
+
+.preview-img-1{
+    padding-top: 10px;
+    width: 200px;
+    height: 200px;
+    float: right;
+    border:2px solid #fff;
+    box-shadow: 5px 5px 5px #ccc;
+    -moz-box-shadow: 5px 5px 5px #ccc;
+    -webkit-box-shadow: 5px 5px 5px #ccc;
+    -khtml-box-shadow: 5px 5px 5px #ccc;
+}
+.img-banner-view{
+    width: 100%;
+    max-height: 200px;
+    padding-top: 10px;
+}
+
+.img-thumb{
+    width: 100px;
+    height: 100px;
+}
+
+thead {
+    th {
+        text-align: center;
+    }
+}
+tbody {
+    td:last-child{
+        text-align: center;
+        vertical-align: middle !important;
+    }
+}

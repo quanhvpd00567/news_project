@@ -11,111 +11,110 @@
 |
 */
 
-Route::get('/', 'HomeController@index');
-Route::get('/detail/{id}', 'HomeController@detail')->name('article_detail');
-Route::get('/category/{id}', 'HomeController@category')->name('article_by_category');
-Route::get('/album/{id}', 'HomeController@album')->name('article_by_album');
-Route::get('/login', 'AuthController@login')->name('login');
-Route::get('/logout', 'AuthController@logout')->name('logout');
-Route::post('/authentication', 'AuthController@authentication')->name('login_port');
-Route::post('/buy', 'HomeController@buy')->name('buy');
 
-Route::get('/register', 'AuthController@register')->name('register');
-Route::post('/create', 'AuthController@create')->name('create_new_member');
 
-//user router
-Route::group(
-    [
-        'prefix' => 'profile',
-        'middleware' => 'user',
-        'as' => 'profile_'
-    ],
-    function (){
-        Route::get('history', 'ProfileController@history')->name('history');
-        Route::get('/', 'ProfileController@index')->name('info');
-        Route::get('edit', 'ProfileController@edit')->name('edit');
-        Route::post('update', 'ProfileController@update')->name('update');
-        Route::get('change_password', 'ProfileController@change_password')->name('change_password');
-        Route::post('update_password', 'ProfileController@update_password')->name('update_password');
-    }
-);
+Route::group(['middleware' => 'locale'], function() {
+    Route::get('change-language/{language}', function ($language){
+        \Session::put('website_language', $language);
+        return redirect()->back();
+    })->name('change-language');
 
-//admin router
-Route::group(
-    [
-        'prefix' => 'admin',
-        'middleware' => 'isAdmin'
-    ]
-    ,function (){
-    Route::auth();
-    Route::get('/', function () {
-        return view('admin/index');
-    })->name('admin_dashboard');
-
-    Route::prefix('role')->group(function (){
-        Route::get('/', 'RoleController@index')->name('list_role');
+    Route::get('/', function (){
+        return view('end_user.index');
     });
 
-    Route::prefix('albums')->group(function (){
-        Route::get('/', 'AlbumController@index')->name('list_album');
-        Route::get('new','AlbumController@create_new')->name('get_new_view_album');
-        Route::post('create', 'AlbumController@create')->name('post_new_create');
-        Route::get('edit/{id}', 'AlbumController@edit')->name('get_view_edit_album');
-        Route::post('update/{id}', 'AlbumController@update')->name('post_edit_album');
-    });
-
-    Route::prefix('images')->group(function (){
-        Route::get('/', 'ImageController@index')->name('list_image');
-        Route::get('new', 'ImageController@create_new')->name('get_new_view_image');
-        Route::post('create', 'ImageController@create')->name('post_new_image');
-        Route::get('edit/{id}', 'ImageController@edit')->name('get_view_edit_image');
-        Route::post('update/{id}', 'ImageController@update')->name('post_edit_image');
-        Route::post('delete/{id}', 'ImageController@delete')->name('post_delete_image');
-    });
-
-    Route::prefix('categories')->group(function (){
-        Route::get('/', 'CategoryController@index')->name('list_category');
-        Route::get('new' , 'CategoryController@create_new')->name('get_new_view_category');
-        Route::post('create', 'CategoryController@create')->name('post_new_category');
-        Route::get('edit/{id}', 'CategoryController@edit')->name('get_view_edit_category');
-        Route::post('update/{id}', 'CategoryController@update')->name('post_edit_category');
-        Route::post('delete/{id}', 'CategoryController@delete')->name('post_delete_category');
-    });
-
-    Route::prefix('articles')->group(function (){
-        Route::get('/', 'ArticleController@index')->name('list_article');
-        Route::get('new' , 'ArticleController@create_new')->name('get_new_view_article');
-        Route::post('create', 'ArticleController@create')->name('post_new_article');
-        Route::get('edit/{id}', 'ArticleController@edit')->name('get_view_edit_article');
-        Route::post('update/{id}', 'ArticleController@update')->name('post_edit_article');
-        Route::post('delete/{id}', 'ArticleController@delete')->name('post_delete_article');
-    });
-
-    Route::prefix('users')->group(function (){
-        Route::get('/' , 'UserController@index')->name('list_user');
-        Route::get('new' , 'UserController@create_new')->name('get_new_view_user');
-        Route::post('create', 'UserController@create')->name('post_new_user');
-        Route::get('edit/{id}', 'UserController@edit')->name('get_edit_view_user');
-        Route::post('update/{id}', 'UserController@update')->name('post_update_user');
-        Route::get('reset_pass/{id}', 'UserController@reset_pass')->name('get_view_reset_password_user');
-        Route::post('update_pass/{id}', 'UserController@update_pass')->name('post_reset_password_user');
-        Route::post('blog_user/{id}', 'UserController@block_user')->name('post_blog_user');
-        Route::get('profile', 'UserController@profile_user')->name('get_view_profile_user');
-    });
-
-    Route::prefix('settings')->group(function (){
-        Route::get('/', 'SettingController@index')->name('get_setting');
-        Route::post('update', 'SettingController@update')->name('post_update_setting');
-    });
-
-    Route::get('error', function () {
-        return view('admin.pages.errors.index');
-    })->name('admin_error');
+    Route::get('contact', 'ContactController@index')->name('contact');
+    Route::get('gallery', 'GalleryController@index')->name('gallery');
 });
 
-Route::get('admin/login', function (){
-   return view('admin.pages.login.index');
+
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+    Route::group(['prefix' => 'setting', 'as' => 'setting.'], function() {
+        Route::get('office', 'admin\SettingController@index')->name('office');
+        Route::get('website', 'admin\SettingController@website')->name('website');
+        Route::get('mail', 'admin\SettingController@settingMail')->name('mail');
+        Route::post('update', 'admin\SettingController@updateSetting')->name('update');
+    });
+
+    Route::group(['prefix' => 'categories', 'as' => 'category.'], function() {
+        Route::get('/', 'admin\CategoryController@listCategory')->name('list');
+        Route::get('new', 'admin\CategoryController@newCategory')->name('new');
+        Route::post('create', 'admin\CategoryController@createCategory')->name('create');
+        Route::get('edit/{id}', 'admin\CategoryController@editCategory')->name('edit');
+        Route::post('update/{id}', 'admin\CategoryController@updateCategory')->name('update');
+        Route::get('delete/{id}', 'admin\CategoryController@deleteCategory')->name('delete');
+        Route::get('restore/{id}', 'admin\CategoryController@restoreCategory')->name('restore');
+    });
+
+    if (false) {
+        Route::group(['prefix' => 'menu', 'as' => 'menu.'], function() {
+            Route::get('/', 'admin\CategoryController@listMenu')->name('list');
+            Route::get('new', 'admin\CategoryController@newMenu')->name('new');
+            Route::post('create', 'admin\CategoryController@createMenu')->name('create');
+            Route::get('edit/{id}', 'admin\CategoryController@editMenu')->name('edit');
+            Route::post('update/{id}', 'admin\CategoryController@updateMenu')->name('update');
+            Route::get('delete/{id}', 'admin\CategoryController@deleteMenu')->name('delete');
+            Route::get('restore/{id}', 'admin\CategoryController@restoreMenu')->name('restore');
+        });
+    }
+
+    Route::group(['prefix' => 'products', 'as' => 'product.'], function() {
+        Route::get('/', 'admin\ProductController@listProduct')->name('list');
+        Route::get('new', 'admin\ProductController@newProduct')->name('new');
+        Route::post('create', 'admin\ProductController@createProduct')->name('create');
+        Route::get('edit/{id}', 'admin\ProductController@editProduct')->name('edit');
+        Route::get('ckfinder', 'admin\ProductController@showFinder')->name('ckfinder');
+        Route::post('update/{id}', 'admin\ProductController@updateProduct')->name('update');
+    });
+
+    Route::group(['prefix' => 'albums', 'as' => 'album.'], function() {
+        Route::get('/', function (){
+            return view('admin.pages.albums.new');
+        })->name('list');
+
+        Route::get('new/{id}', 'admin\AlbumController@newAlbum')->name('new');
+        Route::post('create/{id}', 'admin\AlbumController@createAlbum')->name('create');
+    });
+
+
+    Route::group(['prefix' => 'manufacturers', 'as' => 'manufacturer.'], function() {
+        Route::get('/', 'admin\ManufacturerController@listManufacturer')->name('list');
+        Route::get('new', 'admin\ManufacturerController@newManufacturer')->name('new');
+        Route::post('create', 'admin\ManufacturerController@createManufacturer')->name('create');
+        Route::get('edit/{id}', 'admin\ManufacturerController@editManufacturer')->name('edit');
+        Route::post('update/{id}', 'admin\ManufacturerController@updateManufacturer')->name('update');
+        Route::get('images/{id}', 'admin\ManufacturerController@newListImageManufacturer')->name('image');
+        Route::post('create-images/{id}', 'admin\ManufacturerController@createListImageManufacturer')->name('create.image');
+    });
+
+    Route::group(['prefix' => 'introduces', 'as' => 'introduce.'], function() {
+        Route::get('/', 'admin\IntroduceController@listIntroduce')->name('list');
+        Route::get('new', 'admin\IntroduceController@newIntroduce')->name('new');
+        Route::post('create', 'admin\IntroduceController@createIntroduce')->name('create');
+        Route::get('edit/{id}', 'admin\IntroduceController@editIntroduce')->name('edit');
+        Route::post('update/{id}', 'admin\IntroduceController@updateIntroduce')->name('update');
+        Route::get('images/{id}', 'admin\IntroduceController@newListImageIntroduce')->name('image');
+        Route::post('create-images/{id}', 'admin\IntroduceController@createListImageIntroduce')->name('create.image');
+    });
+
+    Route::get('home-page', 'admin\HomeController@home')->name('home.page');
+    Route::post('home-page-update', 'admin\HomeController@update')->name('home.page.update');
+
+});
+
+
+//Route::get('/register', 'AuthController@register')->name('register');
+//Route::post('/create', 'AuthController@create')->name('create_new_member');
+//
+//
+Route::get('test', function (){
+    \Mail::send('mails.index', ['key' => 'value'], function($message)
+    {
+        $message->to('quanhv1994@gmail.com', 'John Smith')->subject('Welcome!');
+    });
 })->name('admin_login') ;
 
-Route::post('admin/login', 'LoginController@login')->name('admin_post_login');
-Route::get('admin/logout', 'LoginController@logout')->name('admin_logout');
+//Route::post('admin/login', 'LoginController@login')->name('admin_post_login');
+//Route::get('admin/logout', 'LoginController@logout')->name('admin_logout');
+
+

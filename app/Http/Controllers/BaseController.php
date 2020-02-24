@@ -9,17 +9,20 @@ use App\Models\Setting;
 
 class BaseController extends Controller
 {
-//    public $model_setting;
+    protected $settings;
     public function __construct()
     {
-//        global $setting;
-//        $this->model_setting = new Setting();
-//        $setting = $this->model_setting->getSetting();
-//
-//        if(is_null($this->setting)){
-//            $this->model_setting->create();
-//            $setting = $this->model_setting->getSetting();
-//        }
+        $settings = Setting::first();
+        \View::composer('end_user.layout.partials._footer', function($view) use($settings) {
+            $view->with('settings', $settings);
+        });
+        \View::composer('end_user.layout.partials._buttons', function($view) use($settings) {
+            $view->with('settings', $settings);
+        });
+    }
+
+    public function getFooter() {
+        return Setting::all();
     }
 
     public function page_403(){

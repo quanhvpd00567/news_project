@@ -1,0 +1,157 @@
+/* The heart of the matter */
+
+.testimonial-group > .row {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.testimonial-group > .row > .col-xs-4 {
+  display: inline-block;
+  float: none;
+}
+
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  padding-top: 100px;
+  /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.9);
+  /* Black w/ opacity */
+}
+
+/* The Close Button */
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@-webkit-keyframes zoom {
+  from {
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+@keyframes zoom {
+  from {
+    -webkit-transform: scale(0.1);
+            transform: scale(0.1);
+  }
+
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.carousel-inner .active.left {
+  left: -33%;
+}
+
+.active .col-lg-3:first-child,
+.active .col-xs-3:first-child,
+.active .col-md-3:first-child,
+.active .col-sm-3:first-child {
+  padding-left: 0;
+}
+
+.active .col-lg-3:last-child,
+.active .col-xs-3:last-child,
+.active .col-md-3:last-child,
+.active .col-sm-3:last-child {
+  padding-right: 0;
+}
+
+#single-image {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.carousel-inner .next {
+  left: 33%;
+}
+
+.carousel-inner .prev {
+  left: -33%;
+}
+
+.carousel-control.left,
+.carousel-control.right {
+  background-image: none;
+  top: 0 !important;
+}
+
+.item:not(.prev) {
+  visibility: visible;
+}
+
+.item.right:not(.prev) {
+  visibility: hidden;
+}
+
+.item .col-lg-3,
+.item .col-xs-3,
+.item .col-md-3,
+.item .col-sm-3 {
+  padding-right: 5px;
+  padding-left: 5px;
+}
+
+.item .col-lg-3 img,
+.item .col-xs-3 img,
+.item .col-md-3 img,
+.item .col-sm-3 img {
+  cursor: pointer;
+}
+
+.rightest {
+  visibility: visible;
+}
+
+.col-md-12 {
+  padding: 0;
+}
+
+#single-image {
+  width: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .carousel-control {
+    font-size: 15px;
+  }
+}
+

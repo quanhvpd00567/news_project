@@ -1,74 +1,47 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap 3.3.7 -->
-    <link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/end_user/bootstrap.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/end_user/font.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/end_user/animate.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/end_user/structure.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/datepicker/bootstrap-datepicker.min.css') }}">
-    <title>Trang News - @yield('title')</title>
-    <style>
-        .datepicker{
-            background-color: #ffffff;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{ asset('lib/slick/cs/slick.css') }}">
+    <link rel="stylesheet" href="{{ asset('lib/slick/cs/slick-theme.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/external.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/hover-image.css') }}">
+    <script src="{{ asset('js/demo.js') }}"></script>
+    @yield('styles')
+
 </head>
 <body>
-<div id="preloader">
-    <div id="status">&nbsp;</div>
+<div class="home-wrapper" id="homeWrapper">
+    <!-- header -->
+    <div class="container">
+        @include('end_user.layout.partials._header')
+    </div>
+    <!-- end header  -->
+    <section class="news-section home-news-body">
+        @yield('content')
+    </section>
+    @include('end_user.layout.partials._buttons')
+    {{--    footer--}}
+    @include('end_user.layout.partials._footer')
 </div>
-<a class="scrollToTop" href="#"><i class="fa fa-angle-up"></i></a>
-
-<header id="header">
-    <div class="container">
-        <!-- include nav -->
-        @include('end_user.partials.nav')
-        <form id="searchForm">
-            @if(Auth::check())
-                <a id="profile" href="{{route('profile_info')}}">Welcome: {{Auth::user()->full_name}}</a>
-                <a href="/logout" class="btn btn-warning">Logout</a>
-            @else
-                <a href="/login" class="btn btn-primary">Login</a>
-                <a href="" class="btn btn-primary">Register</a>
-            @endif
-        </form>
-
-    </div>
-</header>
-
-<section id="contentbody">
-    <div class="container">
-        <div class="row">
-            <div class=" col-sm-12 col-md-10 col-lg-10">
-                <div class="row">
-                    @yield('content')
-                </div>
-            </div>
-
-{{--        content right--}}
-            @include('end_user.partials.content-right')
-
-        </div>
-    </div>
-</section>
-
-<!-- include footer -->
-@include('end_user.partials.footer')
-
-
-
-<!-- jQuery 3 -->
-<script src="{{ asset('css/end_user/jquery.min.js') }}"></script>
-<!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('css/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('css/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('css/end_user/wow.min.js') }}"></script>
-<script src="{{ asset('css/end_user/custom.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="{{ asset('lib/slick/js/slick.min.js') }}"></script>
+<script src="{{ asset('js/common.js') }}"></script>
+<script src="{{ asset('js/home.js') }}"></script>
+<script src="{{ asset('js/button-right.js') }}"></script>
 @yield('scripts')
 </body>
 </html>

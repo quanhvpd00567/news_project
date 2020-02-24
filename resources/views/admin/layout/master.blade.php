@@ -12,12 +12,16 @@
   <link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="{{ asset('css/Ionicons/css/ionicons.min.css') }}">
-    @yield('styles')
   <link rel="stylesheet" href="{{ asset('css/AdminLTE.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/_all-skins.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+  <link rel="stylesheet" href="{{ asset('plugin/iCheck/all.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/admin/style.css') }}">
+    <!-- jQuery 3 -->
+    <script src="{{ asset('js/jquery.min.js') }}"></script>
+    @yield('styles')
 
-  <!-- Google Font -->
+
+<!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -56,23 +60,29 @@
 </div>
 <!-- ./wrapper -->
 
-<!-- jQuery 3 -->
-<script src="{{ asset('js/jquery.min.js') }}"></script>
+
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ asset('css/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
 <script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
 <script src="{{ asset('js/fastclick.js') }}"></script>
+<!-- Icheck -->
+<script src="{{ asset('plugin/iCheck/icheck.min.js') }}"></script>
 <!-- AdminLTE App -->
 <script src="{{ asset('js/adminlte.min.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ asset('js/demo.js') }}"></script>
+@yield('scripts')
 <script>
   $(document).ready(function () {
     $('.sidebar-menu').tree()
+    setTimeout(function () {
+        $('.notification').slideUp('slow', function () {
+            $(this).remove()
+        });
+    }, 3000);
   })
 </script>
-@yield('script')
 </body>
 </html>

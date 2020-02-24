@@ -1,0 +1,22 @@
+#banner-gallery {
+  padding-bottom: 10px;
+}
+
+#content-gallery {
+  width: 800px;
+  min-width: 800px;
+  margin: 0 auto;
+}
+
+@media screen and (max-width: 767px) {
+  .main-section {
+    margin-right: 15px;
+    margin-left: 15px;
+  }
+
+  #content-gallery {
+    min-width: auto;
+    width: auto;
+  }
+}
+
