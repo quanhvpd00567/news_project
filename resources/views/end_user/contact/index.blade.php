@@ -14,7 +14,7 @@
 
                     <div class="breadcrumb">
                         <ul>
-                            <li>{{trans('view.contact.Contact')}}</li>
+                            <li>@lang('view.contact.Contact')</li>
                         </ul>
                     </div>
                     <div>

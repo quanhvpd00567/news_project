@@ -65,7 +65,7 @@ $routeName = 'admin.home.page.update';
                        checked
                     @endif
                 >
-                Tích để hiện thị khối 2
+                Tích để hiện thị khối 1
             </label>
         </div>
     </div>
@@ -105,11 +105,11 @@ $routeName = 'admin.home.page.update';
         <div style="padding-top: 10px;">
             <label style="font-weight: normal; cursor: pointer">
                 <input type="checkbox" name="isShowBlock_3" class="minimal-red"
-                       @if($dataHome->isShowBlock_2 == Config::get('constant.status.isShow')))
+                       @if($dataHome->isShowBlock_3 == Config::get('constant.status.isShow')))
                        checked
                     @endif
                 >
-                Tích để hiện thị khối 1
+                Tích để hiện thị khối 2
             </label>
         </div>
     </div>

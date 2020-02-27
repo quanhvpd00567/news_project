@@ -19,12 +19,11 @@ Route::group(['middleware' => 'locale'], function() {
         return redirect()->back();
     })->name('change-language');
 
-    Route::get('/', function (){
-        return view('end_user.index');
-    });
-
+    Route::get('/', 'HomeController@index')->name('home');
     Route::get('contact', 'ContactController@index')->name('contact');
     Route::get('gallery', 'GalleryController@index')->name('gallery');
+    Route::get('detail/{slug}', 'ProductController@detailProduct')->name('product.detail');
+    Route::get('products', 'ProductController@listProduct')->name('product.list');
 });
 
 

@@ -43,8 +43,8 @@ div {
             li:before {
                 color: red;
                 content: '/';
-                padding-right: 3px;
-                padding-left: 3px;
+                padding-right: 1px;
+                padding-left: 1px;
             }
             li:first-child:before {
                 content: '';
@@ -69,6 +69,22 @@ div {
     }
 }
 
+#title{
+    h2{
+        padding-top: 20px;
+        text-transform: uppercase;
+        color: red;
+        font-weight: 700;
+        font-size: 25px
+    }
+}
+#description_product{
+    padding-top: 20px;
+}
+
+#list-tabs{
+    padding-top: 20px;
+}
 
 .news-item-image {
     height: 100%;
@@ -178,6 +194,14 @@ div {
     ul {
         min-height: 50px;
     }
+}
+
+.btn-view-more{
+    background-color: $color-bg-footer;
+    float: right;
+    margin-top: 10px;
+    padding: 2px 12px;
+    color: #ffffff;
 }
 
 
@@ -347,9 +371,17 @@ div {
             }
         }
     }
-
+    .open > a{
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;;
+        background-image: none;
+        color: $color-bg-footer !important;
+    }
     .dropdown-toggle, .open > a {
         background-color: $color-red !important;
+    }
+    .dropdown-menu>li>a:focus,.dropdown-menu>li>a:hover {
+        background-color: unset !important;
     }
 
     .navbar-brand {
@@ -701,6 +733,10 @@ div {
             width: calc(100% - 30px);
             left: 15px;
         }
+        .navbar-nav li a{
+            //padding-top: 0;
+            //padding-bottom: 0;
+        }
     }
     .block-content {
         padding-left: 15px;
@@ -713,6 +749,14 @@ div {
         .navbar-toggle, .navbar-toggle:hover {
             background-color: $color-bg-footer;
             border: none;
+        }
+    }
+    .open{
+        text-align: center;
+        .dropdown-menu{
+            a {
+                color: #333 !important;
+            }
         }
     }
 

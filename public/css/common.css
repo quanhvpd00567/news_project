@@ -55,8 +55,8 @@ div {
 .home-wrapper .breadcrumb ul li:before {
   color: red;
   content: '/';
-  padding-right: 3px;
-  padding-left: 3px;
+  padding-right: 1px;
+  padding-left: 1px;
 }
 
 .home-wrapper .breadcrumb ul li:first-child:before {
@@ -76,6 +76,22 @@ div {
   padding: 0px 6px 6px 0px;
   font-size: 18px;
   font-weight: bold;
+}
+
+#title h2 {
+  padding-top: 20px;
+  text-transform: uppercase;
+  color: red;
+  font-weight: 700;
+  font-size: 25px;
+}
+
+#description_product {
+  padding-top: 20px;
+}
+
+#list-tabs {
+  padding-top: 20px;
 }
 
 .news-item-image {
@@ -191,6 +207,14 @@ div {
 
 .navbar-collapse.collapse ul {
   min-height: 50px;
+}
+
+.btn-view-more {
+  background-color: #FF4100;
+  float: right;
+  margin-top: 10px;
+  padding: 2px 12px;
+  color: #ffffff;
 }
 
 .home-latest-news-item {
@@ -370,9 +394,21 @@ div {
   font-weight: bold;
 }
 
+.nav-common-header .open > a {
+  -webkit-box-shadow: none !important;
+  box-shadow: none !important;
+  background-image: none;
+  color: #FF4100 !important;
+}
+
 .nav-common-header .dropdown-toggle,
 .nav-common-header .open > a {
   background-color: #f1f1f1 !important;
+}
+
+.nav-common-header .dropdown-menu > li > a:focus,
+.nav-common-header .dropdown-menu > li > a:hover {
+  background-color: unset !important;
 }
 
 .nav-common-header .navbar-brand {
@@ -759,6 +795,14 @@ div {
   .navbar-inverse .navbar-toggle:hover {
     background-color: #FF4100;
     border: none;
+  }
+
+  .open {
+    text-align: center;
+  }
+
+  .open .dropdown-menu a {
+    color: #333 !important;
   }
 }
 

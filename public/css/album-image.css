@@ -149,6 +149,11 @@
   width: 100%;
 }
 
+#single-image #load-image {
+  height: 500px;
+  width: 100%;
+}
+
 @media screen and (max-width: 767px) {
   .carousel-control {
     font-size: 15px;

@@ -6,7 +6,9 @@ $('input[type="checkbox"].minimal-red').iCheck({
 var toolbarConfig = [
     { name: 'basicstyles', items: [ 'Bold', 'Italic', 'Underline', 'Strikethrough' ] },
     { name: 'colors', items : [ 'TextColor','BGColor' ] },
-    { name: 'links', items : [ 'Link','Unlink','Anchor' ] },
+    { name: 'links', items : [ 'Link','Unlink' ] },
+    { name: 'styles', items: ['Font', 'FontSize' ] },
+    { name: 'paragraph', items: ['NumberedList', 'BulletedList' ,'Outdent', 'Indent','JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'] },
 ]
 
 CKEDITOR.replace( 'introduce', {

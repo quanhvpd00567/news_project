@@ -19,7 +19,7 @@
 
                     <div class="row" id="content-gallery">
                         <div id="single-image">
-                            <img id="load-image" onclick="clickSHow(this);" style="width:100%"
+                            <img id="load-image" style="width:100%"
                                  src="https://www.w3schools.com/howto/img_snow.jpg">
                         </div>
                         <div class="carousel slide" id="myCarousel">

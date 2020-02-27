@@ -25,20 +25,13 @@ class BaseController extends Controller
         return Setting::all();
     }
 
-    public function page_403(){
-        $error = [
-            'code' => 403,
-            'message' => 'Your not permission'
-        ];
-        return view('admin.pages.errors.index', compact('error'));
-    }
 
     public function page_404(){
-        $error = [
+        $data = [
             'code' => 404,
-            'message' => 'Not found'
+            'message' => trans('view.messages.errors.404')
         ];
-        return view('admin.pages.errors.index', compact('error'));
+        return view('end_user.errors.index', $data);
     }
 
     public function page_500(){

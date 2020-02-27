@@ -20,5 +20,8 @@ return [
         'product' => 1,
         'manufacturer' => 2,
         'introduce' => 3,
+    ],
+    'keys_url' => [
+        'product' => 'prd_'
     ]
 ];

@@ -1,7 +1,8 @@
 <?php
 return [
     'commons' => [
-        'related product' => 'Bài viết liên quan'
+        'related product' => 'Bài viết liên quan',
+        'btn-view-more' => 'Xem thêm...'
     ],
     'category' => [
         'Product' => 'Sản phẩm'
@@ -30,5 +31,16 @@ return [
     ],
     'gallery' => [
 
+    ],
+    'product' => [
+        'description' => 'Mô tả',
+        'nutrition' => 'Dinh dưỡng',
+        'effect' => 'Tác dụng',
+    ],
+    'messages' => [
+        'errors' => [
+            '404' => 'Không tìm thấy bài viết này',
+            '500' => 'Xin lỗi, lỗi của tôi',
+        ]
     ]
 ];

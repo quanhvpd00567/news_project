@@ -8,7 +8,6 @@ use Webpatser\Uuid\Uuid;
 class CommonService
 {
     public static function createSlug($str){
-        $str = strtoupper($str);
         $str = preg_replace("/(à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ)/", 'a', $str);
         $str = preg_replace("/(è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ)/", 'e', $str);
         $str = preg_replace("/(ì|í|ị|ỉ|ĩ)/", 'i', $str);
@@ -26,5 +25,10 @@ class CommonService
         $str = str_replace(" ","-", str_replace("*#39;","",$str));
         $str = strtolower($str);
         return $str . '-' .rand(1000, 100000) . '.html';
+    }
+
+    public static function createUrlProduct($id, $slug){
+        $keyUrl = \Config::get('constant.keys_url.product');
+        return route('product.detail', ["{$keyUrl}{$id}_{$slug}"]);
     }
 }

@@ -1,7 +1,8 @@
 <?php
 return [
     'commons' => [
-        'related product' => 'Related product'
+        'related product' => 'Related product',
+        'btn-view-more' => 'View more...'
     ],
     'category' => [
         'Product' => 'Product'
@@ -26,6 +27,20 @@ return [
             'buttons' => [
                 'send' => 'Send'
             ]
+        ]
+    ],
+    'gallery' => [
+
+    ],
+    'product' => [
+        'description' => 'Description',
+        'nutrition' => 'Nutrition',
+        'effect' => 'Effect',
+    ],
+    'messages' => [
+        'errors' => [
+            '404' => 'Oops! This Page Could Not Be Found',
+            '500' => 'Sorry, it\'s me, not you.',
         ]
     ]
 ];

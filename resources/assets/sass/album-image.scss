@@ -121,6 +121,10 @@
 
 #single-image{
     width: 100%;
+    #load-image{
+        height: 500px;
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 767px) {
