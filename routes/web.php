@@ -27,7 +27,7 @@ Route::group(['middleware' => 'locale'], function() {
 });
 
 
-Route::group(['prefix' => 'admin', 'as' => 'admin.'], function() {
+Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'isAdmin'], function() {
     Route::group(['prefix' => 'setting', 'as' => 'setting.'], function() {
         Route::get('office', 'admin\SettingController@index')->name('office');
         Route::get('website', 'admin\SettingController@website')->name('website');
@@ -113,7 +113,8 @@ Route::get('test', function (){
     });
 })->name('admin_login') ;
 
-//Route::post('admin/login', 'LoginController@login')->name('admin_post_login');
-//Route::get('admin/logout', 'LoginController@logout')->name('admin_logout');
+Route::get('admin/login', 'admin\LoginController@login')->name('admin.login');
+Route::post('admin/login', 'admin\LoginController@postLogin')->name('post.admin.login');
+Route::get('admin/logout', 'admin\LoginController@logout')->name('admin.logout');
 
 

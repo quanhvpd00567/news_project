@@ -56,19 +56,12 @@ class User extends Authenticatable
         return self::where('is_delete', 0)->paginate($setting->p_user);
     }
 
-    public function createUser($request, $isUser = false){
-        $this->full_name = $request->post('full_name');
-        $this->gender = $request->post('gender');
-        // Format date input
-        $this->birth_of_day = date('Y-m-d', strtotime($request->post('birth_of_day')));
-        $this->email = $request->post('email');
-        $this->password = Hash::make($request->post('password'));
-        if ($isUser){
-            $this->role_id = $request->post('role_id');
-        }else{
-            $this->role_id = 2;
-        }
-
+    public function createUser(){
+        $this->full_name = 'administrator';
+        $this->gender = 1;
+        $this->email = 'admin@cheerfarm.com';
+        $this->password = Hash::make(123456);
+        $this->role_id = 2;
         $this->is_block = 0;
         $this->is_delete = 0;
         $this->count_login = 0;

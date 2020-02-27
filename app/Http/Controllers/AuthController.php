@@ -32,7 +32,7 @@ class AuthController extends Controller
 
     public function create(UserRequest $request){
         $model_user = new User();
-        if ($model_user->createUser($request)){
+        if ($model_user->createUser()){
             $credentials = $request->only('email', 'password');
             if (Auth::attempt($credentials)) {
                 return redirect('/');

@@ -16,8 +16,8 @@ class isAdmin
 
     public function handle($request, Closure $next)
     {
-        if (!$this->auth->check() || $this->auth->user()->is_member()){
-            return redirect()->route('admin_login');
+        if (!$this->auth->check()){
+            return redirect()->route('admin.login');
         }
         return $next($request);
     }

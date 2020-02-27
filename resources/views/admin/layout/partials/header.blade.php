@@ -26,30 +26,19 @@
               <li class="footer"><a href="#">See All Messages</a></li>
             </ul>
           </li>
-
+          @if(\Auth::check())
           <!-- User Account: style can be found in dropdown.less -->
           <li class="dropdown user user-menu">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-              <img src="{{ asset('imgs/me.png') }}" class="user-image" alt="User Image">
-              <span class="hidden-xs">{{\Auth::check() ? \Auth::user()->full_name : ''}}</span>
+              {{\Auth::user()->full_name}}
             </a>
-            <ul class="dropdown-menu">
-              <!-- User image -->
-              <li class="user-header">
-                <img src="{{ asset('imgs/me.png') }}" class="img-circle" alt="User Image">
-                <p>{{\Auth::check() ? \Auth::user()->full_name : ''}}</p>
-              </li>
-              <!-- Menu Footer-->
-              <li class="user-footer">
-                <div class="pull-left">
-                  <a href="#}" class="btn btn-default btn-flat">Profile</a>
-                </div>
-                <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
-                </div>
-              </li>
-            </ul>
           </li>
+          <li>
+            <a href="{{route('admin.logout')}}">
+              <i class="fa fa-sign-out">Sign out</i>
+            </a>
+          </li>
+          @endif
         </ul>
       </div>
     </nav>
