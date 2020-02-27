@@ -24,6 +24,9 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('gallery', 'GalleryController@index')->name('gallery');
     Route::get('detail/{slug}', 'ProductController@detailProduct')->name('product.detail');
     Route::get('products', 'ProductController@listProduct')->name('product.list');
+
+    // About-us detail
+    Route::get('about-us/{slug}' , 'AboutUsController@detail')->name('about-us.detail');
 });
 
 
@@ -92,6 +95,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'isAdmin'],
         Route::post('create', 'admin\IntroduceController@createIntroduce')->name('create');
         Route::get('edit/{id}', 'admin\IntroduceController@editIntroduce')->name('edit');
         Route::post('update/{id}', 'admin\IntroduceController@updateIntroduce')->name('update');
+        Route::get('delete/{id}', 'admin\IntroduceController@deleteIntroduce')->name('delete');
         Route::get('images/{id}', 'admin\IntroduceController@newListImageIntroduce')->name('image');
         Route::post('create-images/{id}', 'admin\IntroduceController@createListImageIntroduce')->name('create.image');
     });

@@ -806,6 +806,11 @@ div {
   }
 }
 
+#banner-bottom img {
+  width: 100%;
+  margin-top: 20px;
+}
+
 .active-lang {
   color: #FF4100;
 }

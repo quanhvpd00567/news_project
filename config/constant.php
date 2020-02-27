@@ -22,6 +22,7 @@ return [
         'introduce' => 3,
     ],
     'keys_url' => [
-        'product' => 'prd_'
+        'product' => 'prd_',
+        'introduce' => 'int_'
     ]
 ];

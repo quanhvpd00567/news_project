@@ -8,10 +8,8 @@ CKEDITOR.editorConfig = function( config ) {
 	config.language = 'vi';
 	config.uiColor = '#AADC6E';
     config.removeDialogTabs = 'link:target;link:advanced;image:Link;image:advanced';
-    config.resize_enabled = false;
-
-    config.resize_maxHeight = '300';
-        config.resize_maxWidth = '948';
-        config.resize_minHeight = '200';
-        config.resize_minWidth= '948';
+    config.ImageUpload = false;
+    config.filebrowserImageUploadUrl = false;
+    config.filebrowserImageUpload = false;
+    config.extraPlugins = 'image2';
 };

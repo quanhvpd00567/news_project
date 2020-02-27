@@ -67,7 +67,9 @@ if (!isset($isPageCreate)){
                 </button>
               </span>
         </div>
-
+        @if($errors->has('banner'))
+            <span class="help-block">{{$errors->first('banner')}}</span>
+        @endif
         <img src="{{old('banner', $introduce->banner)}}" style="float: unset !important;" class="img-banner-view" id="view-banner-img" alt="">
     </div>
 </div>
@@ -100,11 +102,12 @@ if (!isset($isPageCreate)){
             Lưu
         </button>
         @if(!isset($isPageCreate))
-            <a href="{{route('admin.manufacturer.image', [$introduce->id])}}" class="btn btn-primary">
+            <a href="{{route('admin.introduce.image', [$introduce->id])}}" class="btn btn-primary">
                 <i class="fa fa-image"></i>
                 Thêm album ảnh
             </a>
         @endif
+
     </div>
 </div>
 

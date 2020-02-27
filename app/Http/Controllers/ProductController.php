@@ -17,7 +17,15 @@ class ProductController extends BaseController
         }
         $id = $argUrl[0];
 
-        $product = Product::find($id);
+        $item = new \App\Models\Product();
+        $tableProduct = $item->getTable();
+        $product = Product::join('categories', 'categories.id', '=', "{$tableProduct}.category_id")
+            ->where("{$tableProduct}.isDelete", \Config::get('constant.delete.isNotDelete'))
+            ->where("{$tableProduct}.status", \Config::get('constant.status.isShow'))
+            ->where("{$tableProduct}.id", $id)
+            ->where("categories.status", \Config::get('constant.status.isShow'))
+            ->select("{$tableProduct}.*")
+            ->first();
 
         if (is_null($product)){
             return $this->page_404();

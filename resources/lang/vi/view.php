@@ -32,6 +32,9 @@ return [
     'gallery' => [
 
     ],
+    'about-us' => [
+        'about-us' => 'Về chúng tôi'
+    ],
     'product' => [
         'description' => 'Mô tả',
         'nutrition' => 'Dinh dưỡng',

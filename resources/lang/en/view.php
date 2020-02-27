@@ -32,6 +32,9 @@ return [
     'gallery' => [
 
     ],
+    'about-us' => [
+        'about-us' => 'About Us'
+    ],
     'product' => [
         'description' => 'Description',
         'nutrition' => 'Nutrition',

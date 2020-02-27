@@ -26,6 +26,7 @@ class IntroductRequest extends FormRequest
         return [
             'name' => 'required|max:255',
             'name_en' => 'required|max:255',
+            'banner' => 'required|max:255',
         ];
     }
 
@@ -42,6 +43,7 @@ class IntroductRequest extends FormRequest
         return [
             'name' => 'Tên',
             'name_en' => 'Tên (Tiếng anh)',
+            'banner' => 'Banner',
         ];
     }
 }

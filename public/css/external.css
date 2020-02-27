@@ -1,4 +1,4 @@
-/* Global 
+/* Global
 ------------------------------------------------ */
 
 html {
@@ -56,19 +56,13 @@ a img {
   border: none;
 }
 
-img {
-  width: 100%;
-  height: auto;
-  -ms-interpolation-mode: bicubic;
-}
-
 /* max-width:100% causes IE8 bug */
 
 div {
   word-break: break-all;
 }
 
-/* Main 
+/* Main
 ------------------------------------------------ */
 
 body {
@@ -170,7 +164,7 @@ a.carousel-control.right {
   margin: 0 3px;
 }
 
-/* Footer 
+/* Footer
 ------------------------------------------------ */
 
 footer.info {

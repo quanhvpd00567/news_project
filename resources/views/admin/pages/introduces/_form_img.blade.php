@@ -12,11 +12,15 @@ $routeName = 'admin.introduce.create.image';
                     <div class="input-group input-group-sm">
                         {{Form::text("albums[image_{$i}]",  count($images) == 0 ? null : $images["image_{$i}"] , [ 'readonly',  'class' => 'form-control', 'id' => "input-img-{$i}", 'placeholder' => "Chọn hình ảnh {$i}"])}}
                         <span class="input-group-btn">
-                                                    <button type="button" data-id="input-img-{{$i}}" class="btn btn-info btn-flat  btn-choose-img">
-                                                        <i class="fa fa-image"></i>
-                                                        Chọn ảnh
-                                                    </button>
-                                                </span>
+                            <button type="button" data-id="input-img-{{$i}}" class="btn btn-info btn-flat  btn-choose-img">
+                                <i class="fa fa-image"></i>
+                                Chọn ảnh
+                            </button>
+                            <button type="button" data-id="input-img-{{$i}}" class="btn btn-danger btn-flat btn-clear-img">
+                                <i class="fa fa-trash"></i>
+                                Xóa
+                            </button>
+                        </span>
                     </div>
                     <img src="{{ count($images) == 0 ? null : $images["image_{$i}"]}}" style="float: unset !important;" class="preview-img-1" id="view-input-img-{{$i}}" alt="">
                 </div>
@@ -27,7 +31,7 @@ $routeName = 'admin.introduce.create.image';
                 <i class="fa fa-save"></i>
                 Lưu
             </button>
-            <a class="btn btn-primary" href="{{route('admin.product.list')}}">
+            <a class="btn btn-primary" href="{{route('admin.introduce.list')}}">
                 <i class="fa fa-list"></i>
                 Trở về danh sách
             </a>
@@ -41,9 +45,13 @@ $routeName = 'admin.introduce.create.image';
                     <div class="input-group input-group-sm">
                         {{Form::text("albums[image_{$i}]", count($images) == 0 ? null : $images["image_{$i}"] , [ 'readonly' ,'class' => 'form-control', 'id' => "input-img-{$i}", 'placeholder' => "Chọn hình ảnh {$i}"])}}
                         <span class="input-group-btn">
-                            <button type="button" data-id="input-img-{{$i}}" class="btn btn-info btn-flat  btn-choose-img">
+                            <button type="button" data-id="input-img-{{$i}}" class="btn btn-info btn-flat btn-choose-img">
                                 <i class="fa fa-image"></i>
                                 Chọn ảnh
+                            </button>
+                            <button type="button" data-id="input-img-{{$i}}" class="btn btn-danger btn-flat btn-clear-img">
+                                <i class="fa fa-trash"></i>
+                                Xóa
                             </button>
                         </span>
                     </div>

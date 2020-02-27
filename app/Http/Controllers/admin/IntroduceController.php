@@ -71,6 +71,19 @@ class IntroduceController extends Controller
         return redirect()->route('admin.introduce.list')->with('error', 'Chỉnh sửa thất bại');
     }
 
+    public function deleteIntroduce($id){
+        $introduce = $this->_modelIntroduce->getIntroduceById($id);
+        if (is_null($introduce)){
+            return abort(404);
+        }
+
+        $isDelete = $this->_modelIntroduce->deleteIntroduct($introduce);
+        if ($isDelete){
+            return redirect()->route('admin.introduce.list')->with('success', "Xóa {$introduce->name} thành công");
+        }
+        return redirect()->route('admin.introduce.list')->with('error', "Xóa {$introduce->name} thất bại");
+    }
+
     public function newListImageIntroduce($id){
         $introduce = $this->_modelIntroduce->getIntroduceById($id);
         if (is_null($introduce)){

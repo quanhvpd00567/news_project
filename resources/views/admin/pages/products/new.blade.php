@@ -1,8 +1,6 @@
 @extends('admin.layout.master')
 @section('styles')
-{{--    <link rel="stylesheet" href="{{ asset('plugin/dropzone/dropzone.css') }}">--}}
     <link rel="stylesheet" href="{{ asset('plugin/dropzone/dropzone.css') }}">
-{{--    <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">--}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
 @endsection
 @section('content')
@@ -27,9 +25,6 @@
         var ckfinderConfig = {
             filebrowserImageBrowseUrl: '{{ route('admin.product.ckfinder', ['type' => 'Images']) }}',
             filebrowserFlashBrowseUrl: '{{ route('admin.product.ckfinder', ['type' => 'Flash']) }}',
-            filebrowserUploadUrl: '{{ asset('plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files') }}',
-            filebrowserImageUploadUrl: '{{ asset('plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images') }}',
-            filebrowserFlashUploadUrl: '{{ asset('plugin/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash') }}'
         }
     </script>
 

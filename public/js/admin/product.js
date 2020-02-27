@@ -5,7 +5,14 @@ $('input[type="checkbox"].minimal-red').iCheck({
 
 
 CKEDITOR.replace( 'product_content', ckfinderConfig );
-
+CKEDITOR.on( 'product_content', function (ev ) {
+    var dialogName = ev.data.name;
+    var dialogDefinition = ev.data.definition;
+    if ( dialogName === 'link' || dialogName === 'image' )
+    {
+        dialogDefinition.removeContents( 'Upload' );
+    }
+} );
 CKEDITOR.replace( 'product_content_en', ckfinderConfig );
 CKEDITOR.replace( 'product_purpose', ckfinderConfig );
 CKEDITOR.replace( 'product_purpose_en', ckfinderConfig );

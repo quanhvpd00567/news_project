@@ -4,6 +4,7 @@ namespace App\Models\admin;
 
 use App\Http\Services\CommonService;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Introduce extends \App\Models\Introduce
 {
@@ -51,6 +52,19 @@ class Introduce extends \App\Models\Introduce
             }
             return $introduce->save();
         }catch (\Exception $e){
+            return false;
+        }
+    }
+
+    public function deleteIntroduct($introduce){
+        try {
+            DB::beginTransaction();
+           \App\Models\Album::where('product_id', $introduce->id)->where('type', \Config::get('constant.types.introduce'))->delete();
+           $introduce->delete();
+            DB::commit();
+            return true;
+        }catch (\Exception $e){
+            DB::rollBack();
             return false;
         }
     }

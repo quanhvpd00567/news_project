@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
+    <title>ĐĂNG NHẬP HỆ THỐNG QUẢN TRỊ | Cheerifarm</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.7 -->
@@ -22,21 +22,34 @@
         }
         .login-page{
             background-image: url("{{asset('images/bg/bg-login.png')}}");
-            background-color: #9c3328;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+        }
+        .login-box-body{
+            border-radius: 5px;
+        }
+        .btn-login{
+            background: -webkit-linear-gradient(right,#00dbde,#fc00ff,#00dbde,#fc00ff);
+            border-radius: 25px;
+            overflow: hidden;
+            width: 100%;
+            border: none;
+            text-transform: uppercase;
+            color: #fff;
+            height: 40px;
+            font-size: 16px;
         }
     </style>
 </head>
 <body class="hold-transition login-page">
 <div class="login-box">
-    <div class="login-logo">
-        <h1 class="text-green"><b>CHEERFARM</b></h1>
-    </div>
+
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in</p>
+        <div class="login-logo">
+            <h1 class="text-green"><b>CHEERFARM</b></h1>
+        </div>
         @if(Session::has('error'))
             <span class="color-error text-center">
                 {{Session::get('error')}}
@@ -44,6 +57,7 @@
         @endif
         {!! Form::open(['route' => 'post.admin.login']) !!}
             <div class="form-group has-feedback">
+                <label>Email</label>
                 {{Form::text('email', old('email', null), ['class' => 'form-control', 'placeholder' => 'Nhập email'])}}
                 @if($errors->has('email'))
                     <span class="color-error">{{$errors->first('email')}}</span>
@@ -51,16 +65,15 @@
             </div>
 
             <div class="form-group has-feedback">
+                <label>Mật khẩu</label>
                 {{Form::text('password', old('password', null), ['class' => 'form-control', 'placeholder' => 'Nhập mật khẩu'])}}
                 @if($errors->has('password'))
                     <span class="color-error">{{$errors->first('password')}}</span>
                 @endif
             </div>
 
-            <div class="row">
-                <div class="offset-xs-8 text-center">
-                    <button type="submit" class="btn btn-primary btn-flat">Sign In</button>
-                </div>
+            <div class="offset-xs-8 text-center">
+                <button type="submit" class="btn btn-primary btn-login">Sign In</button>
             </div>
         {!! Form::close() !!}
     </div>
