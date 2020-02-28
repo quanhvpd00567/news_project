@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+$settingCustom = \App\Models\Setting::first();
+?>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     @yield('meta')
-    <title>Document</title>
+    <title> @yield('title') {{is_null($settingCustom) ? null : $settingCustom->name}}</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <!-- Optional theme -->
@@ -19,9 +21,18 @@
     <link rel="stylesheet" href="{{ asset('css/hover-image.css') }}">
     <script src="{{ asset('js/demo.js') }}"></script>
     @yield('styles')
-
+        <style>
+            .bg-body{
+                @if(!is_null($settingCustom) && !empty($settingCustom->background_img))
+                    background-image: url("{{asset($settingCustom->background_img)}}");
+                @endif
+                background-position: center;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+        </style>
 </head>
-<body>
+<body class="bg-body">
 <div class="home-wrapper" id="homeWrapper">
     <!-- header -->
     <div class="container">

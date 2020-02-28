@@ -18,7 +18,8 @@ mix.sass('resources/assets/sass/common.scss', 'public/css')
     .sass('resources/assets/sass/contact.scss', 'public/css')
     .sass('resources/assets/sass/gallery.scss', 'public/css')
     .sass('resources/assets/sass/album-image.scss', 'public/css')
-    .sass('resources/assets/sass/style.scss', 'public/css');
+    .sass('resources/assets/sass/style.scss', 'public/css')
+    .sass('resources/assets/sass/manufacturer.scss', 'public/css');
 
 mix.sass('resources/assets/sass/admin/style.scss', 'public/css/admin');
 

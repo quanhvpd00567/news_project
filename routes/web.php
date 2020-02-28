@@ -20,13 +20,18 @@ Route::group(['middleware' => 'locale'], function() {
     })->name('change-language');
 
     Route::get('/', 'HomeController@index')->name('home');
-    Route::get('contact', 'ContactController@index')->name('contact');
     Route::get('gallery', 'GalleryController@index')->name('gallery');
     Route::get('detail/{slug}', 'ProductController@detailProduct')->name('product.detail');
     Route::get('products', 'ProductController@listProduct')->name('product.list');
 
     // About-us detail
     Route::get('about-us/{slug}' , 'AboutUsController@detail')->name('about-us.detail');
+    Route::get('manufacturers' , 'AboutUsController@manufacturers')->name('manufacturers');
+    Route::get('manufacturer/detail/{slug}' , 'AboutUsController@manufacturerDetail')->name('manufacturer.detail');
+
+    // contact
+    Route::get('contact', 'ContactController@index')->name('contact');
+    Route::post('contact/create' , 'ContactController@send')->name('contact.send');
 });
 
 
@@ -76,6 +81,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'isAdmin'],
 
         Route::get('new/{id}', 'admin\AlbumController@newAlbum')->name('new');
         Route::post('create/{id}', 'admin\AlbumController@createAlbum')->name('create');
+    });
+
+    Route::group(['prefix' => 'gallery', 'as' => 'gallery.'], function() {
+        Route::get('new', 'admin\GalleryController@new')->name('new');
+        Route::post('create', 'admin\GalleryController@create')->name('create');
     });
 
 

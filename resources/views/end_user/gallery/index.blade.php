@@ -1,3 +1,6 @@
+<?php
+use App\Http\Services\CommonService;
+?>
 @extends('end_user.layout.master')
 @section('styles')
     <link rel="stylesheet" href="{{ asset('css/gallery.css') }}">
@@ -9,151 +12,89 @@
             <div class="home-news-body-left col-sm-12 col-md-12">
                 <div class="main-section row">
                     <div id="banner-gallery">
-                        <img src="https://cheerfarm.com//files/Uploads/Site/cover/home_cover_1.png" alt="">
+                        <img style="width: 100%" src="{{asset('images/bg/gallery_banner.png')}}" alt="">
                     </div>
                     <div class="breadcrumb">
                         <ul>
-                            <li>{{trans('view.contact.Contact')}}</li>
+                            <li>{{trans('view.gallery.gallery')}}</li>
                         </ul>
                     </div>
-
                     <div class="row" id="content-gallery">
-                        <div id="single-image">
-                            <img id="load-image" style="width:100%"
-                                 src="https://www.w3schools.com/howto/img_snow.jpg">
+                            @if(!is_null($images))
+                                <div id="single-image">
+                                    @for($i = 1; $i <= 10; $i++)
+                                        @if(!empty($images["image_{$i}"]) && !is_null($images["image_{$i}"] ))
+                                            <img id="load-image" style=""
+                                                 src="{{$images["image_{$i}"]}}">
+                                            <?php $hasImage = true ?>
+                                            @break
+                                        @endif
+                                    @endfor
+                                </div>
+                                <div class="carousel slide" id="myCarousel">
+                                    <div class="carousel-inner">
+                                        <?php
+                                        $active = 'active'
+                                        ?>
+                                        @for($i = 1; $i <= 10; $i++)
+                                            @if(!empty($images["image_{$i}"]) && !is_null($images["image_{$i}"] ))
+                                                <div class="item {{$active}}">
+                                                    <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+                                                        <img src="{{$images["image_{$i}"]}}" class="img-responsive image-slide">
+                                                    </div>
+                                                </div>
+                                                <?php $active = '' ?>
+                                            @endif
+                                        @endfor
+                                    </div>
+                                    @if(isset($hasImage))
+                                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
+                                                class="glyphicon glyphicon-chevron-left"></i></a>
+                                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
+                                                class="glyphicon glyphicon-chevron-right"></i></a>
+                                    @endif
+                                </div>
+                            @endif
                         </div>
-                        <div class="carousel slide" id="myCarousel">
-                                <div class="carousel-inner">
-                                    <div class="item active">
-                                        <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-                                            <img  src="https://www.w3schools.com/howto/img_mountains.jpg" class="img-responsive image-slide">
-                                        </div>
+                    <div id="product_related">
+                        <div class="breadcrumb" style="padding-top: 20px">
+                            <ul>
+                                <li>
+                                    <h3 style="font-weight: 700">{{trans('view.commons.related product')}}</h3>
+                                </li>
+                            </ul>
+                        </div>
+                        @if(!is_null($productsRelated))
+                            <div class="home-missing-articles home-body-section col-sm-12">
+                                <div class="missing-articles-content row">
+                                    <div class="grid cs-style-4">
+                                        @foreach($productsRelated as $key => $item)
+                                            <div class="missing-articles-item news-item col-sm-6 col-lg-4">
+                                                <div class="img-product missing-articles-item-image news-item-image">
+                                                    <figure>
+                                                        <div>
+                                                            <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                        </div>
+                                                        <figcaption>
+                                                            <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                        </figcaption>
+                                                    </figure>
+                                                </div>
+                                                <div class="missing-articles-item-content news-item-content">
+                                                    <div class="missing-articles-item-title">
+                                                        <h4 class="body-content limit-line-2">
+                                                            <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                {{ App::isLocale('vi') ? $item->name : $item->name_en }}
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
                                     </div>
-                                    <div class="item">
-                                        <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-                                            <img  src="https://www.w3schools.com/howto/img_snow.jpg"
-                                                  class="img-responsive image-slide">
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-                                            <img src="https://www.w3schools.com/howto/img_snow.jpg" class="img-responsive image-slide">
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-                                            <img  src="https://www.w3schools.com/howto/img_snow.jpg" class="img-responsive image-slide">
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-                                            <img  src="https://www.w3schools.com/howto/img_snow.jpg" class="img-responsive image-slide">
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-                                            <img  src="https://www.w3schools.com/howto/img_snow.jpg" class="img-responsive image-slide">
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-                                            <img src="https://www.w3schools.com/howto/img_snow.jpg" class="img-responsive image-slide">
-                                        </div>
-                                    </div>
-                                    <div class="item">
-                                        <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-                                            <img  src="https://www.w3schools.com/howto/img_snow.jpg" class="img-responsive image-slide">
-                                        </div>
-                                    </div>
-                                </div>
-                                <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
-                                        class="glyphicon glyphicon-chevron-left"></i></a>
-                                <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
-                                        class="glyphicon glyphicon-chevron-right"></i></a>
-                            </div>
-                    </div>
-                    <div class="breadcrumb">
-                        <ul>
-                            <li>{{trans('view.commons.related product')}}</li>
-                        </ul>
-                    </div>
-                    <div class="home-missing-articles home-body-section col-sm-12">
-                        <div class="missing-articles-content row">
-                            <div class="grid cs-style-4">
-                                <div class="missing-articles-item news-item col-sm-6 col-md-3">
-                                    <div class="img-product missing-articles-item-image news-item-image">
-                                        <figure>
-                                            <div><img src="https://rikkei.vn/storage/cache/storage/ckfinder/images/Rikkei-Danang/1(4).jpg/1(4)-r-400-248.jpg" alt="img05"></div>
-                                            <figcaption>
-                                                <img src="https://www.w3schools.com/w3css/img_avatar3.png" alt="Apple Cobbler">
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="missing-articles-item-content news-item-content">
-                                        <div class="missing-articles-item-title">
-                                            <h4 class="body-content limit-line-2">
-                                                Tân học viện chương trình kĩ sư công nghệ thông tin
-                                            </h4>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="missing-articles-item news-item col-sm-6 col-md-3">
-                                    <div class="img-product missing-articles-item-image news-item-image">
-                                        <figure>
-                                            <div><img src="https://rikkei.vn/storage/cache/storage/ckfinder/images/Rikkei-Danang/1(4).jpg/1(4)-r-400-248.jpg" alt="img05"></div>
-                                            <figcaption>
-                                                <img src="https://www.w3schools.com/w3css/img_avatar3.png" alt="Apple Cobbler">
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="missing-articles-item-content news-item-content">
-                                        <div class="missing-articles-item-title">
-                                            <h4 class="body-content limit-line-2">
-                                                Tân học viện chương trình kĩ sư công nghệ thông tin
-                                            </h4>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="missing-articles-item news-item col-sm-6 col-md-3">
-                                    <div class="img-product missing-articles-item-image news-item-image">
-                                        <figure>
-                                            <div><img src="https://rikkei.vn/storage/cache/storage/ckfinder/images/Rikkei-Danang/1(4).jpg/1(4)-r-400-248.jpg" alt="img05"></div>
-                                            <figcaption>
-                                                <img src="https://www.w3schools.com/w3css/img_avatar3.png" alt="Apple Cobbler">
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="missing-articles-item-content news-item-content">
-                                        <div class="missing-articles-item-title">
-                                            <h4 class="body-content limit-line-2">
-                                                Tân học viện chương trình kĩ sư công nghệ thông tin
-                                            </h4>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                <div class="missing-articles-item news-item col-sm-6 col-md-3">
-                                    <div class="img-product missing-articles-item-image news-item-image">
-                                        <figure>
-                                            <div><img src="https://rikkei.vn/storage/cache/storage/ckfinder/images/Rikkei-Danang/1(4).jpg/1(4)-r-400-248.jpg" alt="img05"></div>
-                                            <figcaption>
-                                                <img src="https://www.w3schools.com/w3css/img_avatar3.png" alt="Apple Cobbler">
-                                            </figcaption>
-                                        </figure>
-                                    </div>
-                                    <div class="missing-articles-item-content news-item-content">
-                                        <div class="missing-articles-item-title">
-                                            <h4 class="body-content limit-line-2">
-                                                Tân học viện chương trình kĩ sư công nghệ thông tin
-                                            </h4>
-                                        </div>
-                                    </div>
-
                                 </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>

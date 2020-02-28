@@ -3,19 +3,19 @@
         <div class="row" id="footer-info">
             <div class="col-sm-6 col-md-7">
                 <div class="group-1">
-                    <div class="lable-title">Danang Office/Head Office</div>
+                    <div class="lable-title">{{trans('view.commons.office')}}</div>
                     <div>
                         {{App::isLocale('vi') ? $settings->office_branch : $settings->office_branch_en}}
                     </div>
                 </div>
                 <div class="group-1">
-                    <div class="lable-title">Factory</div>
+                    <div class="lable-title">{{trans('view.commons.factory')}}</div>
                     <div>
                         {{App::isLocale('vi') ? $settings->factory : $settings->factory_en}}
                     </div>
                 </div>
                 <div class="group-1">
-                    <div class="lable-title">Warehouse</div>
+                    <div class="lable-title">{{trans('view.commons.warehouse')}}</div>
                     <div>
                         {{App::isLocale('vi') ? $settings->warehouse : $settings->warehouse_en}}
                     </div>

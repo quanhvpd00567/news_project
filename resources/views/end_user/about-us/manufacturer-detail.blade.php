@@ -8,13 +8,13 @@ use App\Http\Services\CommonService;
 @endsection
 
 @section('meta')
-    <meta property="og:title" content="{{App::isLocale('vi') ? $product->name : $product->name_en}}">
-    <meta property="og:description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">
-    <meta property="description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">
-    <meta name="og:image" content="{{URL::to('/') . $product->image_1}}">
-    <meta itemprop="image" content="{{URL::to('/') . $product->image_1}}">
-    <meta name="keywords" content="{{App::isLocale('vi') ? $product->keyword : $product->keyword_en}}}">
-    <meta property="og:url" content="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
+{{--    <meta property="og:title" content="{{App::isLocale('vi') ? $product->name : $product->name_en}}">--}}
+{{--    <meta property="og:description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">--}}
+{{--    <meta property="description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">--}}
+{{--    <meta name="og:image" content="{{URL::to('/') . $product->image_1}}">--}}
+{{--    <meta itemprop="image" content="{{URL::to('/') . $product->image_1}}">--}}
+{{--    <meta name="keywords" content="{{App::isLocale('vi') ? $product->keyword : $product->keyword_en}}}">--}}
+{{--    <meta property="og:url" content="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">--}}
     <meta content="INDEX,FOLLOW" name="robots" />
     <meta property="og:site_name" content="{{URL::to('/')}}" />
     <meta property="og:locale" content="{{App::isLocale('vi') ? 'vi_VN' : 'en_US'}}">
@@ -34,26 +34,13 @@ use App\Http\Services\CommonService;
                                 </a>
                             </li>
                             <li>
-                                <a href="">
-                                    {{App::isLocale('vi') ? $product->category->name : $product->category->name_en}}
-                                </a>
-                            </li>
-                            <li>
-                                {{App::isLocale('vi') ? $product->name : $product->name_en}}
+                                {{App::isLocale('vi') ? $manufacturer->name : $manufacturer->name_en}}
                             </li>
                         </ul>
                     </div>
 
                     <div class="content-product">
                         <div class="row" id="content-gallery">
-
-                            <div id="title" class="text-center">
-                                <h2>{{App::isLocale('vi') ? $product->name : $product->name_en}}</h2>
-                            </div>
-
-                            <div id="description_product">
-                                {{App::isLocale('vi') ? $product->description : $product->description_en}}
-                            </div>
                             @if(!is_null($images))
                                 <div id="single-image">
                                     @for($i = 1; $i <= 10; $i++)
@@ -90,27 +77,15 @@ use App\Http\Services\CommonService;
                                 </div>
                             @endif
                         </div>
-                        <div id="list-tabs">
-                            <ul class="nav nav-tabs">
-                                <li class="active"><a data-toggle="tab" href="#description">{{trans('view.product.description')}}</a></li>
-                                <li><a data-toggle="tab" href="#nutrition">{{trans('view.product.nutrition')}}</a></li>
-                                <li><a data-toggle="tab" href="#effect">{{trans('view.product.effect')}}</a></li>
-                            </ul>
-
-                            <div class="tab-content">
-                                <div id="description" class="tab-pane fade in active">
-                                    {!! App::isLocale('vi') ? $product->content : $product->content_en  !!}
-                                </div>
-                                <div id="nutrition" class="tab-pane fade">
-                                    {!! App::isLocale('vi') ? $product->nutrition : $product->nutrition_en !!}
-                                </div>
-                                <div id="effect" class="tab-pane fade">
-                                    {!! App::isLocale('vi') ? $product->purpose : $product->purpose_en !!}
-                                </div>
-                            </div>
-                        </div>
 
                         <div id="product_related">
+                            <div class="breadcrumb" style="padding-top: 20px">
+                                <ul>
+                                    <li>
+                                        <h3 style="font-weight: 700">{{trans('view.commons.related product')}}</h3>
+                                    </li>
+                                </ul>
+                            </div>
                             @if(!is_null($productsRelated))
                                 <div class="home-missing-articles home-body-section col-sm-12">
                                     <div class="missing-articles-content row">

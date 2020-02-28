@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ManufacturerRequest extends FormRequest
+class ContactRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,9 +24,10 @@ class ManufacturerRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|max:255',
-            'name_en' => 'required|max:255',
-            'image' => 'required|max:255',
+            'full_name' => 'required|max:255',
+            'address' => 'required|max:255',
+            'title' => 'required|max:255',
+            'content' => 'required',
         ];
     }
 
@@ -41,9 +42,10 @@ class ManufacturerRequest extends FormRequest
     public function attributes()
     {
         return [
-            'name' => 'Tên loại hình sản xuất',
-            'name_en' => 'Tên loại hình sản xuất (Tiếng anh)',
-            'image' => 'Hình ảnh',
+            'full_name' => trans('view.contact.Form.labels.name'),
+            'address' => trans('view.contact.Form.labels.address'),
+            'title' => trans('view.contact.Form.labels.title'),
+            'content' => trans('view.contact.Form.labels.content'),
         ];
     }
 }

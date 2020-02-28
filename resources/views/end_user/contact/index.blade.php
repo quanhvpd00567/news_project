@@ -9,7 +9,7 @@
                 <div class="main-section row">
 
                     <div id="banner-contact">
-                        <img src="https://cheerfarm.com//files/Uploads/Site/cover/home_cover_1.png" alt="">
+                        <img style="width: 100%" src="{{asset('images/bg/gallery_banner.png')}}" alt="">
                     </div>
 
                     <div class="breadcrumb">
@@ -25,15 +25,23 @@
                     <div class="row" id="content-contact">
 
                         <div class="col-md-6 contact-left">
-                            <form class="">
+                            @if(Session::has('success'))
+                            <div class="text-success">{{Session::get('success')}}</div>
+                            @endif
+                            @if(Session::has('error'))
+                                <div class="text-danger">{{Session::get('error')}}</div>
+                            @endif
+                            {!! Form::open(['route' => 'contact.send']) !!}
                                 <div class="form-group row field-contact">
                                     <label class="col-sm-3 col-form-label">
                                         {{trans('view.contact.Form.labels.name')}}
                                         <span class="cke_required">*</span>
                                     </label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="{{trans('view.contact.Form.labels.name')}}">
-                                        <span class="help-block">Help block with error</span>
+                                        {{Form::text('full_name', old('full_name', null), ['class' => 'form-control', 'placeholder' => trans('view.contact.Form.labels.name')])}}
+                                        @if($errors->has('full_name'))
+                                            <span class="help-block">{{$errors->first('full_name')}}</span>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -42,17 +50,21 @@
                                         {{trans('view.contact.Form.labels.company')}}
                                     </label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="{{trans('view.contact.Form.labels.company')}}">
+                                        {{Form::text('company', old('company', null), ['class' => 'form-control', 'placeholder' => trans('view.contact.Form.labels.company')])}}
                                     </div>
                                 </div>
 
                                 <div class="form-group row field-contact">
                                     <label class="col-sm-3 col-form-label">
-                                        {{trans('view.contact.Form.labels.email')}}
+                                        {{trans('view.contact.Form.labels.address')}}
+
                                         <span class="cke_required">*</span>
                                     </label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="{{trans('view.contact.Form.labels.email')}}">
+                                        {{Form::text('address', old('address', null), ['class' => 'form-control', 'placeholder' => trans('view.contact.Form.labels.address')])}}
+                                        @if($errors->has('address'))
+                                            <span class="help-block">{{$errors->first('address')}}</span>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -62,7 +74,10 @@
                                         <span class="cke_required">*</span>
                                     </label>
                                     <div class="col-sm-9">
-                                        <input type="text" class="form-control" placeholder="{{trans('view.contact.Form.labels.title')}}">
+                                        {{Form::text('title', old('title', null), ['class' => 'form-control', 'placeholder' => trans('view.contact.Form.labels.title')])}}
+                                        @if($errors->has('title'))
+                                            <span class="help-block">{{$errors->first('title')}}</span>
+                                        @endif
                                     </div>
                                 </div>
 
@@ -72,7 +87,10 @@
                                         <span class="cke_required">*</span>
                                     </label>
                                     <div class="col-sm-9">
-                                        <textarea name="" class="form-control" placeholder="{{trans('view.contact.Form.labels.content')}}" cols="30" rows="10"></textarea>
+                                        {{Form::textarea('content', old('content', null), [ 'cols' => 30,  'rows' => 10 ,'class' => 'form-control', 'placeholder' => trans('view.contact.Form.labels.content')])}}
+                                        @if($errors->has('content'))
+                                            <span class="help-block">{{$errors->first('content')}}</span>
+                                        @endif
                                     </div>
                                 </div>
                                 <div class="row text-center">
@@ -80,7 +98,7 @@
                                         {{trans('view.contact.Form.buttons.send')}}
                                     </button>
                                 </div>
-                            </form>
+                            {!! Form::close() !!}
                         </div>
 
                         <div class="col-md-6 contact-right">

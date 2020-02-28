@@ -2,7 +2,12 @@
 return [
     'commons' => [
         'related product' => 'Related product',
-        'btn-view-more' => 'View more...'
+        'btn-view-more' => 'View more...',
+        'data_not_found' => 'Data not found',
+        'home' => 'Home',
+        'office' => 'Danang Office/Head Office',
+        'factory' => 'Factory',
+        'warehouse' => 'Warehouse'
     ],
     'category' => [
         'Product' => 'Product'
@@ -16,13 +21,15 @@ return [
             'labels' => [
                 'name' => 'Your Name',
                 'company' => 'Company',
-                'email' => 'Your Email',
+                'address' => 'From',
                 'title' => 'Subject',
                 'content' => 'Message',
                 'Office' => 'Office:',
                 'Tel' => 'Tel',
                 'Hotline' => 'Hotline',
                 'Fax' => 'Fax',
+                'tks' => 'Send successfully. Thank you!!',
+                'error' => 'Send failed. Please send to me again.',
             ],
             'buttons' => [
                 'send' => 'Send'
@@ -30,10 +37,13 @@ return [
         ]
     ],
     'gallery' => [
-
+        'gallery' => 'Gallery'
     ],
     'about-us' => [
         'about-us' => 'About Us'
+    ],
+    'manufacturer' => [
+        'manufacturer' => 'Manufacturer'
     ],
     'product' => [
         'description' => 'Description',

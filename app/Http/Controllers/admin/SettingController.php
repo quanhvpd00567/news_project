@@ -47,7 +47,8 @@ class SettingController extends AdminController
             'copyright',
             'facebook',
             'youtube',
-            'instagram'
+            'instagram',
+            'background_img',
         ];
         $data = [
             'setting' => $this->_modelSetting->getSetting($colmns)
@@ -75,7 +76,7 @@ class SettingController extends AdminController
     {
         if ((int)$request['mode_setting'] == Config::get('constant.settings.mode.website')) {
 
-            $cols = ['name', 'email', 'tel', 'fax', 'hotline', 'facebook', 'youtube', 'instagram', 'copyright'];
+            $cols = ['name', 'email', 'tel', 'fax', 'hotline', 'facebook', 'youtube', 'instagram', 'copyright', 'background_img'];
 
             $rules = [
                 'name' => 'required|max:50',

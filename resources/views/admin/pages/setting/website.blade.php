@@ -59,6 +59,11 @@
                                     @endif
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label>Copyright:</label>
+                                {{Form::text('copyright', old('fax', $setting->copyright), ['class' => 'form-control', 'placeholder' => '© 2018 Cheer Farm Food JSC. All rights reserved.'])}}
+                            </div>
+                            <button type="submit" class="btn btn-primary">Cập nhật</button>
                         </div>
 
                     </div>
@@ -76,16 +81,22 @@
                                 <label>Instagram:</label>
                                 {{Form::text('instagram', old('fax', $setting->instagram), ['class' => 'form-control', 'placeholder' => 'Ex: http://instagram.com/cheerfarm'])}}
                             </div>
-                        </div>
-                    </div>
-                    <div class="box-body">
-                        <div class="col-md-12">
                             <div class="form-group">
-                                <label>Copyright:</label>
-                                {{Form::text('copyright', old('fax', $setting->copyright), ['class' => 'form-control', 'placeholder' => '© 2018 Cheer Farm Food JSC. All rights reserved.'])}}
-                            </div>
-                            <div class="box-footer">
-                                <button type="submit" class="btn btn-primary">Cập nhật</button>
+                                <label>Chọn banner</label>
+                                <div class="input-group input-group-sm">
+                                    {{Form::text('background_img', old('background_img', $setting->background_img), [ 'readonly' ,'class' => 'form-control', 'id' => "background_img", 'placeholder' => "Chọn background "])}}
+                                    <span class="input-group-btn">
+                                    <button type="button" class="btn btn-info btn-flat btn-choose-img">
+                                        <i class="fa fa-image"></i>
+                                        Chọn ảnh
+                                    </button>
+                                    <button type="button" class="btn btn-danger btn-flat btn-clear-img">
+                                        <i class="fa fa-trash"></i>
+                                        Xóa
+                                    </button>
+                                  </span>
+                                </div>
+                                <img src="{{old('background_img', $setting->background_img)}}" style="float: unset !important;" class="img-banner-view" id="view-banner-img" alt="">
                             </div>
                         </div>
                     </div>
@@ -93,5 +104,45 @@
             </div>
         </div>
     </div>
+
+@endsection
+
+@section('scripts')
+    <script src="{{ asset('plugin/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('plugin/ckfinder/ckfinder.js') }}"></script>
+
+    <script  type="text/javascript">
+        {{--var $router = '{{ route('admin.product.ckfinder', ['type' => 'Images']) }}'--}}
+        $('.btn-choose-img').on('click', function () {
+            selectFileWithCKFinder()
+        })
+        $('.btn-clear-img').on('click', function () {
+            $('#background_img').val('')
+            $('#view-banner-img').attr('src', null)
+        })
+        function selectFileWithCKFinder() {
+            CKFinder.modal({
+                chooseFiles: true,
+                width: 800,
+                height: 600,
+                onInit: function (finder) {
+                    finder.on('files:choose', function (evt) {
+                        var file = evt.data.files.first();
+                        var output = $('#background_img')
+                        var view_img = $('#view-banner-img')
+                        output.val(file.attributes.url)
+                        view_img.attr('src', file.attributes.url)
+                    });
+
+                    finder.on('file:choose:resizedImage', function (evt) {
+                        var output = $('#background_img')
+                        output.val(evt.data.resizedUrl)
+                        var view_img = $('#view-banner-img')
+                        view_img.attr('src', evt.data.resizedUrl)
+                    });
+                }
+            });
+        }
+    </script>
 
 @endsection

@@ -27,8 +27,7 @@ class CommonService
         return $str . '-' .rand(1000, 100000) . '.html';
     }
 
-    public static function createUrlProduct($id, $slug){
-        $keyUrl = \Config::get('constant.keys_url.product');
-        return route('product.detail', ["{$keyUrl}{$id}_{$slug}"]);
+    public static function createUrlProduct($id, $slug, $keyUrl = 1, $routerName = 'product.detail'){
+        return route($routerName, ["{$keyUrl}{$id}_{$slug}"]);
     }
 }

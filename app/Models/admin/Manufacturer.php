@@ -23,6 +23,7 @@ class Manufacturer extends \App\Models\Manufacturer
             $this->keyword = $params['keyword'];
             $this->keyword_en = $params['keyword_en'];
             $this->slug = CommonService::createSlug($params['name']);
+            $this->image = $params['image'];
             $this->status = \Config::get('constant.status.isShow');
             if (!isset($params['status'])){
                 $this->status = \Config::get('constant.status.isNotShow');
@@ -49,6 +50,7 @@ class Manufacturer extends \App\Models\Manufacturer
             $manufacturer->keyword = $params['keyword'];
             $manufacturer->keyword_en = $params['keyword_en'];
             $manufacturer->slug = CommonService::createSlug($params['name']);
+            $manufacturer->image = $params['image'];
             $manufacturer->status = \Config::get('constant.status.isShow');
             if (!isset($params['status'])){
                 $manufacturer->status = \Config::get('constant.status.isNotShow');

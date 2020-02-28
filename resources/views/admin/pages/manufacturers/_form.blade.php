@@ -75,10 +75,31 @@ if (!isset($isPageCreate)){
                     <i class="fa fa-image"></i>
                     Chọn ảnh
                 </button>
+                <button type="button" class="btn btn-danger btn-flat btn-clear-img">
+                    <i class="fa fa-trash"></i>
+                    Xóa
+                </button>
               </span>
         </div>
 
         <img src="{{old('banner', $manufacturer->banner)}}" style="float: unset !important;" class="img-banner-view" id="view-banner-img" alt="">
+    </div>
+
+    <div class="form-group">
+        <label>Chọn ảnh</label>
+        <div class="input-group input-group-sm">
+            {{Form::text('image', old('image', $manufacturer->image), [ 'readonly' ,'class' => 'form-control', 'id' => "image", 'placeholder' => "Chọn ảnh"])}}
+            <span class="input-group-btn">
+                <button type="button" class="btn btn-info btn-flat btn-image">
+                    <i class="fa fa-image"></i>
+                    Chọn ảnh
+                </button>
+              </span>
+        </div>
+        <img src="{{old('image', $manufacturer->image)}}" style="width: 300px; min-height: 300px" class="single" id="view-image" alt="">
+        @if($errors->has('image'))
+            <span class="help-block">{{$errors->first('image')}}</span>
+        @endif
     </div>
 </div>
 

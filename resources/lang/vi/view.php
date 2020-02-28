@@ -2,7 +2,12 @@
 return [
     'commons' => [
         'related product' => 'Bài viết liên quan',
-        'btn-view-more' => 'Xem thêm...'
+        'btn-view-more' => 'Xem thêm...',
+        'data_not_found' => 'Không tìm thấy nội dung',
+        'home' => 'Trang chủ',
+        'office' => 'Văn phòng Đà Nẵng/Trụ sở chính',
+        'warehouse' => 'Kho',
+        'factory' => 'Nhà máy',
     ],
     'category' => [
         'Product' => 'Sản phẩm'
@@ -16,13 +21,15 @@ return [
             'labels' => [
                 'name' => 'Họ và tên',
                 'company' => 'Công ty',
-                'email' => 'Thư điện tử ',
+                'address' => 'Đến từ',
                 'title' => 'Tiêu đề',
                 'content' => 'Nội dung',
                 'Office' => 'VĂN PHÒNG:',
                 'Tel' => 'Tel',
                 'Hotline' => 'Hotline',
                 'Fax' => 'Fax',
+                'tks' => 'Bạn đã gửi thành công. Xin cảm ơn!',
+                'error' => 'Bạn đã gửi không thành công. Xin hãy gửi lại!',
             ],
             'buttons' => [
                 'send' => 'Gửi'
@@ -30,10 +37,13 @@ return [
         ]
     ],
     'gallery' => [
-
+        'gallery' => 'Bộ sưu tập'
     ],
     'about-us' => [
         'about-us' => 'Về chúng tôi'
+    ],
+    'manufacturer' => [
+        'manufacturer' => 'Nhà máy'
     ],
     'product' => [
         'description' => 'Mô tả',

@@ -50,7 +50,7 @@ use App\Http\Services\CommonService;
                                                             <div class="missing-articles-item-content news-item-content">
                                                                 <div class="missing-articles-item-title">
                                                                     <h4 class="body-content limit-line-2">
-                                                                        <a href="{{CommonService::createUrlProduct($item->id, $item->slug)}}">
+                                                                        <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
                                                                             {{ App::isLocale('vi') ? $item->name : $item->name_en }}
                                                                         </a>
                                                                     </h4>
@@ -58,7 +58,7 @@ use App\Http\Services\CommonService;
                                                                         {{App::isLocale('vi') ? $item->description : $item->description_en }}
                                                                     </div>
                                                                     <div class="right">
-                                                                        <a href="{{CommonService::createUrlProduct($item->id, $item->slug)}}" class="btn btn-view-more">{{trans('view.commons.btn-view-more')}}</a>
+                                                                        <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}" class="btn btn-view-more">{{trans('view.commons.btn-view-more')}}</a>
                                                                     </div>
                                                                 </div>
                                                             </div>

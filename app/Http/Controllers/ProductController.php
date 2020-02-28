@@ -36,14 +36,27 @@ class ProductController extends BaseController
                     ->where('product_id', $id)
                     ->first();
         $images = is_null($images) ? [] : $images->toArray();
-        $productsRelated = Product::where('isDelete', \Config::get('constant.delete.isNotDelete'))
-                                    ->where('status', \Config::get('constant.status.isShow'))
-                                    ->where('category_id', $product->category_id)
-                                    ->where('id', '<>', $id)
-                                    ->select('id', 'slug','name', 'name_en', 'image_1', 'image_2')
-                                    ->limit(3)
-                                    ->orderBy('id', 'desc')
-                                    ->get();
+//        $productsRelated = Product::where('isDelete', \Config::get('constant.delete.isNotDelete'))
+//                                    ->where('status', \Config::get('constant.status.isShow'))
+//                                    ->where('category_id', $product->category_id)
+//                                    ->where('id', '<>', $id)
+//                                    ->select('id', 'slug','name', 'name_en', 'image_1', 'image_2')
+//                                    ->limit(3)
+//                                    ->orderBy('id', 'desc')
+//                                    ->get();
+
+        $item = new \App\Models\Product;
+        $tableProduct = $item->getTable();
+        $productsRelated = Product::join('categories', 'categories.id', '=', "{$tableProduct}.category_id")
+                ->where("{$tableProduct}.isDelete", \Config::get('constant.delete.isNotDelete'))
+                ->where("{$tableProduct}.status", \Config::get('constant.status.isShow'))
+                ->where("categories.status", \Config::get('constant.status.isShow'))
+                ->where("{$tableProduct}.id", '<>', $id)
+                ->select("{$tableProduct}.id", "{$tableProduct}.slug", "{$tableProduct}.name", "{$tableProduct}.name_en", "{$tableProduct}.image_1", "{$tableProduct}.image_2")
+                ->limit(3)
+                ->get();
+
+
         $data = [
             'product' => $product,
             'images' => $images,

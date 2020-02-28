@@ -74,7 +74,7 @@ use App\Http\Services\CommonService;
                                     <div class="missing-articles-item-content news-item-content">
                                         <div class="missing-articles-item-title">
                                             <h4 class="body-content limit-line-2">
-                                                <a href="{{CommonService::createUrlProduct($product->id, $product->slug)}}">
+                                                <a href="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
                                                     {{ App::isLocale('vi') ? $product->name : $product->name_en }}
                                                 </a>
                                             </h4>

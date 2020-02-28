@@ -32,6 +32,7 @@ class Setting extends Model
         'mail_username',
         'mail_password',
         'mail_encryption',
+        'background_img'
     ];
     public function getSetting($columns = ['*']){
         return self::select($columns)->first();
