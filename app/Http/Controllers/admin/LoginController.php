@@ -15,8 +15,8 @@ class LoginController extends Controller
 
     public function postLogin(Request $request){
 
-        $model_user = new User();
-        $model_user->createUser();
+//        $model_user = new User();
+//        $model_user->createUser();
 
         $rules = [
             'email' => 'required|email',
