@@ -35,7 +35,7 @@ class ProductController extends Controller
     {
         $data = [
             'product' => new Product(),
-            'categories' => $this->_modelCategory->getList()->pluck('name', 'id'),
+            'categories' => $this->_modelCategory->getCategoryParent()->pluck('name', 'id'),
             'isPageCreate' => true
         ];
         return view('admin.pages.products.new', $data);
@@ -66,7 +66,7 @@ class ProductController extends Controller
 
         $data = [
             'product' => $product,
-            'categories' => $this->_modelCategory->getList()->pluck('name', 'id'),
+            'categories' => $this->_modelCategory->getCategoryParent()->pluck('name', 'id'),
         ];
         return view('admin.pages.products.edit', $data);
     }

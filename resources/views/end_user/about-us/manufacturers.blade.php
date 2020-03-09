@@ -45,12 +45,16 @@ use App\Http\Services\CommonService;
                                 <div class="home-latest-news-item news-item row">
                             <div class="col-md-1"></div>
                             <div class="home-latest-news-item-image news-item-image col-md-4 col-sm-12" style="height: 270px">
-                                <img src="{{asset($item->image)}}" alt="">
+                                <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.manufacturer'), 'manufacturer.detail' )}}">
+                                    <img src="{{asset($item->image)}}" alt="">
+                                </a>
                             </div>
                             <div class="home-latest-news-item-content news-item-content col-md-6 col-sm-12">
                                 <div class="latest-news-item-title">
                                     <h4 class="body-content limit-line-2">
-                                        {{App::isLocale('vi') ? $item->name : $item->name_en}}
+                                        <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.manufacturer'), 'manufacturer.detail' )}}">
+                                            {{App::isLocale('vi') ? $item->name : $item->name_en}}
+                                        </a>
                                     </h4>
                                 </div>
                                 <div class="latest-news-item-body ">

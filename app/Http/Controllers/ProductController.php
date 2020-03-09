@@ -16,16 +16,14 @@ class ProductController extends BaseController
             return $this->page_404();
         }
         $id = $argUrl[0];
-
         $item = new \App\Models\Product();
         $tableProduct = $item->getTable();
         $product = Product::join('categories', 'categories.id', '=', "{$tableProduct}.category_id")
             ->where("{$tableProduct}.isDelete", \Config::get('constant.delete.isNotDelete'))
             ->where("{$tableProduct}.status", \Config::get('constant.status.isShow'))
-            ->where("{$tableProduct}.id", $id)
+            ->where("{$tableProduct}.id", '=' , (int) $id)
             ->where("categories.status", \Config::get('constant.status.isShow'))
-            ->select("{$tableProduct}.*")
-            ->first();
+            ->select("{$tableProduct}.*")->first();
 
         if (is_null($product)){
             return $this->page_404();
@@ -36,14 +34,6 @@ class ProductController extends BaseController
                     ->where('product_id', $id)
                     ->first();
         $images = is_null($images) ? [] : $images->toArray();
-//        $productsRelated = Product::where('isDelete', \Config::get('constant.delete.isNotDelete'))
-//                                    ->where('status', \Config::get('constant.status.isShow'))
-//                                    ->where('category_id', $product->category_id)
-//                                    ->where('id', '<>', $id)
-//                                    ->select('id', 'slug','name', 'name_en', 'image_1', 'image_2')
-//                                    ->limit(3)
-//                                    ->orderBy('id', 'desc')
-//                                    ->get();
 
         $item = new \App\Models\Product;
         $tableProduct = $item->getTable();
@@ -56,7 +46,6 @@ class ProductController extends BaseController
                 ->limit(3)
                 ->get();
 
-
         $data = [
             'product' => $product,
             'images' => $images,
@@ -66,14 +55,9 @@ class ProductController extends BaseController
     }
 
     public function listProduct(){
-        $products = Product::where('isDelete', \Config::get('constant.delete.isNotDelete'))
-            ->where('status', \Config::get('constant.status.isShow'))
-            ->select('id', 'slug','name', 'name_en', 'image_1', 'image_2')
-            ->orderBy('id', 'desc')
-            ->get();
         $categories = Category::where('status', \Config::get('constant.status.isShow'))->get();
         $data = [
-          'products' => $products,
+//          'products' => $products,
           'categories' => $categories,
         ];
         return view('end_user.products.index', $data);

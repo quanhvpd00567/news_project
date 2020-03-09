@@ -92,6 +92,8 @@ div {
 
 #list-tabs {
   padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #FF4100;
 }
 
 .news-item-image {
@@ -120,6 +122,10 @@ div {
   -webkit-box-pack: start;
       -ms-flex-pack: start;
           justify-content: flex-start;
+}
+
+#product_related {
+  padding-top: 10px;
 }
 
 .news-item-content-info {
@@ -210,7 +216,7 @@ div {
 }
 
 .btn-view-more {
-  background-color: #FF4100;
+  background-color: #A7D489;
   float: right;
   margin-top: 10px;
   padding: 2px 12px;
@@ -241,6 +247,11 @@ div {
 
 .home-latest-news-item .latest-news-item-body .body-content {
   font-size: 14px;
+  line-height: 1.6;
+}
+
+.grid .body-content {
+  font-size: 20px !important;
   line-height: 1.6;
 }
 
@@ -368,7 +379,7 @@ div {
 }
 
 .nav-common-header .navbar-nav li {
-  padding-right: 10px;
+  padding-right: 30px;
   padding-left: 10px;
 }
 
@@ -384,7 +395,7 @@ div {
 
 .nav-common-header .navbar-nav li a:hover,
 .nav-common-header .navbar-nav li a.active {
-  color: #FF4100;
+  color: #A7D489;
   padding-top: 10px;
   padding-bottom: 9px;
   font-weight: bold;
@@ -394,11 +405,15 @@ div {
   font-weight: bold;
 }
 
+.nav-common-header .navbar-nav li:hover {
+  border-bottom: 4px solid #A7D489;
+}
+
 .nav-common-header .open > a {
   -webkit-box-shadow: none !important;
   box-shadow: none !important;
   background-image: none;
-  color: #FF4100 !important;
+  color: #A7D489 !important;
 }
 
 .nav-common-header .dropdown-toggle,
@@ -522,7 +537,8 @@ div {
 }
 
 .block-content {
-  padding-top: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .news-footer {
@@ -535,17 +551,17 @@ div {
 }
 
 .news-footer .container {
-  background-color: #FF4100;
+  background-color: #A7D489;
 }
 
 .news-footer #footer-info {
   padding-bottom: 10px;
   padding-top: 20px;
+  color: #FF4100;
 }
 
 .news-footer #footer-info .group-1 .lable-title {
   font-weight: bold;
-  color: #ebebeb;
 }
 
 .news-footer #footer-info .group-2 div {
@@ -554,7 +570,6 @@ div {
 
 .news-footer #footer-info .group-2 .lable-title {
   font-weight: bold;
-  color: #ebebeb;
 }
 
 .news-footer #company-copyright {
@@ -564,6 +579,7 @@ div {
   padding-bottom: 10px;
   margin-left: 0 !important;
   margin-right: 0 !important;
+  color: #FF4100;
 }
 
 .home-feedback .home-feedback-form .wrapper {
@@ -793,7 +809,7 @@ div {
 
   .navbar-inverse .navbar-toggle,
   .navbar-inverse .navbar-toggle:hover {
-    background-color: #FF4100;
+    background-color: #A7D489;
     border: none;
   }
 
@@ -812,7 +828,11 @@ div {
 }
 
 .active-lang {
-  color: #FF4100;
+  color: #A7D489;
+}
+
+.nav-tabs a {
+  font-weight: 700;
 }
 
 @media (min-width: 1200px) {
@@ -822,13 +842,11 @@ div {
   }
 
   .news-footer {
-    width: 1300px;
-    margin: 0 auto;
-    background-color: #FF4100;
+    background-color: #A7D489;
   }
 
   .news-footer .container {
-    width: 100%;
+    width: 1170px;
   }
 }
 

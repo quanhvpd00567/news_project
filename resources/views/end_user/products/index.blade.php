@@ -40,10 +40,14 @@ use App\Http\Services\CommonService;
                                                             <div class="img-product missing-articles-item-image news-item-image">
                                                                 <figure>
                                                                     <div>
-                                                                        <img src="{{$item->image_1}}" alt="img05">
+                                                                        <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                            <img src="{{$item->image_1}}" alt="img05">
+                                                                        </a>
                                                                     </div>
                                                                     <figcaption>
-                                                                        <img src="{{$item->image_2}}" alt="Apple Cobbler">
+                                                                        <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                            <img src="{{$item->image_2}}" alt="Apple Cobbler">
+                                                                        </a>
                                                                     </figcaption>
                                                                 </figure>
                                                             </div>
@@ -54,9 +58,6 @@ use App\Http\Services\CommonService;
                                                                             {{ App::isLocale('vi') ? $item->name : $item->name_en }}
                                                                         </a>
                                                                     </h4>
-                                                                    <div class="limit-line-2">
-                                                                        {{App::isLocale('vi') ? $item->description : $item->description_en }}
-                                                                    </div>
                                                                     <div class="right">
                                                                         <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}" class="btn btn-view-more">{{trans('view.commons.btn-view-more')}}</a>
                                                                     </div>

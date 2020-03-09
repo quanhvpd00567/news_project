@@ -98,7 +98,7 @@
                 </ul>
             </li>
 
-            <li class="treeview @if($prefixUrl == 'admin/gallery') active @endif">
+            <li class="@if($prefixUrl == 'admin/gallery') active @endif">
                 <a href="{{route('admin.gallery.new')}}">
                     <i class="fa fa-image text-red"></i>
                     <span>Gallery</span>

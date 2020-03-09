@@ -1,4 +1,13 @@
-<li><a href="/" class="active">{{trans('view.commons.home')}}</a></li>
+<?php
+
+$action = app('request')->route()->getAction();
+$prefixUrl = $action['prefix'];
+$asUrl = $action['as'];
+//dd($asUrl);
+?>
+
+
+<li><a href="/" class="@if($asUrl == 'home') active @endif">{{trans('view.commons.home')}}</a></li>
 <li class="dropdown">
     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
        aria-haspopup="true" aria-expanded="false">
@@ -23,17 +32,10 @@
     @endif
 </li>
 <li>
-    <a href="{{route('product.list')}}"
-       aria-haspopup="true" aria-expanded="false">
+    <a href="{{route('product.list')}}" class="@if($asUrl == 'product.list') active @endif" aria-haspopup="true" aria-expanded="false">
         {{trans('view.category.Product')}}
-{{--        <span class="caret"></span>--}}
     </a>
-
-{{--    <ul class="dropdown-menu">--}}
-{{--        <li><a href="#">Action</a></li>--}}
-{{--        <li><a href="#">Another action</a></li>--}}
-{{--    </ul>--}}
 </li>
-<li><a href="{{route('manufacturers')}}">{{trans('view.manufacturer.manufacturer')}}</a></li>
-<li><a href="{{route('gallery')}}">{{trans('view.gallery.gallery')}}</a></li>
-<li><a href="{{route('contact')}}">{{trans('view.contact.Contact')}}</a></li>
+<li><a href="{{route('manufacturers')}}" class="@if($asUrl == 'manufacturers') active @endif" >{{trans('view.manufacturer.manufacturer')}}</a></li>
+<li><a href="{{route('gallery')}}"  class="@if($asUrl == 'gallery') active @endif">{{trans('view.gallery.gallery')}}</a></li>
+<li><a href="{{route('contact')}}"  class="@if($asUrl == 'contact') active @endif" >{{trans('view.contact.Contact')}}</a></li>

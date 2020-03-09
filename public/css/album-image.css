@@ -112,6 +112,7 @@
 .carousel-control.right {
   background-image: none;
   top: 0 !important;
+  color: #A7D489 !important;
 }
 
 .item:not(.prev) {
@@ -135,6 +136,9 @@
 .item .col-md-3 img,
 .item .col-sm-3 img {
   cursor: pointer;
+  width: 100%;
+  max-height: 200px;
+  min-height: 200px;
 }
 
 .rightest {
@@ -157,6 +161,24 @@
 @media screen and (max-width: 767px) {
   .carousel-control {
     font-size: 15px;
+  }
+
+  .item .col-lg-3,
+  .item .col-xs-3,
+  .item .col-md-3,
+  .item .col-sm-3 {
+    padding-right: 2px;
+    padding-left: 2px;
+  }
+
+  .item .col-lg-3 img,
+  .item .col-xs-3 img,
+  .item .col-md-3 img,
+  .item .col-sm-3 img {
+    cursor: pointer;
+    width: 100%;
+    max-height: 100px;
+    min-height: 100px;
   }
 }
 

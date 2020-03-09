@@ -43,7 +43,7 @@ return [
         'about-us' => 'Về chúng tôi'
     ],
     'manufacturer' => [
-        'manufacturer' => 'Nhà máy'
+        'manufacturer' => 'Sản xuất'
     ],
     'product' => [
         'description' => 'Mô tả',

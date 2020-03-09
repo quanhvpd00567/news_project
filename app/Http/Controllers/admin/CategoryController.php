@@ -20,7 +20,7 @@ class CategoryController extends BaseController
 
     public function listCategory()
     {
-        $categories = $this->_modelCategory->getList();
+        $categories = $this->_modelCategory->getCategoryParent();
         $data = [
             'categories' => $categories
         ];
@@ -62,9 +62,9 @@ class CategoryController extends BaseController
 
         $isSave = $this->_modelCategory->createCategory($request->all());
         if ($isSave) {
-            return redirect()->route('admin.category.list')->with('success', 'Thêm menu thành công');
+            return redirect()->route('admin.category.list')->with('success', 'Thêm danh muc thành công');
         }
-        return redirect()->route('admin.category.list')->with('error', 'Thêm menu thất bại');
+        return redirect()->route('admin.category.list')->with('error', 'Thêm danh muc thất bại');
 
     }
 

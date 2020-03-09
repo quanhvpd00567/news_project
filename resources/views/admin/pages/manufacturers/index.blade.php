@@ -6,8 +6,13 @@
             <div class="box box-primary">
                 <div class="box-header with-border">
                     <h3 class="box-title">Thêm mới loại sản xuất</h3>
+                    @include('admin.layout.partials._notification')
+                    <div class="box-body">
+                        <a href="{{route('admin.manufacturer.new')}}" class="btn btn-primary" id="btn-create">
+                            Tạo mới hình thức sản xuất
+                        </a>
+                    </div>
                 </div>
-                @include('admin.layout.partials._notification')
                 <div class="box-body">
                     <div class="col-md-12">
                         <table class="table table-bordered">

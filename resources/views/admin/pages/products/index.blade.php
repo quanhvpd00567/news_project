@@ -50,6 +50,9 @@
                                     $count  = ($products->currentPage() - 1) * $products->perPage() + 1;
                                 ?>
                                     @foreach($products as $product)
+<!--                                        --><?php
+//                                        dd($product);
+//                                        ?>
                                         <tr>
                                             <td>{{$count}}</td>
                                             <td>

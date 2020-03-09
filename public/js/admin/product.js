@@ -18,6 +18,8 @@ CKEDITOR.replace( 'product_purpose', ckfinderConfig );
 CKEDITOR.replace( 'product_purpose_en', ckfinderConfig );
 CKEDITOR.replace( 'product_nutrition', ckfinderConfig );
 CKEDITOR.replace( 'product_nutrition_en', ckfinderConfig );
+CKEDITOR.replace( 'product_description', ckfinderConfig );
+CKEDITOR.replace( 'product_description_en', ckfinderConfig );
 
 $("#image_1").change(function () {
     $emlView = $('#preview-img1')

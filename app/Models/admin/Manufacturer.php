@@ -13,15 +13,15 @@ class Manufacturer extends \App\Models\Manufacturer
 
     public function createManufacturer($params){
         try {
-            $this->name = $params['name'];
-            $this->name_en = $params['name_en'];
-            $this->description = $params['description'];
-            $this->description_en = $params['description_en'];
-            $this->content = $params['content'];
-            $this->content_en = $params['content_en'];
-            $this->banner = $params['banner'];
-            $this->keyword = $params['keyword'];
-            $this->keyword_en = $params['keyword_en'];
+            $this->name = empty($params['name']);
+            $this->name_en = empty($params['name_en']);
+            $this->description = empty($params['description']);
+            $this->description_en = empty($params['description_en']);
+            $this->content = empty($params['content']);
+            $this->content_en = empty($params['content_en']);
+            $this->banner = empty($params['banner']);
+            $this->keyword = empty($params['keyword']);
+            $this->keyword_en = empty($params['keyword_en']);
             $this->slug = CommonService::createSlug($params['name']);
             $this->image = $params['image'];
             $this->status = \Config::get('constant.status.isShow');
@@ -40,15 +40,15 @@ class Manufacturer extends \App\Models\Manufacturer
 
     public function updateManufacturer($params, $manufacturer){
         try {
-            $manufacturer->name = $params['name'];
-            $manufacturer->name_en = $params['name_en'];
-            $manufacturer->description = $params['description'];
-            $manufacturer->description_en = $params['description_en'];
-            $manufacturer->content = $params['content'];
-            $manufacturer->content_en = $params['content_en'];
-            $manufacturer->banner = $params['banner'];
-            $manufacturer->keyword = $params['keyword'];
-            $manufacturer->keyword_en = $params['keyword_en'];
+            $manufacturer->name = empty($params['name']);
+            $manufacturer->name_en = empty($params['name_en']);
+            $manufacturer->description = empty($params['description']);
+            $manufacturer->description_en = empty($params['description_en']);
+            $manufacturer->content = empty($params['content']);
+            $manufacturer->content_en = empty($params['content_en']);
+            $manufacturer->banner = empty($params['banner']);
+            $manufacturer->keyword = empty($params['keyword']);
+            $manufacturer->keyword_en = empty($params['keyword_en']);
             $manufacturer->slug = CommonService::createSlug($params['name']);
             $manufacturer->image = $params['image'];
             $manufacturer->status = \Config::get('constant.status.isShow');

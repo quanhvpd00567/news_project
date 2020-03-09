@@ -19,7 +19,7 @@
 
     <div class="form-group">
         <label>Mô tả:</label>
-        {{Form::textarea('description', old('description', $product->description) , ['class' => 'form-control textarea-resize-vertical', 'placeholder' => 'Mô tả', 'rows' => 3])}}
+        {{Form::textarea('description', old('description', $product->description) , ['class' => 'form-control textarea-resize-vertical', 'id' => 'product_description', 'placeholder' => 'Mô tả', 'rows' => 3])}}
     </div>
 
     <div class="form-group">
@@ -45,7 +45,6 @@
             @endif
         </div>
     </div>
-
 </div>
 
 <div class="col-md-6">
@@ -59,7 +58,7 @@
 
     <div class="form-group">
         <label>Mô tả <span class="language-waning">(Tiếng anh)</span>:</label>
-        {{Form::textarea('description_en', old('description_en', $product->description_en) , ['class' => 'form-control textarea-resize-vertical', 'placeholder' => 'Mô tả bằng tiếng anh', 'rows' => 3])}}
+        {{Form::textarea('description_en', old('description_en', $product->description_en) , ['class' => 'form-control textarea-resize-vertical', 'id' => 'product_description_en', 'placeholder' => 'Mô tả bằng tiếng anh', 'rows' => 3])}}
     </div>
 
     <div class="form-group">

@@ -9,8 +9,8 @@ use App\Http\Services\CommonService;
 
 @section('meta')
     <meta property="og:title" content="{{App::isLocale('vi') ? $product->name : $product->name_en}}">
-    <meta property="og:description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">
-    <meta property="description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">
+    <meta property="og:description" content="{{App::isLocale('vi') ? $product->name : $product->name_en}}">
+    <meta property="description" content="{{App::isLocale('vi') ? $product->name : $product->name_en}}">
     <meta name="og:image" content="{{URL::to('/') . $product->image_1}}">
     <meta itemprop="image" content="{{URL::to('/') . $product->image_1}}">
     <meta name="keywords" content="{{App::isLocale('vi') ? $product->keyword : $product->keyword_en}}}">
@@ -50,9 +50,8 @@ use App\Http\Services\CommonService;
                             <div id="title" class="text-center">
                                 <h2>{{App::isLocale('vi') ? $product->name : $product->name_en}}</h2>
                             </div>
-
                             <div id="description_product">
-                                {{App::isLocale('vi') ? $product->description : $product->description_en}}
+                                {!! App::isLocale('vi') ? $product->description : $product->description_en !!}
                             </div>
                             @if(!is_null($images))
                                 <div id="single-image">
@@ -111,6 +110,13 @@ use App\Http\Services\CommonService;
                         </div>
 
                         <div id="product_related">
+                            <div class="breadcrumb">
+                                <ul>
+                                    <li>
+                                        <h3 style="font-weight: 700">{{trans('view.commons.related product')}}</h3>
+                                    </li>
+                                </ul>
+                            </div>
                             @if(!is_null($productsRelated))
                                 <div class="home-missing-articles home-body-section col-sm-12">
                                     <div class="missing-articles-content row">
@@ -120,10 +126,14 @@ use App\Http\Services\CommonService;
                                                     <div class="img-product missing-articles-item-image news-item-image">
                                                         <figure>
                                                             <div>
-                                                                <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                    <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                </a>
                                                             </div>
                                                             <figcaption>
-                                                                <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                    <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                </a>
                                                             </figcaption>
                                                         </figure>
                                                     </div>

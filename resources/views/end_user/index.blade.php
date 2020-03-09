@@ -9,9 +9,8 @@ use App\Http\Services\CommonService;
                 <div class="main-section row">
 
                     <div class="block-content">
-
                         @if(!is_null($homeData) && ((App::isLocale('vi') && !empty($homeData->text_block_1)) || App::isLocale('en') && !empty($homeData->text_block_1_en)))
-                            <div class="home-latest-news home-body-section col-sm-12">
+                            <div class="home-latest-news home-body-section col-sm-12" style="padding-bottom: 30px">
                                 <div class="home-latest-news-title category-title text-center">
                                     <span class="category-title-content">
                                         {{App::isLocale('vi') ? $homeData->text_block_1 : $homeData->text_block_1_en}}
@@ -26,11 +25,11 @@ use App\Http\Services\CommonService;
                                 {!! App::isLocale('vi') ? $homeData->description : $homeData->description_en !!}
                             </div>
                             @endif
-                            <div class="home-news-body-left col-sm-6 col-md-5">
-                                <iframe width="100%" height="288"
-                                        src="https://www.youtube.com/embed/EEj6hQrTusM" frameborder="0"
-                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                                        allowfullscreen=""></iframe>
+                            <div class="home-news-body-left col-sm-6 col-md-5" id="youtubeLink">
+{{--                                <iframe width="100%" height="288"--}}
+{{--                                        src="https://www.youtube.com/embed/EEj6hQrTusM" frameborder="0"--}}
+{{--                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"--}}
+{{--                                        allowfullscreen=""></iframe>--}}
                             </div>
                         </div>
                     </div>
@@ -89,7 +88,7 @@ use App\Http\Services\CommonService;
                     @if(!is_null($homeData) && $homeData->isShowBlock_3 == Config::get('constant.status.isShow'))
                         <div class="block-content">
                             @if((App::isLocale('vi') && !empty($homeData->text_block_3)) || (App::isLocale('en') && !empty($homeData->text_block_3_en)))
-                                <div class="home-latest-news home-body-section col-sm-12">
+                                <div class="home-latest-news home-body-section col-sm-12" style="margin-top: 30px;">
                                     <div class="home-latest-news-title category-title text-center">
                                         <span class="category-title-content">
                                             {{App::isLocale('vi') ? $homeData->text_block_3 : $homeData->text_block_3_en}}
@@ -109,7 +108,7 @@ use App\Http\Services\CommonService;
 
                     <div class="home-missing-articles home-body-section col-sm-12">
                         <div class="banner-full">
-                            <img src="https://cheerfarm.com//files/Uploads/farmerdream/fsd_farmers_dream.png"
+                            <img width="100%" src="https://cheerfarm.com//files/Uploads/farmerdream/fsd_farmers_dream.png"
                                  alt="">
                         </div>
                     </div>
@@ -119,3 +118,13 @@ use App\Http\Services\CommonService;
         </div>
     </div>
 @endsection
+@if(!is_null($homeData->video) && !empty($homeData->video) )
+    @section('scripts')
+        <script>
+            $(document).ready(function () {
+                $videoId = "{{$homeData->video}}"
+            })
+        </script>
+        <script src="{{ asset('js/youtube.js') }}"></script>
+    @endsection
+@endif

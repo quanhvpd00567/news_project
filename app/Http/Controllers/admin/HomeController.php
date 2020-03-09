@@ -16,6 +16,10 @@ class HomeController extends Controller
         $dataHome = $modelHome->first();
         if (is_null($dataHome)) {
             $dataHome = $modelHome;
+        } else {
+            if (!empty($dataHome->video) && !is_null($dataHome->video)) {
+                $dataHome->video = 'https://www.youtube.com/watch?v=' . $dataHome->video;
+            }
         }
         $data = [
             'dataHome' => $dataHome
@@ -28,7 +32,6 @@ class HomeController extends Controller
     {
         try {
             $params = $request->all();
-
             if (isset($request['isShowBlock_2'])) {
                 $params['isShowBlock_2'] = \Config::get('constant.status.isShow');
             } else {
@@ -43,6 +46,10 @@ class HomeController extends Controller
 
             unset($params['_token']);
 
+            if (isset($params['video'])) {
+                parse_str(parse_url($params['video'], PHP_URL_QUERY), $my_array_of_vars);
+                $params['video'] = $my_array_of_vars['v'];
+            }
             $modelHome = new HomePage();
             $dataHome = $modelHome->first();
 
@@ -63,7 +70,7 @@ class HomeController extends Controller
                 return redirect()->route('admin.home.page')->with('success', 'Cập nhật nội dung thành công');
             }
             return redirect()->route('admin.home.page')->with('error', 'Cập nhật nội dung thành công');
-        }catch (\Exception $exception){
+        } catch (\Exception $exception) {
             return redirect()->route('admin.home.page')->with('error', $exception->getMessage());
         }
     }

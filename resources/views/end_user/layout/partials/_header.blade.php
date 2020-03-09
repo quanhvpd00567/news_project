@@ -9,7 +9,7 @@
                 </button>
             </div>
             <a class="navbar-brand" href="/">
-                <img id="logo" class="d-inline-block align-top"  src="{{asset('/images/logo.png')}}" alt="">
+                <img id="logo" style="height: 150px" class="d-inline-block align-top"  src="{{asset('/images/logo.png')}}" alt="">
             </a>
             <div>
                 <div class="collapse navbar-collapse row" id="myNavbar">
@@ -17,8 +17,8 @@
                         @include('end_user.layout.partials._menu')
                     </ul>
                     <div class="navbar-text navbar-lang col-sm-2">
-                        <a class="@if (App::isLocale('en')) active-lang @endif" href="{!! route('change-language', ['en']) !!}">En</a>
                         <a class="@if (App::isLocale('vi')) active-lang @endif" href="{!! route('change-language', ['vi']) !!}">Vn</a>
+                        <a class="@if (App::isLocale('en')) active-lang @endif" href="{!! route('change-language', ['en']) !!}">En</a>
                     </div>
                 </div>
             </div>

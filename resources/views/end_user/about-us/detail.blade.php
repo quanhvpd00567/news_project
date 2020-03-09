@@ -39,9 +39,6 @@ use App\Http\Services\CommonService;
                     <div class="content-introduce" style="padding-top: 10px">
                         {!! App::isLocale('vi') ? $introduce->content : $introduce->content_en !!}
                     </div>
-
-
-
                     <div id="product_related">
                         <div class="breadcrumb" style="padding-top: 20px">
                             <ul>
@@ -50,7 +47,6 @@ use App\Http\Services\CommonService;
                                 </li>
                             </ul>
                         </div>
-
                         @if(!is_null($productsRelated))
                             <div class="home-missing-articles home-body-section col-sm-12">
                                 <div class="missing-articles-content row">
@@ -60,10 +56,14 @@ use App\Http\Services\CommonService;
                                                 <div class="img-product missing-articles-item-image news-item-image">
                                                     <figure>
                                                         <div>
-                                                            <img src="{{$item->image_1}}" alt="{{App::isLocale('vi') ? $item->name : $item->name_en}}">
+                                                            <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                            </a>
                                                         </div>
                                                         <figcaption>
-                                                            <img src="{{$item->image_2}}" alt="{{App::isLocale('vi') ? $item->name : $item->name_en}}">
+                                                            <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                            </a>
                                                         </figcaption>
                                                     </figure>
                                                 </div>

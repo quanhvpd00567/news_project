@@ -69,7 +69,7 @@ if (!isset($isPageCreate)){
     <div class="form-group">
         <label>Chọn banner</label>
         <div class="input-group input-group-sm">
-            {{Form::text('banner', old('keyword', $manufacturer->banner), [ 'readonly' ,'class' => 'form-control', 'id' => "banner", 'placeholder' => "Chọn banner"])}}
+            {{Form::text('banner', old('banner', $manufacturer->banner), [ 'readonly' ,'class' => 'form-control', 'id' => "banner", 'placeholder' => "Chọn banner"])}}
             <span class="input-group-btn">
                 <button type="button" class="btn btn-info btn-flat btn-choose-img">
                     <i class="fa fa-image"></i>

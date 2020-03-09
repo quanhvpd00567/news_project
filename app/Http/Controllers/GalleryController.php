@@ -3,13 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Album;
+use App\Models\Gallery;
 use App\Models\Product;
 use Illuminate\Http\Request;
 
 class GalleryController extends BaseController
 {
     public function index(){
-        $gallery = Album::where('type', \Config::get('constant.types.gallery'))->first();
+        $gallery = Gallery::all();
         $item = new Product;
         $tableProduct = $item->getTable();
         $productsRelated = Product::join('categories', 'categories.id', '=', "{$tableProduct}.category_id")

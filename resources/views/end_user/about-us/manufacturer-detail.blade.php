@@ -95,10 +95,14 @@ use App\Http\Services\CommonService;
                                                     <div class="img-product missing-articles-item-image news-item-image">
                                                         <figure>
                                                             <div>
-                                                                <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                    <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                </a>
                                                             </div>
                                                             <figcaption>
-                                                                <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                    <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                </a>
                                                             </figcaption>
                                                         </figure>
                                                     </div>

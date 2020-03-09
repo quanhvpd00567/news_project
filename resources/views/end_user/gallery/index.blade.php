@@ -20,39 +20,26 @@ use App\Http\Services\CommonService;
                         </ul>
                     </div>
                     <div class="row" id="content-gallery">
-                            @if(!is_null($images))
+                            @if(count($images) > 0)
+                                <?php
+                            ?>
                                 <div id="single-image">
-                                    @for($i = 1; $i <= 10; $i++)
-                                        @if(!empty($images["image_{$i}"]) && !is_null($images["image_{$i}"] ))
-                                            <img id="load-image" style=""
-                                                 src="{{$images["image_{$i}"]}}">
-                                            <?php $hasImage = true ?>
-                                            @break
-                                        @endif
-                                    @endfor
+                                    <img id="load-image" style=""src="{{$images->first()->url}}">
                                 </div>
                                 <div class="carousel slide" id="myCarousel">
                                     <div class="carousel-inner">
-                                        <?php
-                                        $active = 'active'
-                                        ?>
-                                        @for($i = 1; $i <= 10; $i++)
-                                            @if(!empty($images["image_{$i}"]) && !is_null($images["image_{$i}"] ))
-                                                <div class="item {{$active}}">
-                                                    <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
-                                                        <img src="{{$images["image_{$i}"]}}" class="img-responsive image-slide">
-                                                    </div>
+                                        @foreach($images as $key => $item)
+                                            <div class="item @if($key == 0) active @endif">
+                                                <div class="col-lg-3 col-xs-3 col-md-3 col-sm-3">
+                                                    <img src="{{$item->url}}" class="img-responsive image-slide">
                                                 </div>
-                                                <?php $active = '' ?>
-                                            @endif
-                                        @endfor
+                                            </div>
+                                        @endforeach
                                     </div>
-                                    @if(isset($hasImage))
-                                        <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
-                                                class="glyphicon glyphicon-chevron-left"></i></a>
-                                        <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
-                                                class="glyphicon glyphicon-chevron-right"></i></a>
-                                    @endif
+                                    <a class="left carousel-control" href="#myCarousel" data-slide="prev"><i
+                                            class="glyphicon glyphicon-chevron-left"></i></a>
+                                    <a class="right carousel-control" href="#myCarousel" data-slide="next"><i
+                                            class="glyphicon glyphicon-chevron-right"></i></a>
                                 </div>
                             @endif
                         </div>
@@ -73,10 +60,14 @@ use App\Http\Services\CommonService;
                                                 <div class="img-product missing-articles-item-image news-item-image">
                                                     <figure>
                                                         <div>
-                                                            <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                            <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                            </a>
                                                         </div>
                                                         <figcaption>
-                                                            <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                            <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                            </a>
                                                         </figcaption>
                                                     </figure>
                                                 </div>
