@@ -10,6 +10,9 @@ use App\Models\User;
 class LoginController extends Controller
 {
     public function login(){
+        if (Auth::check()){
+            return redirect()->route('admin.home.page');
+        }
         return view('admin.pages.login.index');
     }
 

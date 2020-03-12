@@ -66,12 +66,11 @@
 
             <div class="form-group has-feedback">
                 <label>Mật khẩu</label>
-                {{Form::text('password', old('password', null), ['class' => 'form-control', 'placeholder' => 'Nhập mật khẩu'])}}
+                {{Form::password('password', ['class' => 'form-control', 'placeholder' => 'Nhập mật khẩu'])}}
                 @if($errors->has('password'))
                     <span class="color-error">{{$errors->first('password')}}</span>
                 @endif
             </div>
-
             <div class="offset-xs-8 text-center">
                 <button type="submit" class="btn btn-primary btn-login">Sign In</button>
             </div>

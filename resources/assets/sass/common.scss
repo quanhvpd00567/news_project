@@ -206,7 +206,6 @@ div {
     color: #ffffff;
 }
 
-
 //Latest News
 .home-latest-news-item {
     min-height: 165px;
@@ -686,7 +685,9 @@ div {
 
 .banner-full {
     width: 100%;
-    min-height: 150px;
+    img{
+        height: 400px;
+    }
 }
 
 .cke_required{
