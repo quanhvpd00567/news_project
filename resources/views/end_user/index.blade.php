@@ -62,10 +62,14 @@ use App\Http\Services\CommonService;
                                         <div class="img-product missing-articles-item-image news-item-image">
                                             <figure>
                                                 <div>
-                                                    <img src="{{$product->image_1}}" alt="img05">
+                                                    <a href="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
+                                                        <img src="{{$product->image_1}}" alt="img05">
+                                                    </a>
                                                 </div>
                                                 <figcaption>
-                                                    <img src="{{$product->image_2}}" alt="Apple Cobbler">
+                                                    <a href="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
+                                                        <img src="{{$product->image_2}}" alt="Apple Cobbler">
+                                                    </a>
                                                 </figcaption>
                                             </figure>
                                         </div>
