@@ -3,7 +3,6 @@
 
 namespace App\Http\Services;
 
-use Webpatser\Uuid\Uuid;
 
 class CommonService
 {
