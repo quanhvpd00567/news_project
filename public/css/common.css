@@ -153,6 +153,15 @@ div {
   padding-left: 15px;
 }
 
+#border-header {
+  width: 100%;
+  top: 50px;
+  margin: 0 !important;
+  border-bottom: 2px solid red;
+  position: fixed;
+  z-index: 1000;
+}
+
 .home-news-body {
   margin-top: 20px;
   margin-bottom: 10px;

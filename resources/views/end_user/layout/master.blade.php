@@ -38,8 +38,9 @@ $settingCustom = \App\Models\Setting::first();
     <div class="container">
         @include('end_user.layout.partials._header')
     </div>
+    <hr id="border-header">
     <!-- end header  -->
-    <section class="news-section home-news-body">
+    <section class="news-section home-news-body" id="cheerfarm-content">
         @yield('content')
     </section>
     @include('end_user.layout.partials._buttons')
@@ -54,5 +55,18 @@ $settingCustom = \App\Models\Setting::first();
 <script src="{{ asset('js/home.js') }}"></script>
 <script src="{{ asset('js/button-right.js') }}"></script>
 @yield('scripts')
+<script>
+    $(document).ready(function () {
+
+        $(window).on("scroll", function() {
+            var scrollPosition =  $(window).scrollTop();
+            if(scrollPosition > 100){
+                $('#border-header').show()
+            }else{
+                $('#border-header').hide()
+            }
+        });
+    })
+</script>
 </body>
 </html>
