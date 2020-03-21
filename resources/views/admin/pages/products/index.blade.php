@@ -80,6 +80,11 @@
                                                     <i class="fa fa-image"></i>
                                                     Thêm ảnh
                                                 </a>
+                                                <a href="{{route('admin.product.delete', [$product->id])}}" class="btn btn-danger"
+                                                   onclick="return confirm('Có chắc chắn xóa không?')">
+                                                    <i class="fa fa-trash"></i>
+                                                    Xóa
+                                                </a>
                                             </td>
                                         </tr>
                                         <?php $count++ ?>

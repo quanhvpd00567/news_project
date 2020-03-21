@@ -8,6 +8,8 @@ use App\Models\admin\Manufacturer;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
+use mysql_xdevapi\Exception;
 
 class ManufacturerController extends Controller
 {
@@ -109,6 +111,24 @@ class ManufacturerController extends Controller
             return redirect()->route('admin.manufacturer.image', [$id])->with('success', "Cập nhật hình ảnh cho : '{$manufacturer->name}' thành công");
         }
         return redirect()->route('admin.manufacturer.image', [$id])->with('error', "Cập nhật hình ảnh cho : '{$manufacturer->name}' thất bại");
+    }
+
+    public function deleteManufacturer($id){
+        try {
+            DB::beginTransaction();
+            $manufacturer = $this->_modelManufacturer->getManufacturerById($id);
+            if (is_null($manufacturer)){
+                return abort(404);
+            }
+            $manufacturer->delete();
+            DB::commit();
+            return redirect()->route('admin.manufacturer.list')->with('success', 'Xóa loại sản xuất thành công');
+
+        }catch (Exception $e){
+            DB::rollBack();
+            return redirect()->route('admin.manufacturer.list')->with('error', 'Xóa loại sản xuất thất bại');
+        }
+
     }
 
 }

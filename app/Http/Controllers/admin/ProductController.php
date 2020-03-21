@@ -6,8 +6,10 @@ use App\Models\admin\Category;
 use App\Models\admin\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use mysql_xdevapi\Exception;
 use Symfony\Component\VarDumper\Cloner\Data;
 
 class ProductController extends Controller
@@ -153,7 +155,20 @@ class ProductController extends Controller
     }
 
 
-    public function testSend(){
+    public function deleteProduct($id){
+        try {
+            DB::beginTransaction();
+            $product = $this->_modelProduct->getProductById($id);
+            if (is_null($product)){
+                return abort(400);
+            }
+            $product->delete();
+            DB::commit();
+            return redirect()->route('admin.product.list')->with('success', 'Xóa sản phẩm thành công');
+        }catch (Exception $exception){
+            DB::rollBack();
+            return redirect()->route('admin.product.list')->with('error', 'Xóa sản phẩm thất bại');
+        }
 
     }
 }

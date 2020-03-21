@@ -70,6 +70,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'isAdmin'],
         Route::get('new', 'admin\ProductController@newProduct')->name('new');
         Route::post('create', 'admin\ProductController@createProduct')->name('create');
         Route::get('edit/{id}', 'admin\ProductController@editProduct')->name('edit');
+        Route::get('delete/{id}', 'admin\ProductController@deleteProduct')->name('delete');
         Route::get('ckfinder', 'admin\ProductController@showFinder')->name('ckfinder');
         Route::post('update/{id}', 'admin\ProductController@updateProduct')->name('update');
     });
@@ -94,6 +95,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'isAdmin'],
         Route::get('new', 'admin\ManufacturerController@newManufacturer')->name('new');
         Route::post('create', 'admin\ManufacturerController@createManufacturer')->name('create');
         Route::get('edit/{id}', 'admin\ManufacturerController@editManufacturer')->name('edit');
+        Route::get('delete/{id}', 'admin\ManufacturerController@deleteManufacturer')->name('delete');
         Route::post('update/{id}', 'admin\ManufacturerController@updateManufacturer')->name('update');
         Route::get('images/{id}', 'admin\ManufacturerController@newListImageManufacturer')->name('image');
         Route::post('create-images/{id}', 'admin\ManufacturerController@createListImageManufacturer')->name('create.image');
