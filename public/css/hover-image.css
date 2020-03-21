@@ -10,6 +10,19 @@
   position: relative;
 }
 
+.grid > .missing-articles-item {
+  padding-bottom: 20px;
+  padding-top: 20px;
+  /*margin-right: 10px;*/
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+}
+
+.grid > .missing-articles-item:hover {
+  -webkit-box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+  box-shadow: -1px 9px 40px -12px rgba(0, 0, 0, 0.75);
+}
+
 .grid figure {
   margin: 0;
   height: 100%;

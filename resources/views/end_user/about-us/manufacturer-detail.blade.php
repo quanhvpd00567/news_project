@@ -79,7 +79,7 @@ use App\Http\Services\CommonService;
                         </div>
 
                         <div id="product_related">
-                            <div class="breadcrumb" style="padding-top: 20px">
+                            <div class="breadcrumb">
                                 <ul>
                                     <li>
                                         <h3 style="font-weight: 700">{{trans('view.commons.related product')}}</h3>

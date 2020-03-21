@@ -3,15 +3,14 @@
     <link rel="stylesheet" href="{{ asset('css/contact.css') }}">
 @endsection
 @section('content')
+    <div class="banner-full">
+        <img style="width: 100%" src="{{asset('images/bg/gallery_banner.png')}}" alt="">
+    </div>
+    <br>
     <div class="home-news-body-container container">
         <div class="home-news-body-row row">
             <div class="home-news-body-left col-sm-12 col-md-12">
                 <div class="main-section row">
-
-                    <div id="banner-contact">
-                        <img style="width: 100%" src="{{asset('images/bg/gallery_banner.png')}}" alt="">
-                    </div>
-
                     <div class="breadcrumb">
                         <ul>
                             <li>@lang('view.contact.Contact')</li>

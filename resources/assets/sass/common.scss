@@ -29,6 +29,7 @@ div {
         padding: 0;
         background-color: transparent;
         color: red;
+        font-size: 18px;
         font-weight: bold;
         ul {
             padding-left: unset;
@@ -37,7 +38,7 @@ div {
                 display: inline-block;
                 a {
                     color: red;
-                    font-size: 14px;
+                    font-size: 18px;
                 }
             }
             li:before {
@@ -83,7 +84,6 @@ div {
 #list-tabs{
     padding-top: 20px;
     padding-bottom: 20px;
-    border-bottom: 2px solid #FF4100;
 }
 
 .news-item-image {
@@ -107,6 +107,11 @@ div {
 
 #product_related {
     padding-top: 10px;
+    .breadcrumb{
+        padding-bottom: 20px;
+        padding-top: 20px;
+        border-top: 2px solid #FF4100;
+    }
 }
 .news-item-content-info {
     margin-top: auto;
@@ -135,7 +140,7 @@ div {
 }
 
 .home-body-section {
-    margin-bottom: 5px;
+    margin-bottom: 20px;
 }
 
 .news-item {
@@ -697,7 +702,7 @@ div {
 .banner-full {
     width: 100%;
     img{
-        height: 400px;
+        height: 300px;
     }
 }
 
@@ -769,7 +774,9 @@ div {
         padding-right: 15px;
     }
     .banner-full {
-        min-height: auto;
+        img{
+            height: 150px;
+        }
     }
     .navbar-inverse {
         .navbar-toggle, .navbar-toggle:hover {
