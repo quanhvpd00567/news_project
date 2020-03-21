@@ -11,6 +11,7 @@ $settingCustom = \App\Models\Setting::first();
     <title> @yield('title') {{is_null($settingCustom) ? null : $settingCustom->name}}</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon.png')}}"/>
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="{{ asset('lib/slick/cs/slick.css') }}">
