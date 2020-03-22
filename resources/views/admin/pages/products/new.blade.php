@@ -1,7 +1,5 @@
 @extends('admin.layout.master')
 @section('styles')
-    <link rel="stylesheet" href="{{ asset('plugin/dropzone/dropzone.css') }}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
 @endsection
 @section('content')
     <div class="row">

@@ -41,6 +41,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'isAdmin'],
         Route::get('website', 'admin\SettingController@website')->name('website');
         Route::get('mail', 'admin\SettingController@settingMail')->name('mail');
         Route::post('update', 'admin\SettingController@updateSetting')->name('update');
+        Route::get('banners', 'admin\SettingController@bannerSetting')->name('banner');
+        Route::post('update-banner', 'admin\SettingController@updateBannerSetting')->name('update.banner');
     });
 
     Route::group(['prefix' => 'categories', 'as' => 'category.'], function() {
@@ -114,7 +116,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'isAdmin'],
 
     Route::get('home-page', 'admin\HomeController@home')->name('home.page');
     Route::post('home-page-update', 'admin\HomeController@update')->name('home.page.update');
-
 });
 
 

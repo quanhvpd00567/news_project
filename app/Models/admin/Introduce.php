@@ -16,16 +16,16 @@ class Introduce extends \App\Models\Introduce
         return self::find($id);
     }
 
-    public function createIntroduce($params){
+    public function createIntroduce($data){
         try {
-            $this->name = $params['name'];
-            $this->name_en = $params['name_en'];
-            $this->content = $params['content'];
-            $this->content_en = $params['content_en'];
-            $this->banner = $params['banner'];
-            $this->keyword = $params['keyword'];
-            $this->keyword_en = $params['keyword_en'];
-            $this->slug = CommonService::createSlug($params['name']);
+            $this->name = $data['name'];
+            $this->name_en = $data['name_en'];
+            $this->content = $data['content'];
+            $this->content_en = $data['content_en'];
+            $this->banner = $data['banner'];
+            $this->keyword = $data['keyword'];
+            $this->keyword_en = $data['keyword_en'];
+            $this->slug = CommonService::createSlug($data['name']);
             $this->status = \Config::get('constant.status.isShow');
             if (!isset($params['status'])){
                 $this->status = \Config::get('constant.status.isNotShow');
@@ -36,18 +36,18 @@ class Introduce extends \App\Models\Introduce
         }
     }
 
-    public function updateIntroduce($params, $introduce){
+    public function updateIntroduce($data, $introduce){
         try {
-            $introduce->name = $params['name'];
-            $introduce->name_en = $params['name_en'];
-            $introduce->content = $params['content'];
-            $introduce->content_en = $params['content_en'];
-            $introduce->banner = $params['banner'];
-            $introduce->keyword = $params['keyword'];
-            $introduce->keyword_en = $params['keyword_en'];
-            $introduce->slug = CommonService::createSlug($params['name']);
+            $introduce->name = $data['name'];
+            $introduce->name_en = $data['name_en'];
+            $introduce->content = $data['content'];
+            $introduce->content_en = $data['content_en'];
+            $introduce->banner = $data['banner'];
+            $introduce->keyword = $data['keyword'];
+            $introduce->keyword_en = $data['keyword_en'];
+            $introduce->slug = CommonService::createSlug($data['name']);
             $introduce->status = \Config::get('constant.status.isShow');
-            if (!isset($params['status'])){
+            if (!isset($data['status'])){
                 $introduce->status = \Config::get('constant.status.isNotShow');
             }
             return $introduce->save();

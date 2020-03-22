@@ -22,6 +22,15 @@ use App\Http\Services\CommonService;
 @endsection
 
 @section('content')
+    <?php
+    $banner = \App\Models\admin\Banner::where('type', 'screen_product')->first()
+    ?>
+    @if(!is_null($banner) && $banner->status == 1)
+        <div class="banner-full">
+            <img style="width: 100%" src="{{$banner->url}}" alt="">
+        </div>
+        <br>
+    @endif
     <div class="home-news-body-container container">
         <div class="home-news-body-row row">
             <div class="home-news-body-left col-sm-12 col-md-12">

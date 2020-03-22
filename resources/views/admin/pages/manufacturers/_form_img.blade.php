@@ -27,7 +27,7 @@ $routeName = 'admin.manufacturer.create.image';
                 <i class="fa fa-save"></i>
                 Lưu
             </button>
-            <a class="btn btn-primary" href="{{route('admin.product.list')}}">
+            <a class="btn btn-primary" href="{{route('admin.manufacturer.list')}}">
                 <i class="fa fa-list"></i>
                 Trở về danh sách
             </a>

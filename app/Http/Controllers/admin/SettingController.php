@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Requests\SettingRequest;
+use App\Models\admin\Banner;
 use App\Models\admin\Setting;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Config;
 
@@ -170,6 +173,69 @@ class SettingController extends AdminController
         if ($isSaveSetting) {
             return redirect()->back()->with('success', 'Cập nhật thành công');
         }
+    }
+
+    public function bannerSetting()
+    {
+        $arrayScreen = [
+            'screen_home' => 'Banner cho trang chủ',
+            'screen_product' => 'Banner cho trang sản phẩm',
+            'screen_about_us' => 'Banner cho trang giới thiệu',
+            'screen_gallery' => 'Banner cho trang bộ sưu tập',
+            'screen_manufacturer' => 'Banner cho trang sản xuất',
+            'screen_contact' => 'Banner cho trang liên hệ',
+        ];
+        $banners = Banner::select('url', 'type', 'status')->get()->toArray();
+        $bannersNew = [];
+        foreach ($banners as $item){
+            $bannersNew[$item['type']] = $item;
+        }
+        $data = [
+            'screens' => $arrayScreen,
+            'banners' => $bannersNew,
+        ];
+        return view('admin.pages.setting.banner', $data);
+    }
+
+    public function updateBannerSetting(Request $request)
+    {
+        try {
+            DB::beginTransaction();
+            $arrayScreen = [
+                'screen_home' => 0,
+                'screen_product' => 1,
+                'screen_about_us' => 2,
+                'screen_gallery' => 3,
+                'screen_manufacturer' => 4,
+                'screen_contact' => 5
+            ];
+
+            $argKey = array_keys($arrayScreen);
+            $dataSave = [];
+
+            foreach ($argKey as $key) {
+                $url = $request[$key];
+                $checked = $request["check_$key"];
+                if (!is_null($key) && !empty($url)) {
+                    $row = [
+                        'url' => $url,
+                        'type' => $key,
+                        'status' => is_null($checked) ? Config::get('constant.status.isNotShow') : Config::get('constant.status.isShow'),
+                        'created_at' => Carbon::now(),
+                        'updated_at' => Carbon::now()
+                    ];
+                    array_push($dataSave, $row);
+                }
+            }
+            Banner::truncate();
+            Banner::insert($dataSave);
+            DB::commit();
+            return redirect()->route('admin.setting.banner')->with('success', 'Cập nhât thành công');
+        }catch (\Exception $exception){
+            DB::rollBack();
+            return redirect()->route('admin.setting.banner')->with('error', 'Cập nhât thất bại');
+        }
+
     }
 
     private function getParams($request, $cols = [])

@@ -8,20 +8,23 @@ use App\Http\Services\CommonService;
 @endsection
 
 @section('meta')
-{{--    <meta property="og:title" content="{{App::isLocale('vi') ? $product->name : $product->name_en}}">--}}
-{{--    <meta property="og:description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">--}}
-{{--    <meta property="description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">--}}
-{{--    <meta name="og:image" content="{{URL::to('/') . $product->image_1}}">--}}
-{{--    <meta itemprop="image" content="{{URL::to('/') . $product->image_1}}">--}}
-{{--    <meta name="keywords" content="{{App::isLocale('vi') ? $product->keyword : $product->keyword_en}}}">--}}
-{{--    <meta property="og:url" content="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">--}}
+    <meta property="og:title" content="{{App::isLocale('vi') ? $manufacturer->name : $manufacturer->name_en}}">
+    <meta name="og:image" content="{{URL::to('/') . $manufacturer->image}}">
+    <meta itemprop="image" content="{{URL::to('/') . $manufacturer->image}}">
+    <meta name="keywords" content="{{App::isLocale('vi') ? $manufacturer->keyword : $manufacturer->keyword_en}}}">
+    <meta property="og:url" content="{{CommonService::createUrlProduct($manufacturer->id, $manufacturer->slug, \Config::get('constant.keys_url.manufacturer'))}}">
     <meta content="INDEX,FOLLOW" name="robots" />
     <meta property="og:site_name" content="{{URL::to('/')}}" />
     <meta property="og:locale" content="{{App::isLocale('vi') ? 'vi_VN' : 'en_US'}}">
-    <meta property="og:type" content="product">
 @endsection
 
 @section('content')
+    @if(!is_null($manufacturer->banner) && !empty($manufacturer->banner))
+        <div class="banner-full">
+            <img width="100%" src="{{$manufacturer->banner}}">
+        </div>
+        <br>
+    @endif
     <div class="home-news-body-container container">
         <div class="home-news-body-row row">
             <div class="home-news-body-left col-sm-12 col-md-12">
@@ -30,7 +33,7 @@ use App\Http\Services\CommonService;
                         <ul>
                             <li>
                                 <a href="">
-                                    {{trans('view.category.Product')}}
+                                    {{trans('view.manufacturer.manufacturer')}}
                                 </a>
                             </li>
                             <li>

@@ -156,6 +156,12 @@
                             Cài đặt email
                         </a>
                     </li>
+                    <li class="@if('admin.setting.banner' == $asUrl) active @endif">
+                        <a href="{{route('admin.setting.banner')}}">
+                            <i class="fa fa-photo"></i>
+                            Cài đặt banner
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>

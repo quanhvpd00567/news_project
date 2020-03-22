@@ -3,13 +3,6 @@ use App\Http\Services\CommonService;
 ?>
 @extends('end_user.layout.master')
 @section('meta')
-{{--    <meta property="og:title" content="{{App::isLocale('vi') ? $product->name : $product->name_en}}">--}}
-{{--    <meta property="og:description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">--}}
-{{--    <meta property="description" content="{{App::isLocale('vi') ? $product->description : $product->description_en}}">--}}
-{{--    <meta name="og:image" content="{{URL::to('/') . $product->image_1}}">--}}
-{{--    <meta itemprop="image" content="{{URL::to('/') . $product->image_1}}">--}}
-{{--    <meta name="keywords" content="{{App::isLocale('vi') ? $product->keyword : $product->keyword_en}}}">--}}
-{{--    <meta property="og:url" content="{{CommonService::createUrlProduct($product->id, $product->slug)}}">--}}
     <meta content="INDEX,FOLLOW" name="robots" />
     <meta property="og:site_name" content="{{URL::to('/')}}" />
     <meta property="og:locale" content="{{App::isLocale('vi') ? 'vi_VN' : 'en_US'}}">
@@ -17,6 +10,15 @@ use App\Http\Services\CommonService;
 @endsection
 
 @section('content')
+    <?php
+    $banner = \App\Models\admin\Banner::where('type', 'screen_product')->first()
+    ?>
+    @if(!is_null($banner) && $banner->status == 1)
+        <div class="banner-full">
+            <img style="width: 100%" src="{{$banner->url}}" alt="">
+        </div>
+        <br>
+    @endif
     <div class="home-news-body-container container">
         <div class="home-news-body-row row">
             <div class="home-news-body-left col-sm-12 col-md-12">

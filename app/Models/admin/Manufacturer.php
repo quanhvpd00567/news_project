@@ -11,21 +11,21 @@ class Manufacturer extends \App\Models\Manufacturer
         return self::paginate(10);
     }
 
-    public function createManufacturer($params){
+    public function createManufacturer($data){
         try {
-            $this->name = empty($params['name']);
-            $this->name_en = empty($params['name_en']);
-            $this->description = empty($params['description']);
-            $this->description_en = empty($params['description_en']);
-            $this->content = empty($params['content']);
-            $this->content_en = empty($params['content_en']);
-            $this->banner = empty($params['banner']);
-            $this->keyword = empty($params['keyword']);
-            $this->keyword_en = empty($params['keyword_en']);
-            $this->slug = CommonService::createSlug($params['name']);
-            $this->image = $params['image'];
+            $this->name = $data['name'] ;
+            $this->name_en = $data['name_en'];
+            $this->description = $data['description'];
+            $this->description_en = $data['description_en'];
+            $this->content = $data['content'];
+            $this->content_en = $data['content_en'];
+            $this->banner = $data['banner'];
+            $this->keyword = $data['keyword'];
+            $this->keyword_en = $data['keyword_en'];
+            $this->slug = CommonService::createSlug($data['name']);
+            $this->image = $data['image'];
             $this->status = \Config::get('constant.status.isShow');
-            if (!isset($params['status'])){
+            if (!isset($data['status'])){
                 $this->status = \Config::get('constant.status.isNotShow');
             }
             return $this->save();
@@ -38,25 +38,26 @@ class Manufacturer extends \App\Models\Manufacturer
         return self::find($id);
     }
 
-    public function updateManufacturer($params, $manufacturer){
+    public function updateManufacturer($data, $manufacturer){
         try {
-            $manufacturer->name = empty($params['name']);
-            $manufacturer->name_en = empty($params['name_en']);
-            $manufacturer->description = empty($params['description']);
-            $manufacturer->description_en = empty($params['description_en']);
-            $manufacturer->content = empty($params['content']);
-            $manufacturer->content_en = empty($params['content_en']);
-            $manufacturer->banner = empty($params['banner']);
-            $manufacturer->keyword = empty($params['keyword']);
-            $manufacturer->keyword_en = empty($params['keyword_en']);
-            $manufacturer->slug = CommonService::createSlug($params['name']);
-            $manufacturer->image = $params['image'];
+            $manufacturer->name = $data['name'] ;
+            $manufacturer->name_en = $data['name_en'];
+            $manufacturer->description = $data['description'];
+            $manufacturer->description_en = $data['description_en'];
+            $manufacturer->content = $data['content'];
+            $manufacturer->content_en = $data['content_en'];
+            $manufacturer->banner = $data['banner'];
+            $manufacturer->keyword = $data['keyword'];
+            $manufacturer->keyword_en = $data['keyword_en'];
+            $manufacturer->slug = CommonService::createSlug($data['name']);
+            $manufacturer->image = $data['image'];
             $manufacturer->status = \Config::get('constant.status.isShow');
-            if (!isset($params['status'])){
+            if (!isset($data['status'])){
                 $manufacturer->status = \Config::get('constant.status.isNotShow');
             }
             return $manufacturer->save();
         }catch (\Exception $e){
+            dd($e);
             return false;
         }
     }
