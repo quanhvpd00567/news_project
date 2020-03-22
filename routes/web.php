@@ -115,6 +115,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'isAdmin'],
     });
 
     Route::get('home-page', 'admin\HomeController@home')->name('home.page');
+    Route::get('/', 'admin\HomeController@home');
     Route::post('home-page-update', 'admin\HomeController@update')->name('home.page.update');
 });
 
