@@ -64,27 +64,29 @@ use App\Http\Services\CommonService;
                                     <div class="grid cs-style-4">
                                         @foreach($productsRelated as $key => $item)
                                             <div class="missing-articles-item news-item col-sm-6 col-lg-4">
-                                                <div class="img-product missing-articles-item-image news-item-image">
-                                                    <figure>
-                                                        <div>
-                                                            <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
-                                                                <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
-                                                            </a>
+                                                <div class="item-product">
+                                                    <div class="img-product missing-articles-item-image news-item-image">
+                                                        <figure>
+                                                            <div>
+                                                                <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                    <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                </a>
+                                                            </div>
+                                                            <figcaption>
+                                                                <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                    <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
+                                                                </a>
+                                                            </figcaption>
+                                                        </figure>
+                                                    </div>
+                                                    <div class="missing-articles-item-content news-item-content">
+                                                        <div class="missing-articles-item-title">
+                                                            <h4 class="body-content limit-line-2">
+                                                                <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                    {{ App::isLocale('vi') ? $item->name : $item->name_en }}
+                                                                </a>
+                                                            </h4>
                                                         </div>
-                                                        <figcaption>
-                                                            <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
-                                                                <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
-                                                            </a>
-                                                        </figcaption>
-                                                    </figure>
-                                                </div>
-                                                <div class="missing-articles-item-content news-item-content">
-                                                    <div class="missing-articles-item-title">
-                                                        <h4 class="body-content limit-line-2">
-                                                            <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
-                                                                {{ App::isLocale('vi') ? $item->name : $item->name_en }}
-                                                            </a>
-                                                        </h4>
                                                     </div>
                                                 </div>
                                             </div>

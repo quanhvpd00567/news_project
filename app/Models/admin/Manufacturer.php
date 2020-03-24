@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Manufacturer extends \App\Models\Manufacturer
 {
     public function getListManufacturer(){
-        return self::paginate(10);
+        return self::orderBy('id', 'desc')->paginate(10);
     }
 
     public function createManufacturer($data){

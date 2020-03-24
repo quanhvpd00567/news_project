@@ -21,7 +21,7 @@ use App\Http\Services\CommonService;
                         <div class="block-content">
                             @if(!is_null($homeData) && ((App::isLocale('vi') && !empty($homeData->text_block_1)) || App::isLocale('en') && !empty($homeData->text_block_1_en)))
                                 <div class="home-latest-news home-body-section col-sm-12" style="padding-bottom: 30px">
-                                    <div class="home-latest-news-title category-title text-center">
+                                    <div class="home-latest-news-title category-title text-center" style="box-shadow: none">
                                         <span class="category-title-content">
                                             {{App::isLocale('vi') ? $homeData->text_block_1 : $homeData->text_block_1_en}}
                                         </span>
@@ -36,10 +36,6 @@ use App\Http\Services\CommonService;
                                 </div>
                                 @endif
                                 <div class="home-news-body-left col-sm-6 col-md-5" id="youtubeLink">
-    {{--                                <iframe width="100%" height="288"--}}
-    {{--                                        src="https://www.youtube.com/embed/EEj6hQrTusM" frameborder="0"--}}
-    {{--                                        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"--}}
-    {{--                                        allowfullscreen=""></iframe>--}}
                                 </div>
                             </div>
                         </div>
@@ -48,7 +44,7 @@ use App\Http\Services\CommonService;
                                 @if((App::isLocale('vi') && !empty($homeData->text_block_2)) || (App::isLocale('en') && !empty($homeData->text_block_2_en)))
                                     <div class="home-latest-news home-body-section col-sm-12">
                                         <div class="home-latest-news-title category-title text-center">
-                                            <span class="category-title-content">
+                                            <span class="category-title-content font-weight-bold">
                                                 {{App::isLocale('vi') ? $homeData->text_block_2 : $homeData->text_block_2_en}}
                                             </span>
                                         </div>
@@ -69,30 +65,32 @@ use App\Http\Services\CommonService;
                                 <div class="grid cs-style-4">
                                     @foreach($products as $key => $product)
                                         <div class="missing-articles-item news-item col-sm-6 col-lg-4">
-                                        <div class="img-product missing-articles-item-image news-item-image">
-                                            <figure>
-                                                <div>
-                                                    <a href="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
-                                                        <img src="{{$product->image_1}}" alt="img05">
-                                                    </a>
+                                            <div class="item-product">
+                                                <div class="img-product missing-articles-item-image news-item-image">
+                                                    <figure>
+                                                        <div class="img-1">
+                                                            <a href="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                <img src="{{$product->image_1}}" alt="{{ App::isLocale('vi') ? $product->name : $product->name_en }}">
+                                                            </a>
+                                                        </div>
+                                                        <div class="img-2">
+                                                            <a href="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                <img src="{{$product->image_2}}" alt="{{ App::isLocale('vi') ? $product->name : $product->name_en }}">
+                                                            </a>
+                                                        </div>
+                                                    </figure>
                                                 </div>
-                                                <figcaption>
-                                                    <a href="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
-                                                        <img src="{{$product->image_2}}" alt="Apple Cobbler">
-                                                    </a>
-                                                </figcaption>
-                                            </figure>
-                                        </div>
-                                        <div class="missing-articles-item-content news-item-content">
-                                            <div class="missing-articles-item-title">
-                                                <h4 class="body-content limit-line-2">
-                                                    <a href="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
-                                                        {{ App::isLocale('vi') ? $product->name : $product->name_en }}
-                                                    </a>
-                                                </h4>
+                                                <div class="missing-articles-item-content news-item-content">
+                                                    <div class="missing-articles-item-title">
+                                                        <h4 class="body-content limit-line-2">
+                                                            <a href="{{CommonService::createUrlProduct($product->id, $product->slug, \Config::get('constant.keys_url.product'))}}">
+                                                                {{ App::isLocale('vi') ? $product->name : $product->name_en }}
+                                                            </a>
+                                                        </h4>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
                                     @endforeach
                                 </div>
                             </div>
@@ -103,7 +101,7 @@ use App\Http\Services\CommonService;
                                 @if((App::isLocale('vi') && !empty($homeData->text_block_3)) || (App::isLocale('en') && !empty($homeData->text_block_3_en)))
                                     <div class="home-latest-news home-body-section col-sm-12" style="margin-top: 30px;">
                                         <div class="home-latest-news-title category-title text-center">
-                                            <span class="category-title-content">
+                                            <span class="category-title-content font-weight-bold">
                                                 {{App::isLocale('vi') ? $homeData->text_block_3 : $homeData->text_block_3_en}}
                                             </span>
                                         </div>

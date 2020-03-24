@@ -18,7 +18,7 @@
                         <table class="table table-bordered">
                             <thead class="text-center">
                             <th style="width: 10px">#</th>
-                            <th style="width: 25%">Banner</th>
+                            <th style="width: 25%">Hình ảnh</th>
                             <th style="width: 20%">
                                 Tên loại hình sản xuất
                                 <br>
@@ -40,7 +40,7 @@
                                 <tr>
                                     <td>{{$count}}</td>
                                     <td>
-                                        <img style="width: 90%" class="img-thumb" src="{{$manufacturer->banner}}" alt="">
+                                        <img style="width: 100px; height: 100px" class="img-thumb" src="{{$manufacturer->image}}" alt="">
                                     </td>
                                     <td>{{ $manufacturer->name }}</td>
                                     <td>{{ $manufacturer->name_en }}</td>

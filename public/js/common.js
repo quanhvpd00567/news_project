@@ -68,7 +68,7 @@ function initFeedbackForm() {
     })
 }
 
-$('.grid .missing-articles-item').hover(
+$('.item-product').hover(
     function () {
         $(this).animate({
             marginTop: "-=1%"

@@ -55,12 +55,12 @@ use App\Http\Services\CommonService;
                             @foreach($manufacturers as $item)
                                 <div class="home-latest-news-item news-item row">
                             <div class="col-md-1"></div>
-                            <div class="home-latest-news-item-image news-item-image col-md-4 col-sm-12" style="height: 270px">
+                            <div class="home-latest-news-item-image news-item-image col-md-4 col-sm-12" style="height: 250px">
                                 <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.manufacturer'), 'manufacturer.detail' )}}">
                                     <img src="{{asset($item->image)}}" alt="">
                                 </a>
                             </div>
-                            <div class="home-latest-news-item-content news-item-content col-md-6 col-sm-12">
+                            <div class="home-latest-news-item-content news-item-content col-md-6 col-sm-12" style="height: 250px; position: relative">
                                 <div class="latest-news-item-title">
                                     <h4 class="body-content limit-line-2">
                                         <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.manufacturer'), 'manufacturer.detail' )}}">
@@ -72,7 +72,7 @@ use App\Http\Services\CommonService;
                                     <div class="body-content limit-line-5">
                                         {{App::isLocale('vi') ? $item->description : $item->description_en}}
                                     </div>
-                                    <div>
+                                    <div style="position: absolute; bottom: 0">
                                         <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.manufacturer'), 'manufacturer.detail' )}}" class="btn-view-more">
                                             {{trans('view.commons.btn-view-more')}}
                                         </a>

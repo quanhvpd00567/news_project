@@ -1,5 +1,5 @@
 <section id="header">
-    <nav class="navbar navbar-inverse nav-common-header navbar-fixed-top">
+    <nav class="navbar nav-common-header navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">

@@ -57,9 +57,11 @@ div {
 }
 
 .category-title {
-    margin: 0;
     padding: 0px 0 4px 0;
-    margin-bottom: 15px;
+    width: 50%;
+    margin: 0 auto;
+    //border-bottom: 2px solid red;
+    box-shadow: 0 4px 2px -2px gray;
     .category-title-content {
         width: auto;
         padding: 0px 6px 6px 0px;
@@ -136,7 +138,7 @@ div {
     width: 100%;
     top: 50px;
     margin: 0 !important;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid blue;
     position: fixed;
     z-index: 1000;
 }
@@ -207,6 +209,7 @@ div {
 }
 
 .navbar-collapse.collapse {
+    background: white;
     ul {
         min-height: 50px;
     }
@@ -308,7 +311,9 @@ div {
     }
 
     .home-missing-articles-title.category-title {
-        margin-bottom: 0;
+        width: 50%;
+        margin: 0 auto;
+        border-bottom: 2px solid red;
     }
 
     .missing-articles-item-info.news-item-content-info {
@@ -331,14 +336,10 @@ div {
 }
 
 .nav-common-header {
-    background: $color-red;
     min-height: 50px;
     margin: 0;
-    // position: fixed;
-    // top: 0;
     border: none;
     border-radius: 0;
-    // width: 100%;
     font-size: 14px;
 
     form {
@@ -350,8 +351,8 @@ div {
     }
 
     .navbar-collapse {
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 0;
+        padding-right: 0;
         margin-left: -15px;
         margin-right: -15px;
         align-items: flex-end;
@@ -367,6 +368,7 @@ div {
         flex-wrap: wrap;
         justify-content: flex-start;
         align-items: center;
+        background: white;
 
         li {
             padding-right: 30px;
@@ -379,7 +381,8 @@ div {
                 line-height: 1.4;
                 padding-top: 10px;
                 padding-bottom: 11px;
-                text-shadow: none
+                text-shadow: none;
+                background: white !important;
             }
 
             a:hover,
@@ -395,6 +398,7 @@ div {
         }
         li:hover{
             border-top: 4px solid $color-bg-footer;
+            background: white !important;
         }
     }
     .open > a{
@@ -425,6 +429,7 @@ div {
         #logo {
             width: 100px !important;
             height: 100% !important;
+            background: white;
         }
     }
 
@@ -737,6 +742,11 @@ div {
 
 @media screen and (max-width: 767px) {
     .nav-common-header {
+        background-color: white;
+        .navbar-header{
+            padding-bottom: 10px;
+            border-bottom: 2px solid blue;
+        }
         .navbar-nav {
             flex-direction: column;
             margin: 0;
@@ -757,19 +767,15 @@ div {
             padding-right: 15px;
         }
 
-        .btn-search {
-            justify-content: flex-start;
-            padding-left: 0px;
+        .navbar-collapse{
+            border-bottom: 2px solid blue;
         }
-
-        .form-search {
-            min-width: 0;
-            width: calc(100% - 30px);
-            left: 15px;
-        }
-        .navbar-nav li a{
-            //padding-top: 0;
-            //padding-bottom: 0;
+        .navbar-toggle, .navbar-toggle:hover {
+            background-color: $color-bg-footer;
+            border: none;
+            span{
+                background-color: white;
+            }
         }
     }
     .dropdown:hover>.dropdown-menu {
@@ -777,6 +783,7 @@ div {
     }
     .dropdown>.dropdown-toggle:active {
         pointer-events: none !important;
+        background: none;
     }
     .block-content {
         padding-left: 15px;
@@ -787,12 +794,7 @@ div {
             height: 150px;
         }
     }
-    .navbar-inverse {
-        .navbar-toggle, .navbar-toggle:hover {
-            background-color: $color-bg-footer;
-            border: none;
-        }
-    }
+
     .open{
         text-align: center;
         .dropdown-menu{
@@ -803,6 +805,9 @@ div {
         li:hover{
             border-bottom: none !important;
         }
+    }
+    iframe{
+        width: 100% !important;
     }
 }
 #banner-bottom{

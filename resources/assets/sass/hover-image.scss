@@ -1,6 +1,26 @@
 .grid {
     margin: 0 auto;
     list-style: none;
+    .item-product{
+        padding: 20px 10px 50px 10px;
+        border-radius: 10px;
+        border: 1px solid #cccccc;
+        position: relative;
+    }
+    .item-product:hover{
+        -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+        -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+        box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+    }
+    .missing-articles-item{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .right{
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+    }
 }
 
 .grid .img-product {
@@ -14,14 +34,14 @@
     padding-bottom: 20px;
     padding-top: 20px;
     border-radius: 5px;
-    border: 1px solid #cccccc;
+    //border: 1px solid #cccccc;
 }
-
-.grid > .missing-articles-item:hover{
-    -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
-    -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
-    box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
-}
+//
+//.grid > .missing-articles-item:hover{
+//    -webkit-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+//    -moz-box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+//    box-shadow: -1px 9px 40px -12px rgba(0,0,0,0.75);
+//}
 
 .grid figure {
     margin: 0;
@@ -35,7 +55,7 @@
     position: relative;
 }
 
-.grid figcaption {
+.grid .img-2 {
     position: absolute;
     top: 0;
     left: 0;
@@ -44,7 +64,7 @@
 }
 
 
-.grid figcaption img {
+.grid .img-2 img {
    height: 100%;
    width: 100%;
     cursor: pointer;
@@ -73,9 +93,9 @@
 }
 
 .cs-style-4 figure img {
-    -webkit-transition: -webkit-transform 0.4s;
-    -moz-transition: -moz-transform 0.4s;
-    transition: transform 0.4s;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    transition: transform 1s;
 }
 
 .no-touch .cs-style-4 figure:hover img,
@@ -86,7 +106,7 @@
     transform: translateX(0%);
 }
 
-.cs-style-4 figcaption {
+.cs-style-4 .img-2 {
     height: 100%;
     width: 100%;
     opacity: 0;
@@ -99,26 +119,27 @@
     -webkit-transform: rotateY(-90deg);
     -moz-transform: rotateY(-90deg);
     transform: rotateY(-90deg);
-    -webkit-transition: -webkit-transform 0.4s, opacity 0.1s 0.3s;
-    -moz-transition: -moz-transform 0.4s, opacity 0.1s 0.3s;
-    transition: transform 0.4s, opacity 0.1s 0.3s;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    transition: transform 1s;
 }
 
-.no-touch .cs-style-4 figure:hover figcaption,
-.cs-style-4 figure.cs-hover figcaption {
+.no-touch .cs-style-4 figure:hover .img-2,
+.cs-style-4 figure .cs-hover .img-2 {
     opacity: 1;
     -webkit-transform: rotateY(0deg);
     -moz-transform: rotateY(0deg);
     transform: rotateY(0deg);
-    -webkit-transition: -webkit-transform 0.4s, opacity 0.1s;
-    -moz-transition: -moz-transform 0.4s, opacity 0.1s;
-    transition: transform 0.4s, opacity 0.1s;
+    -webkit-transition: -webkit-transform 1s;
+    -moz-transition: -moz-transform 1s;
+    transition: transform 1s;
+    img{
+        display: block !important;
+    }
 }
 
-.cs-style-4 figcaption a {
+.cs-style-4 .img-2 a {
     position: absolute;
-    //bottom: 20px;
-    //right: 20px;
 }
 
 
@@ -128,6 +149,5 @@
     }
     .grid .img-product {
         width: 100%;
-        min-width: 300px;
     }
 }
