@@ -211,7 +211,8 @@ div {
 .navbar-collapse.collapse {
     background: white;
     ul {
-        min-height: 70px;
+        //padding-top: 30px;
+        min-height: 40px;
     }
 }
 
@@ -545,18 +546,16 @@ div {
     .container {
         background-color: $color-bg-footer;
     }
-
+    color: #0f0f0f;
+    font-size: 15px;
     margin-top: auto;
-    color: #dadada;
     padding-top: 8px;
     padding-bottom: 8px;
-    font-size: 12px;
     min-height: 100px;
 
     #footer-info {
         padding-bottom: 10px;
         padding-top: 20px;
-        color: #FF4100;
         .group-1 {
             .lable-title {
                 font-weight: bold;
@@ -574,12 +573,16 @@ div {
 
     #company-copyright {
         font-weight: bold;
-        border-top: 2px solid $color-white;
+        border-top: 2px solid #FF4100;
         padding-top: 10px;
         padding-bottom: 10px;
         margin-left: 0 !important;
         margin-right: 0 !important;
-        color: #FF4100;
+        color: #0f0f0f;
+        font-size: 15px;
+        .col-sm-12, .col-md-12{
+            padding-left: 0px;
+        }
     }
 }
 

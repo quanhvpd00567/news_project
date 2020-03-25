@@ -26,19 +26,6 @@
   right: 20px;
 }
 
-.grid .img-product {
-  display: inline-block;
-  margin: 0;
-  text-align: left;
-  position: relative;
-}
-
-.grid > .missing-articles-item {
-  padding-bottom: 20px;
-  padding-top: 20px;
-  border-radius: 5px;
-}
-
 .grid figure {
   margin: 0;
   height: 100%;
@@ -47,89 +34,21 @@
 
 .grid figure img {
   max-width: 100%;
+  width: 100%;
   display: block;
   position: relative;
 }
 
-.grid .img-2 {
+.grid figure .img-2 {
+  display: none;
   position: absolute;
   top: 0;
   left: 0;
-  color: #ed4e6e;
+  z-index: 99;
 }
 
-.grid .img-2 img {
-  height: 100%;
-  width: 100%;
-  cursor: pointer;
-}
-
-/* Caption Style 4 */
-
-.cs-style-4 .img-product {
-  -webkit-perspective: 1700px;
-  perspective: 1700px;
-  -webkit-perspective-origin: 0 50%;
-  perspective-origin: 0 50%;
-}
-
-.cs-style-4 figure {
-  -webkit-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-
-.cs-style-4 figure > div {
-  overflow: hidden;
-  height: 100%;
-}
-
-.cs-style-4 figure img {
-  -webkit-transition: -webkit-transform 1s;
-  transition: -webkit-transform 1s;
-  transition: transform 1s;
-  transition: transform 1s, -webkit-transform 1s;
-}
-
-.no-touch .cs-style-4 figure:hover img,
-.cs-style-4 figure.cs-hover img {
-  -webkit-transform: translateX(0%);
-  transform: translateX(0%);
-}
-
-.cs-style-4 .img-2 {
-  height: 100%;
-  width: 100%;
-  opacity: 0;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-transform-origin: 0 0;
-  transform-origin: 0 0;
-  -webkit-transform: rotateY(-90deg);
-  transform: rotateY(-90deg);
-  -webkit-transition: -webkit-transform 1s;
-  transition: -webkit-transform 1s;
-  transition: transform 1s;
-  transition: transform 1s, -webkit-transform 1s;
-}
-
-.no-touch .cs-style-4 figure:hover .img-2,
-.cs-style-4 figure .cs-hover .img-2 {
-  opacity: 1;
-  -webkit-transform: rotateY(0deg);
-  transform: rotateY(0deg);
-  -webkit-transition: -webkit-transform 1s;
-  transition: -webkit-transform 1s;
-  transition: transform 1s;
-  transition: transform 1s, -webkit-transform 1s;
-}
-
-.no-touch .cs-style-4 figure:hover .img-2 img,
-.cs-style-4 figure .cs-hover .img-2 img {
-  display: block !important;
-}
-
-.cs-style-4 .img-2 a {
-  position: absolute;
+.grid figure:hover .img-2 {
+  display: inline;
 }
 
 @media screen and (max-width: 31.5em) {
