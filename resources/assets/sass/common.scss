@@ -136,9 +136,9 @@ div {
 
 #border-header{
     width: 100%;
-    top: 50px;
+    top: 70px;
     margin: 0 !important;
-    border-bottom: 2px solid blue;
+    border-bottom: 3px solid blue;
     position: fixed;
     z-index: 1000;
 }
@@ -211,7 +211,7 @@ div {
 .navbar-collapse.collapse {
     background: white;
     ul {
-        min-height: 50px;
+        min-height: 70px;
     }
 }
 
@@ -331,21 +331,19 @@ div {
 
 //End Missing Articles
 #header {
-    padding-bottom: 50px;
+    padding-bottom: 70px;
     z-index: 1000;
 }
 
 .nav-common-header {
-    min-height: 50px;
+    min-height: 70px;
     margin: 0;
     border: none;
     border-radius: 0;
     font-size: 14px;
-
     form {
         width: 100%;
     }
-
     .nav {
         padding-left: 15px;
     }
@@ -373,14 +371,11 @@ div {
         li {
             padding-right: 30px;
             padding-left: 10px;
-
             a {
-                padding: 0;
+                padding: 40px 0 0 0;
                 font-size: inherit;
                 color: inherit;
                 line-height: 1.4;
-                padding-top: 10px;
-                padding-bottom: 11px;
                 text-shadow: none;
                 background: white !important;
             }
@@ -388,9 +383,8 @@ div {
             a:hover,
             a.active {
                 color: $color-bg-footer;
-                padding-top: 10px;
-                padding-bottom: 9px;
-                font-weight: bold
+                font-weight: bold;
+                padding: 40px 0 0 0;
             }
             a.active {
                 font-weight: bold;
@@ -412,10 +406,21 @@ div {
     }
     .dropdown-menu>li>a:focus, .dropdown-menu>li>a:hover {
         background-color: unset !important;
+        padding: 10px 0 10px 0 !important;
     }
-    .dropdown-menu>li:hover{
-        border-top: none !important;
+
+    .dropdown-menu {
+        min-height: auto !important;
+        li {
+            a{
+                padding: 10px 0 10px 0 !important;
+            }
+        }
+        li:hover{
+            border-top: none !important;
+        }
     }
+
     .dropdown:hover>.dropdown-menu {
         display: block;
     }
@@ -425,9 +430,9 @@ div {
 
     .navbar-brand {
         padding: 0 !important;
-
+        height: 70px;
         #logo {
-            width: 100px !important;
+            width: auto;
             height: 100% !important;
             background: white;
         }
@@ -436,16 +441,23 @@ div {
     .navbar-lang {
         text-align: right;
         padding-right: 0;
-
+        margin-bottom: 5px !important;
+        a{
+            color: #0f0f0f;
+        }
         a:before {
             content: '|';
             padding-right: 3px;
             cursor: auto;
-            color: #0f0f0f;
+            color: #0f0f0f !important;
         }
 
         a:first-child:before {
             content: ' ';
+        }
+
+        .active-lang{
+            color: $color-bg-footer !important;
         }
     }
 
@@ -716,7 +728,7 @@ div {
 .banner-full {
     width: 100%;
     img{
-        height: 300px;
+        height: 400px;
     }
 }
 
@@ -744,8 +756,7 @@ div {
     .nav-common-header {
         background-color: white;
         .navbar-header{
-            padding-bottom: 10px;
-            border-bottom: 2px solid blue;
+            padding-bottom: 30px;
         }
         .navbar-nav {
             flex-direction: column;
@@ -768,7 +779,11 @@ div {
         }
 
         .navbar-collapse{
-            border-bottom: 2px solid blue;
+            a{
+                padding: 10px 0 10px 0 !important;
+            }
+            border-bottom: 1px solid blue;
+            border-top: 1px solid blue;
         }
         .navbar-toggle, .navbar-toggle:hover {
             background-color: $color-bg-footer;
@@ -816,9 +831,7 @@ div {
         margin-top: 20px;
     }
 }
-.active-lang{
-    color: $color-bg-footer;
-}
+
 
 .nav-tabs{
     a {
@@ -828,7 +841,8 @@ div {
 
 @media (min-width: 1200px) {
     .navbar {
-        width: 1170px;
+        //width: 1170px;
+        background-color: white;
         margin: 0 auto;
     }
     .news-footer {

@@ -23,6 +23,7 @@ Route::group(['middleware' => 'locale'], function() {
     Route::get('gallery', 'GalleryController@index')->name('gallery');
     Route::get('detail/{slug}', 'ProductController@detailProduct')->name('product.detail');
     Route::get('products', 'ProductController@listProduct')->name('product.list');
+    Route::get('categories/{slug}', 'ProductController@categoriesProduct')->name('categories.product');
 
     // About-us detail
     Route::get('about-us/{slug}' , 'AboutUsController@detail')->name('about-us.detail');

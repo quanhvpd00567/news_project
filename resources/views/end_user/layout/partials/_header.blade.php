@@ -13,10 +13,11 @@
             </a>
             <div>
                 <div class="collapse navbar-collapse row" id="myNavbar">
+                    <div class="col-sm-1"></div>
                     <ul class="nav navbar-nav col-sm-10">
                         @include('end_user.layout.partials._menu')
                     </ul>
-                    <div class="navbar-text navbar-lang col-sm-2">
+                    <div class="navbar-text navbar-lang col-sm-1">
                         <a class="@if (App::isLocale('vi')) active-lang @endif" href="{!! route('change-language', ['vi']) !!}">Vn</a>
                         <a class="@if (App::isLocale('en')) active-lang @endif" href="{!! route('change-language', ['en']) !!}">En</a>
                     </div>

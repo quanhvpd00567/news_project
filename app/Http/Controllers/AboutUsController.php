@@ -39,7 +39,7 @@ class AboutUsController extends BaseController
     }
 
     public function manufacturers(){
-        $manufacturers = Manufacturer::where('status', \Config::get('constant.status.isShow'))->orderBy('id', 'desc')->get();
+        $manufacturers = Manufacturer::where('status', \Config::get('constant.status.isShow'))->get();
         $data = [
             'manufacturers' => $manufacturers,
         ];

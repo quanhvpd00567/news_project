@@ -36,12 +36,12 @@ $settingCustom = \App\Models\Setting::first();
 <body class="bg-body">
 <div class="home-wrapper" id="homeWrapper">
     <!-- header -->
-    <div class="container">
+    <div class="container-fluid">
         @include('end_user.layout.partials._header')
     </div>
     <hr id="border-header">
     <!-- end header  -->
-    <section class="news-section home-news-body" id="cheerfarm-content">
+    <section class="news-section home-news-body" style="margin-top: 0" id="cheerfarm-content">
         @yield('content')
     </section>
     @include('end_user.layout.partials._buttons')

@@ -22,10 +22,12 @@ return [
         'manufacturer' => 2,
         'introduce' => 3,
         'gallery' => 4,
+        'category' => 5,
     ],
     'keys_url' => [
         'product' => 'prd_',
         'introduce' => 'int_',
-        'manufacturer' => 'man_'
+        'manufacturer' => 'man_',
+        'category' => 'cat_'
     ]
 ];

@@ -57,8 +57,23 @@ class ProductController extends BaseController
     public function listProduct(){
         $categories = Category::where('status', \Config::get('constant.status.isShow'))->get();
         $data = [
-//          'products' => $products,
           'categories' => $categories,
+        ];
+        return view('end_user.products.index', $data);
+    }
+
+    public function categoriesProduct($paramUrl){
+        $url = str_replace_first(\Config::get('constant.keys_url.category'), '', $paramUrl);
+        $argUrl = explode('_', $url);
+
+        if (count($argUrl) == 1){
+            return $this->page_404();
+        }
+
+        $id = $argUrl[0];
+        $categories = Category::where('status', \Config::get('constant.status.isShow'))->where('id', $id)->get();
+        $data = [
+            'categories' => $categories,
         ];
         return view('end_user.products.index', $data);
     }
