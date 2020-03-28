@@ -21,11 +21,11 @@ use App\Http\Services\CommonService;
             <div class="home-news-body-left col-sm-12 col-md-12">
                 <div class="main-section row">
 
-                    <div class="breadcrumb">
-                        <ul>
-                            <li>{{trans('view.gallery.gallery')}}</li>
-                        </ul>
-                    </div>
+{{--                    <div class="breadcrumb">--}}
+{{--                        <ul>--}}
+{{--                            <li>{{trans('view.gallery.gallery')}}</li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
                     <div class="row" id="content-gallery">
                             @if(count($images) > 0)
                                 <?php
@@ -67,16 +67,16 @@ use App\Http\Services\CommonService;
                                                 <div class="item-product">
                                                     <div class="img-product missing-articles-item-image news-item-image">
                                                         <figure>
-                                                            <div>
+                                                            <div class="img-1">
                                                                 <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
                                                                     <img src="{{$item->image_1}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
                                                                 </a>
                                                             </div>
-                                                            <figcaption>
+                                                            <div class="img-2">
                                                                 <a href="{{CommonService::createUrlProduct($item->id, $item->slug, \Config::get('constant.keys_url.product'))}}">
                                                                     <img src="{{$item->image_2}}" alt="{{ App::isLocale('vi') ? $item->name : $item->name_en }}">
                                                                 </a>
-                                                            </figcaption>
+                                                            </div>
                                                         </figure>
                                                     </div>
                                                     <div class="missing-articles-item-content news-item-content">

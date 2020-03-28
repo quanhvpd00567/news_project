@@ -28,7 +28,7 @@ div {
         margin-bottom: 0;
         padding: 0;
         background-color: transparent;
-        color: red;
+        color: $color-AD6928;
         font-size: 18px;
         font-weight: bold;
         ul {
@@ -37,12 +37,12 @@ div {
             li {
                 display: inline-block;
                 a {
-                    color: red;
+                    color: $color-AD6928;
                     font-size: 18px;
                 }
             }
             li:before {
-                color: red;
+                color: $color-AD6928;
                 content: '/';
                 padding-right: 1px;
                 padding-left: 1px;
@@ -68,13 +68,16 @@ div {
         font-size: 18px;
         font-weight: bold;
     }
+    .font-weight-bold{
+        color: $color-269014;
+    }
 }
 
 #title{
     h2{
         padding-top: 20px;
         text-transform: uppercase;
-        color: red;
+        color: $color-AD6928;
         font-weight: 700;
         font-size: 25px
     }
@@ -138,7 +141,7 @@ div {
     width: 100%;
     top: 70px;
     margin: 0 !important;
-    border-bottom: 3px solid blue;
+    border-bottom: 3px solid #0f0f0f;
     position: fixed;
     z-index: 1000;
 }
@@ -242,6 +245,11 @@ div {
             line-height: 1.4;
             letter-spacing: normal;
         }
+        h4{
+            a{
+                color: $color-269014;
+            }
+        }
     }
 
     .latest-news-item-body {
@@ -309,6 +317,9 @@ div {
             font-weight: bold;
             word-break: break-word;
         }
+        H4 > a {
+            color: $color-269014;
+        }
     }
 
     .home-missing-articles-title.category-title {
@@ -362,6 +373,7 @@ div {
     .navbar-nav {
         margin-left: 0;
         margin-right: 0;
+        padding-top: 45px;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -373,7 +385,7 @@ div {
             padding-right: 30px;
             padding-left: 10px;
             a {
-                padding: 40px 0 0 0;
+                padding: 0;
                 font-size: inherit;
                 color: inherit;
                 line-height: 1.4;
@@ -383,16 +395,16 @@ div {
 
             a:hover,
             a.active {
-                color: $color-bg-footer;
+                color: $color-269014;
                 font-weight: bold;
-                padding: 40px 0 0 0;
+                padding: 0;
             }
             a.active {
                 font-weight: bold;
             }
         }
         li:hover{
-            border-top: 4px solid $color-bg-footer;
+            border-top: 4px solid $color-269014;
             background: white !important;
         }
     }
@@ -400,7 +412,7 @@ div {
         -webkit-box-shadow: none !important;
         box-shadow: none !important;;
         background-image: none;
-        color: $color-bg-footer !important;
+        color: $color-269014 !important;
     }
     .dropdown-toggle, .open > a {
         background-color: $color-red !important;
@@ -442,7 +454,7 @@ div {
     .navbar-lang {
         text-align: right;
         padding-right: 0;
-        margin-bottom: 5px !important;
+        margin-bottom: 0 !important;
         a{
             color: #0f0f0f;
         }
@@ -458,7 +470,7 @@ div {
         }
 
         .active-lang{
-            color: $color-bg-footer !important;
+            color: $color-269014 !important;
         }
     }
 
@@ -573,7 +585,7 @@ div {
 
     #company-copyright {
         font-weight: bold;
-        border-top: 2px solid #FF4100;
+        border-top: 2px solid #0f0f0f;
         padding-top: 10px;
         padding-bottom: 10px;
         margin-left: 0 !important;
@@ -730,6 +742,7 @@ div {
 
 .banner-full {
     width: 100%;
+    padding-top: 20px !important;
     img{
         height: 400px;
     }
@@ -839,6 +852,7 @@ div {
 .nav-tabs{
     a {
         font-weight: 700;
+        color: $color-AD6928;
     }
 }
 

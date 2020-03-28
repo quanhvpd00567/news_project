@@ -27,8 +27,7 @@ use App\Http\Services\CommonService;
                         @if(count($categories) > 0)
                             @foreach($categories as $category)
                                 @if(count($category->products) > 0)
-                                    <br>
-                                    <div class="breadcrumb" style="padding-bottom: 20px; margin-top: 20px">
+                                    <div class="breadcrumb" style="padding-bottom: 20px">
                                         <ul>
                                             <li>
                                                 {{App::isLocale('vi') ? $category->name : $category->name_en }}

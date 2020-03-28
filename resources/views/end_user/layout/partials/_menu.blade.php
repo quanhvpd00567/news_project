@@ -5,19 +5,24 @@ $prefixUrl = $action['prefix'];
 $asUrl = $action['as'];
 //dd($asUrl);
 ?>
-
+<?php
+$introduce = \App\Models\Introduce::select('id', 'name', 'name_en', 'slug')
+    ->where('status', \Config::get('constant.status.isShow'))
+    ->get();
+if (count($introduce) > 0){
+    $urlFirstIntroduce = \App\Http\Services\CommonService::createUrlProduct($introduce[0]->id, $introduce[0]->slug, \Config::get('constant.keys_url.introduce'), 'about-us.detail');
+}else{
+    $urlFirstIntroduce = '#';
+}
+?>
 
 <li><a href="/" class="@if($asUrl == 'home') active @endif">{{trans('view.commons.home')}}</a></li>
+
 <li class="dropdown">
-    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-       aria-haspopup="true" aria-expanded="false">
+    <a href="{{$urlFirstIntroduce}}">
         {{trans('view.about-us.about-us')}}
     </a>
-    <?php
-    $introduce = \App\Models\Introduce::select('id', 'name', 'name_en', 'slug')
-        ->where('status', \Config::get('constant.status.isShow'))
-        ->get();
-    ?>
+
     @if(count($introduce) > 0)
     <ul class="dropdown-menu">
         @foreach($introduce as $item)
