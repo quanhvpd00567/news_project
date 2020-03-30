@@ -22,14 +22,15 @@ use App\Http\Services\CommonService;
 @section('content')
 
     <?php
-    $banner = \App\Models\admin\Banner::where('type', 'screen_about_us')->first()
+//    $banner = \App\Models\admin\Banner::where('type', 'screen_about_us')->first()
     ?>
-    @if(!is_null($banner) && $banner->status == 1)
-        <div class="banner-full">
-            <img style="width: 100%" src="{{$banner->url}}" alt="">
-        </div>
-        <br>
-    @endif
+{{--    @if(!is_null($banner) && $banner->status == 1)--}}
+{{--        <div class="banner-full">--}}
+{{--            <img style="width: 100%" src="{{$banner->url}}" alt="">--}}
+{{--        </div>--}}
+{{--    @endif--}}
+    <br>
+    <br>
 
     <div class="home-news-body-container container">
         <div class="home-news-body-row row">

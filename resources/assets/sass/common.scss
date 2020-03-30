@@ -65,7 +65,7 @@ div {
     .category-title-content {
         width: auto;
         padding: 0px 6px 6px 0px;
-        font-size: 18px;
+        font-size: 25px;
         font-weight: bold;
     }
     .font-weight-bold{
@@ -115,7 +115,7 @@ div {
     .breadcrumb{
         padding-bottom: 20px;
         padding-top: 20px;
-        border-top: 2px solid #FF4100;
+        border-top: 2px solid $color-AD6928;
     }
 }
 .news-item-content-info {
@@ -141,7 +141,7 @@ div {
     width: 100%;
     top: 70px;
     margin: 0 !important;
-    border-bottom: 3px solid #0f0f0f;
+    border-bottom: 1px solid #cccccc;
     position: fixed;
     z-index: 1000;
 }

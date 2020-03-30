@@ -14,6 +14,8 @@ $settingCustom = \App\Models\Setting::first();
     <link rel="shortcut icon" type="image/png" href="{{asset('images/favicon.png')}}"/>
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="{{ asset('lib/slick/cs/slick.css') }}">
     <link rel="stylesheet" href="{{ asset('lib/slick/cs/slick-theme.css') }}">
     <link rel="stylesheet" href="{{ asset('css/external.css') }}">
@@ -48,9 +50,7 @@ $settingCustom = \App\Models\Setting::first();
     {{--    footer--}}
     @include('end_user.layout.partials._footer')
 </div>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="{{ asset('lib/slick/js/slick.min.js') }}"></script>
 <script src="{{ asset('js/common.js') }}"></script>
 <script src="{{ asset('js/home.js') }}"></script>

@@ -19,7 +19,7 @@ if (count($introduce) > 0){
 <li><a href="/" class="@if($asUrl == 'home') active @endif">{{trans('view.commons.home')}}</a></li>
 
 <li class="dropdown">
-    <a href="{{$urlFirstIntroduce}}">
+    <a href="{{$urlFirstIntroduce}}" class="@if($asUrl == 'about-us.detail') active @endif">
         {{trans('view.about-us.about-us')}}
     </a>
 

@@ -5,15 +5,24 @@ use App\Http\Services\CommonService;
 @section('content')
     <div>
         <?php
-        $banner = \App\Models\admin\Banner::where('type', 'screen_home')->first()
+            $banners = \App\Models\admin\Banner::all();
         ?>
-        @if(!is_null($banner) && $banner->status == 1)
-            <div class="banner-full">
-                <img style="width: 100%" src="{{$banner->url}}" alt="">
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <ol class="carousel-indicators">
+                @foreach($banners as $key => $item)
+                    <li data-target="#myCarousel" data-slide-to="{{$key}}" class="@if($key==0) active @endif"></li>
+                @endforeach
+            </ol>
+            <div class="carousel-inner">
+                @foreach($banners as $key => $item)
+                <div class="item @if($key==0) active @endif">
+                    <div class="banner-full">
+                        <img src="{{$item->url}}" style="width:100%;">
+                    </div>
+                </div>
+                @endforeach
             </div>
-            <br>
-        @endif
-
+        </div>
         <div class="home-news-body-container container">
             <div class="home-news-body-row row">
                 <div class="home-news-body-left col-sm-12 col-md-12">

@@ -117,6 +117,24 @@ $routeName = 'admin.home.page.update';
 
 <session>
     <div class="col-md-6">
+        <div class="form-group">
+            <label>Chọn banner</label>
+            <div class="input-group input-group-sm">
+                {{Form::text('banner', old('banner', $dataHome->banner), [ 'readonly' ,'class' => 'form-control', 'id' => "banner", 'placeholder' => "Chọn banner"])}}
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-info btn-flat btn-choose-img">
+                    <i class="fa fa-image"></i>
+                    Chọn ảnh
+                </button>
+                <button type="button" class="btn btn-danger btn-flat" id="btn-delete-banner">
+                    <i class="fa fa-trash"></i>
+                    Xóa
+                </button>
+              </span>
+            </div>
+
+            <img src="{{old('banner', $dataHome->banner)}}" style="float: unset !important;" class="img-banner-view" id="view-banner-img" alt="">
+        </div>
     </div>
     <div class="col-md-6">
         <div class="form-group">

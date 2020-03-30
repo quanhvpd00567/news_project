@@ -180,7 +180,7 @@ class SettingController extends AdminController
         $arrayScreen = [
             'screen_home' => 'Banner cho trang chủ',
             'screen_product' => 'Banner cho trang sản phẩm',
-            'screen_about_us' => 'Banner cho trang giới thiệu',
+//            'screen_about_us' => 'Banner cho trang giới thiệu',
             'screen_gallery' => 'Banner cho trang bộ sưu tập',
             'screen_manufacturer' => 'Banner cho trang sản xuất',
             'screen_contact' => 'Banner cho trang liên hệ',
@@ -204,7 +204,7 @@ class SettingController extends AdminController
             $arrayScreen = [
                 'screen_home' => 0,
                 'screen_product' => 1,
-                'screen_about_us' => 2,
+//                'screen_about_us' => 2,
                 'screen_gallery' => 3,
                 'screen_manufacturer' => 4,
                 'screen_contact' => 5
